@@ -32,5 +32,13 @@ sudo pip install -r requirements.txt
 
 sudo gunicorn --access-logfile - --debug -k gevent -b 0.0.0.0:80 -w 1 wsgi:application
 
+command
+---
 
-  - END -
+stop and remove all containers
+```
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
+
+    - END -
