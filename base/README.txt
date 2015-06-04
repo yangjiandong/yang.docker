@@ -32,8 +32,6 @@ sudo pip install -r requirements.txt
 
 sudo gunicorn --access-logfile - --debug -k gevent -b 0.0.0.0:80 -w 1 wsgi:application
 
-REGISTRY=$(docker run -d -i -t --dns x.x.x.x --expose 80 -v /datadisk/data/registry/conf:/registry-conf -v /datadisk/data/registry/data:/registry-data -e REGISTRY_PORT=80 -e DOCKER_REGISTRY_CONFIG=/registry-conf/config.yml -e SETTINGS_FLAVOR=dev registry)
-
 command
 ---
 
@@ -43,4 +41,9 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 ```
 
-    - END -
+挂载dir，中文目录不显示
+```
+docker run -it -v ~/workspace/docker/data:/usr/data yangjiandong/base /bin/bash
+```
+
+  - END -
