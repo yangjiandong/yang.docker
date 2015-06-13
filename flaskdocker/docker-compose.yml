@@ -1,0 +1,13 @@
+flask:
+  build: .
+  command: python app.py 0.0.0.0:5000
+  env_file:
+   - '.env.web'
+  ports:
+   - "5000:5000"
+  volumes:
+   - .:/code
+  links:
+   - redis
+redis:
+  image: redis

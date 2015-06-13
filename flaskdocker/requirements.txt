@@ -10,3 +10,4 @@ Werkzeug
 Whoosh
 distribute
 python-openid
+redis

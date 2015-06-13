@@ -1,3 +1,4 @@
 #! /bin/bash
 
-docker build -t yangjiandong/flask .
+docker build -t flaskdocker_flask:latest .
+# docker build -t yangjiandong/flask .

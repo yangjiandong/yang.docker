@@ -55,4 +55,13 @@ http://dockerpool.com/downloads
 docker pull dl.dockerpool.com:5000/centos:centos7
 ```
 
-  - END -
+需运行下
+```
+boot2docker ssh "echo $'EXTRA_ARGS=\"--insecure-registry dl.dockerpool.com:5000\"' | sudo tee -a /var/lib/boot2docker/profile && sudo /etc/init.d/docker restart"
+```
+
+pull
+```
+docker pull dl.dockerpool.com:5000/centos:latest
+```
+

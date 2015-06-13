@@ -14,4 +14,8 @@ RUN apt-get install -y \
 ADD requirements.txt /src/requirements.txt
 RUN cd /src; pip install -r requirements.txt
 
+# add code
+ADD . /code
+WORKDIR /code
+
 #EOP
