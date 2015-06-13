@@ -46,4 +46,13 @@ docker rm $(docker ps -a -q)
 docker run -it -v ~/workspace/docker/data:/usr/data yangjiandong/base /bin/bash
 ```
 
+国内源
+---
+
+http://dockerpool.com/downloads
+
+```
+docker pull dl.dockerpool.com:5000/centos:centos7
+```
+
   - END -
