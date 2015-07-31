@@ -6,7 +6,8 @@
 # setup redis
 export MAKE=make
 REDIS=redis-2.8.19
-REDIS_DOWNLOAD_PATH=http://download.redis.io/releases/$REDIS.tar.gz
+#REDIS_DOWNLOAD_PATH=http://download.redis.io/releases/$REDIS.tar.gz
+REDIS_DOWNLOAD_PATH=http://192.168.1.109:8000/$REDIS.tar.gz
 REDIS_CONF_PATH=/usr/local/etc
 REDIS_CONF=redis.conf
 REDIS_SERVER_PATH=/usr/local/bin
