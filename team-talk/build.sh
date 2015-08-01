@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t yangjiandong/teamtalk02 .
+docker build -t yangjiandong/teamtalk03 .

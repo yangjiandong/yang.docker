@@ -25,4 +25,3 @@ RUN cd /opt/team-talk/auto_setup/nginx_php/nginx; ./setup.sh install
 
 
 
-

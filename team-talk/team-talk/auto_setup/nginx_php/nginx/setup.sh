@@ -101,7 +101,7 @@ case $1 in
 		print_hello	$1
 		check_user
 		check_os
-		check_run
+		#check_run
 		install_nginx
 		;;
 	*)
