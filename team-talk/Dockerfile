@@ -8,7 +8,7 @@ MAINTAINER yangjiandong <59338947@qq.com>
 # COPY CentOS6-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
 
 # RUN yum update -y
-RUN yum -y install wget tar gcc
+RUN yum -y install wget tar gcc unzip
 
 ADD team-talk /opt/team-talk
 
@@ -27,6 +27,11 @@ RUN cd /opt/team-talk/auto_setup/nginx_php/nginx; ./setup.sh install
 RUN chmod +x /opt/team-talk/auto_setup/nginx_php/php/setup.sh
 RUN cd /opt/team-talk/auto_setup/nginx_php/php; ./setup.sh install
 
+# im_web
+RUN chmod +x /opt/team-talk/auto_setup/im_web/setup.sh
+RUN cd /opt/team-talk/auto_setup/im_web; ./setup.sh install
+
+# im_server
 
 
 

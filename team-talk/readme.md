@@ -16,3 +16,9 @@ docker rm $(docker ps -a -q)
 ### python httpserver
 
 python -m SimpleHTTPServer
+
+### Q
+
+unzip:  cannot find or open tt.zip, tt.zip.zip or tt.zip.ZIP
+
+
