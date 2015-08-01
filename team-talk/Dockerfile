@@ -23,5 +23,10 @@ RUN cd /opt/team-talk/auto_setup/mariadb; ./setup.sh install
 RUN chmod +x /opt/team-talk/auto_setup/nginx_php/nginx/setup.sh
 RUN cd /opt/team-talk/auto_setup/nginx_php/nginx; ./setup.sh install
 
+# php
+RUN chmod +x /opt/team-talk/auto_setup/nginx_php/php/setup.sh
+RUN cd /opt/team-talk/auto_setup/nginx_php/php; ./setup.sh install
+
+
 
 

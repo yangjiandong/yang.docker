@@ -6,7 +6,9 @@
 # setup php
 
 PHP=php-5.6.6
-PHP_DOWNLOAD_PATH=http://cn2.php.net/distributions/$PHP.tar.gz
+LOCAL_DOWNLOAD=http://192.168.1.109:8000
+REMOTE_DOWNLOAD=http://cn2.php.net/distributions
+PHP_DOWNLOAD_PATH=$LOCAL_DOWNLOAD/$PHP.tar.gz
 INSTALL_DIR=/usr/local/php5
 
 PHP_FPM_CONF=php-fpm.conf
