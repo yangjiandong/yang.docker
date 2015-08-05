@@ -19,19 +19,7 @@ RUN locale-gen zh_CN.UTF-8
 ENV LANG zh_CN.UTF-8
 ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL zh_CN.UTF-8
-ENV HOME /root
 
-RUN apt-get install -y curl man software-properties-common unzip wget gcc fontconfig build-essential git
-
-# supervisor installation and create directory for child images to store configuration in
-RUN apt-get -y install supervisor && \
-  mkdir -p /var/log/supervisor && \
-  mkdir -p /etc/supervisor/conf.d
-
-# supervisor base configuration
-ADD supervisor.conf /etc/supervisor.conf
-
-# default command (创建容器时执行)
-# CMD ["supervisord", "-c", "/etc/supervisor.conf"]
-
-#EOP
+RUN         apt-get -y install redis-server
+EXPOSE      6379
+#ENTRYPOINT  ["/usr/bin/redis-server"]
