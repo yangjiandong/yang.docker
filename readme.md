@@ -51,6 +51,20 @@ sudo docker run -d -p 9200:9200 -p 9300:9300 elasticsearch
 `docker ps` - show container id
 `docker commit id images-id` - 可以覆盖原有images
 
+### export,save
+
+```
+# 容器的导出
+docker export <CONTAINER ID> > /home/export.tar
+```
+
+```
+# 保存镜像到文件，方便在另外机器上安装
+docker save image_name > filename.tar
+# 还原
+docker load < filename.tar
+```
+
 ### error
 
 `An error occurred trying to connect: Get https://192.168.59.103:2376/v1.19/containers/json: x509: certificate is valid for 127.0.0.1, 10.0.2.15, not 192.168.59.103`
