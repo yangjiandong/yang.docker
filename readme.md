@@ -1,9 +1,24 @@
 Docker
 ===
 
+### 12.08
+
+- mac 采用 docker toolbox
+
+    ```
+docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso default
+    ```
+
+- java7base 无效
+
+- [参考](https://hub.docker.com/r/stephenreed/jenkins-java8-maven-git/~/dockerfile/), java8base 增加了 jenkins
+
+  - `docker-machine ip default`
+  - brower to `http://ip:8080`
+
 ### 2015.08.26
 
-redis
+#### redis
 
 
 - get docker
@@ -21,19 +36,20 @@ docker run --name redis -d -p 6379:6379 redis:3.0.3 -v ~/workspace/docker/redis-
     ```
 
     参数说明：
+    
     - name是给container取一个别名，以后再stop和attach的时候就可以使用这个别名，
     - d 是作为一个后台服务运行，
     - p是端口映射，把container的6379映射到host的6379端口，
-这样就可以在host机上使用192.168.59.103:6379来连接container中的redis服务了。
 
-    另一个容器访问 redis
+    这样就可以在host机上使用192.168.59.103:6379来连接container中的redis服务了。
+
+    另一个容器访问 redis:
 
     ```
 docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
-```
+    ```
 
     参数说明：
-
 
     - rm Automatically remove the container when it exits
 
