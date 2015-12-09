@@ -1,6 +1,21 @@
 Docker
 ===
 
+### 12.09
+
+- error
+
+    ```
+docker dial tcp 192.168.99.100:2376: getsockopt: connection refused
+    ```
+
+    解决:
+
+    ```
+docker-machine stop default
+docker-machine start default
+    ```
+
 ### 12.08
 
 - mac 采用 docker toolbox
