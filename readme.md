@@ -44,7 +44,6 @@ $cd code
 $docker build -t code .
 ```
 
-
 And launch a bash shell inside the container
 
 ```
@@ -55,6 +54,19 @@ $boot2docker ip
 # go web http://192.168.59.103:8080
 $docker run -t -i code /bin/bash
 ```
+
+- error
+
+    ```
+docker dial tcp 192.168.99.100:2376: getsockopt: connection refused
+    ```
+
+    解决:
+
+    ```
+docker-machine stop default
+docker-machine start default
+    ```
 
 ### 12.08
 
