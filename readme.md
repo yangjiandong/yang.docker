@@ -1,6 +1,61 @@
 Docker
 ===
 
+### 12.09
+
+```
+docker run \
+    --name fusion1api \
+    --restart unless-stopped \
+    --net=myapp \
+    -d \
+    -e MODULE=fusion \
+    -v $FPATH/fusion1_api:/opt/django/app \
+    fangzx/py27prd:3.0
+```
+
+反向代理我也用容器，配置文件中就直接可以用其他容器的名字
+
+反向代理的容器运行命令
+
+```
+docker run \
+    --name nrp \
+    --net=myapp \
+    --restart unless-stopped \
+    -p 80:80 \
+    -p 443:443 \
+    -v $FPATH/logs:/var/log/nginx \
+    -v $FPATH/conf/default.conf:/etc/nginx/conf.d/default.conf \
+    -v $FPATH/conf/nginx.conf:/etc/nginx/nginx.conf \
+    -v $FPATH/certs:/etc/nginx/certs \
+    -d \
+    fangzx/nginxreverseproxy:1.0
+```
+
+- [豆瓣 code](https://github.com/douban/code)
+
+You can use code
+
+```
+$docker pull dongweiming/code
+or just build locally(recommended):
+$cd code
+$docker build -t code .
+```
+
+
+And launch a bash shell inside the container
+
+```
+$docker run -d -p 8080:8000 code gunicorn -w 2 -b 0.0.0.0:8000 app:app  # start app
+5cf0d1f6a421c53d54662df77dd142978d24b8c76fd72ce1c106506458e1304a
+$boot2docker ip
+192.168.59.103
+# go web http://192.168.59.103:8080
+$docker run -t -i code /bin/bash
+```
+
 ### 12.08
 
 - mac 采用 docker toolbox
@@ -15,6 +70,8 @@ docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso
 
   - `docker-machine ip default`
   - brower to `http://ip:8080`
+
+  > 注意：如果你在 OS X windows或者Linux上使用 boot2docker 虚拟机，你需要获取虚拟机的 ip 来代替localhost 使用，你可以通过运行 boot2docker shell 来获取 ip。
 
 ### 2015.08.26
 
