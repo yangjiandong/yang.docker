@@ -32,6 +32,13 @@ docker run --name redis -p 6379:6379 -dv /Users/yangjiandong/workspace/docker/re
 docker inspect xxxxx
 ```
 
+访问
+
+```
+docker-machine env default
+# ip 192.168.99.100
+redis-cli -h 192.168.99.100
+```
 另一个容器访问 redis
 
 ```

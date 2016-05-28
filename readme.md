@@ -1,6 +1,10 @@
 Docker
 ===
 
+### 05.28
+
+docker 访问问题，虽然`docker inspect redis | grep IPA` 查看到了IP，但访问不了，只能访问 `docker-machine env default` 显示的ip
+
 ### 2016.02.22
 
 rabbitmq
@@ -9,7 +13,7 @@ rabbitmq
 
 - docker ip `192.168.99.100`
 - `docker pull rabbitmq:3.6.0-management`
-- `docker run -d -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=123 --name rabbitmq rabbitmq:3.6.0-management`
+- `docker run -d -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=123 --name rabbitmq rabbitmq:3.6.0-management`, docker start rabbitmq
 - `http://192.168.99.100:15672/`
 
 ### 12.09
