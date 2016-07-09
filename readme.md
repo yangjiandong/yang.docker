@@ -1,6 +1,57 @@
 Docker
 ===
 
+### 07.07
+
+```
+Error checking TLS connection: Error checking and/or regenerating the certs: There was an error validating certificates for host "192.168.99.100:2376": tls: DialWithDialer timed out
+```
+
+升级了 docker-toolbox 1.11 出现以上问题
+[1](http://miroadamy.com/2016/03/docker-machine-error-after-upgrade)
+```
+docker-machine rm default
+docker-machine create --driver virtualbox default
+```
+
+以前的docker image 就没有了
+
+#### Alpine
+
+最小的docker 镜像
+
+### 06.17
+
+#### elasticsearch
+
+- [elasticsearch](http://segmentfault.com/a/1190000003111556?utm_source=Weibo&utm_medium=shareLink&utm_campaign=socialShare)
+
+    ```
+sudo docker run -d -p 9200:9200 -p 9300:9300 elasticsearch
+```
+
+- [Elasticsearch, Logstash, Kibana (ELK) Docker image documentation](https://elk-docker.readthedocs.io)
+
+    For instance, the image containing Elasticsearch 1.7.3, Logstash 1.5.5, and Kibana 4.1.2 (which is the last image using the Elasticsearch 1.x and Logstash 1.x branches) bears the tag E1L1K4
+
+    ```
+docker pull sebp/elk:E1L1K4
+docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -p 5000:5000 -it --name elk sebp/elk:E1L1K4
+# access 192.168.99.100:5601 kibana web interface
+# lastest
+docker pull sebp/elk
+```
+
+    ```
+docker exec -it elk /bin/bash
+/opt/logstash/bin/logstash -e 'input { stdin { } } output { elasticsearch { host => localhost } }'
+#192.168.99.100:9200/_search?pretty 
+```
+
+[github source](https://github.com/spujadas/elk-docker)
+
+- [logstash elasticsearch kibana日志集中解决方案](http://my.oschina.net/chaun/blog/670928)
+
 ### 05.28
 
 docker 访问问题，虽然`docker inspect redis | grep IPA` 查看到了IP，但访问不了，只能访问 `docker-machine env default` 显示的ip
@@ -139,12 +190,6 @@ docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
 
 
 ### 2015.08.20
-
-#### [elasticsearch](http://segmentfault.com/a/1190000003111556?utm_source=Weibo&utm_medium=shareLink&utm_campaign=socialShare)
-
-```
-sudo docker run -d -p 9200:9200 -p 9300:9300 elasticsearch
-```
 
 ### create new image
 
