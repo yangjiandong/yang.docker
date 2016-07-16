@@ -1,6 +1,23 @@
 Docker
 ===
 
+### 07.16
+
+在 `yangjiandong/openresty` 基础上安装 `ffmpeg`， 准备安装[nginx+rtmp服务器](http://www.jianshu.com/p/02222073b3f1)
+
+[centos7 install ffmpeg](http://www.icnws.com/articles/2016/02/29/1456739902248.html)
+
+```
+run yangjiandong/openresty
+yum install autoconf automake cmake freetype-devel gcc gcc-c++ git libtool make mercurial nasm pkgconfig zlib-devel
+```
+
+commit to yangjiandong/openresty_ffmpeg image
+```
+docker ps
+docker commit 336600fa7f5c yangjiandong/openresty_ffmpeg
+```
+
 ### 07.12
 
 add openresty docker
@@ -200,7 +217,7 @@ docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
 ### create new image
 
 `docker ps` - show container id
-`docker commit id images-id` - 可以覆盖原有images
+`docker commit <container id> images-id` - 可以覆盖原有images
 
 ### export,save
 
