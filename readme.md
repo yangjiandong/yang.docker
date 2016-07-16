@@ -6,6 +6,7 @@ Docker
 在 `yangjiandong/openresty` 基础上安装 `ffmpeg`， 准备安装[nginx+rtmp服务器](http://www.jianshu.com/p/02222073b3f1)
 
 [centos7 install ffmpeg](http://www.icnws.com/articles/2016/02/29/1456739902248.html)
+[2](http://www.yaosansi.com/post/ffmpeg-on-centos/)
 
 ```
 run yangjiandong/openresty
@@ -17,6 +18,8 @@ commit to yangjiandong/openresty_ffmpeg image
 docker ps
 docker commit 336600fa7f5c yangjiandong/openresty_ffmpeg
 ```
+
+TODO begin to install libvorbis.git
 
 ### 07.12
 
