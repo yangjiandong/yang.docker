@@ -1,7 +1,8 @@
 # Dockerfile - CentOS 7
 # https://github.com/openresty/docker-openresty
 
-FROM centos:7
+#FROM centos:7
+FROM hub.c.163.com/public/centos:7.0
 
 MAINTAINER yangjiandong <59338947@qq.com>
 
