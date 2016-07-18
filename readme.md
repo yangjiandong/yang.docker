@@ -1,12 +1,22 @@
 Docker
 ===
 
+### 07.18
+
+config nginx + rtmp
+```
+copy install_rtmp_module.sh to /app
+run docker
+./install_rtmp_module
+```
+
 ### 07.16
 
 在 `yangjiandong/openresty` 基础上安装 `ffmpeg`， 准备安装[nginx+rtmp服务器](http://www.jianshu.com/p/02222073b3f1)
 
-[centos7 install ffmpeg](http://www.icnws.com/articles/2016/02/29/1456739902248.html)
-[2](http://www.yaosansi.com/post/ffmpeg-on-centos/)
+参考
+- [centos7 install ffmpeg](http://www.icnws.com/articles/2016/02/29/1456739902248.html)
+- [2](http://www.yaosansi.com/post/ffmpeg-on-centos/)
 
 ```
 run yangjiandong/openresty
@@ -19,13 +29,33 @@ docker ps
 docker commit 336600fa7f5c yangjiandong/openresty_ffmpeg
 ```
 
-TODO begin to install libvorbis.git
+```
+install libvpx 出现Neither yasm nor nasm have been found
+解决
+./configure --prefix="$HOME/ffmpeg_build" --as=yasm --disable-examples
+
+ffmpeg --version
+ffmpeg: error while loading shared libraries: libmp3lame.so.0: cannot open shared object file: No such file or directory
+解决
+cd /
+find -name libmp3lame.so.0
+./root/ffmpeg_build/lib/libmp3lame.so.0
+vi /etc/ld.so.conf,add
+/root/ffmpeg_build/lib
+
+ldconfig
+```
+
+test
+```
+ffmpeg -version
+```
 
 ### 07.12
 
 add openresty docker
 
-[1](https://github.com/openresty/docker-openresty)
+[参考](https://github.com/openresty/docker-openresty)
 
 ### 07.07
 
