@@ -1,6 +1,27 @@
 Docker
 ===
 
+### 07.28
+
+[局域网访问docker](http://www.jscon.cc/docker-serial-2/)
+
+virtualbox 网络设置 - 网络地址转换 - 端口转发 add
+```
+nginx tcp 192.168.1.109 8080  8080
+```
+
+redis.dev - 可以用的redis
+
+### 07.20
+
+json-server 修改了json需重新启动
+```
+docker stop my-json-server
+docker rm my-josn-server
+```
+
+add `--watch` 好像没效果
+
 ### 07.18
 
 config nginx + rtmp
@@ -281,4 +302,9 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 
 ```
 
+### Stop / remove all Docker containers
 
+```
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
