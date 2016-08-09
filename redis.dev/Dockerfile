@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER tenxcloud.com
+MAINTAINER yangjiandong <59338947@qq.com>
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv C7917B12 && \
     apt-get update && \

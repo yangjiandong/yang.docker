@@ -1,1 +1,1 @@
-docker build -t tutum/redis .
+docker build -t yangjiandong/redis .

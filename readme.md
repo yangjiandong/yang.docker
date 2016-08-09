@@ -1,7 +1,30 @@
 Docker
 ===
 
-### 07.28
+08.06
+---
+
+### docker 加速
+
+[DaoCloud](https://dashboard.daocloud.io/)
+user:youngjiandong@sina.cn,qazwsx
+
+```
+Docker Toolbox 
+docker-machine ssh default
+sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://2c661460.m.daocloud.io |g" /var/lib/boot2docker/profile
+exit
+docker-machine restart default
+```
+
+### mysql
+
+```
+docker pull docker.io/mysql
+```
+
+07.28
+---
 
 [局域网访问docker](http://www.jscon.cc/docker-serial-2/)
 
@@ -12,7 +35,8 @@ nginx tcp 192.168.1.109 8080  8080
 
 redis.dev - 可以用的redis
 
-### 07.20
+07.20
+---
 
 json-server 修改了json需重新启动
 ```
@@ -21,6 +45,9 @@ docker rm my-josn-server
 ```
 
 add `--watch` 好像没效果
+
+old
+---
 
 ### 07.18
 
