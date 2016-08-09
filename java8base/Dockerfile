@@ -1,59 +1,10 @@
 #
 # Thanks: https://github.com/Krijger/docker-cookbooks/tree/master/supervisor
 #
-FROM ubuntu:14.04
+FROM yangjiandong/base:v1
 MAINTAINER yangjiandong <59338947@qq.com>
 
 ENV DEBIAN_FRONTEND noninteractive
-
-# 使用 aliyuncs 的源
-COPY sources.list.aliyuncs.txt /etc/apt/sources.list
-
-# 保持系统最新
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN locale-gen zh_CN.UTF-8
-
-# RUN apt-get install -y curl man software-properties-common unzip wget gcc fontconfig build-essential git
-
-ENV LANG zh_CN.UTF-8
-ENV LANGUAGE zh_CN.UTF-8
-ENV LC_ALL zh_CN.UTF-8
-ENV HOME /root
-
-# supervisor installation and create directory for child images to store configuration in
-RUN apt-get -y install supervisor && \
-  mkdir -p /var/log/supervisor && \
-  mkdir -p /etc/supervisor/conf.d
-
-# supervisor base configuration
-ADD supervisor.conf /etc/supervisor.conf
-
-# Add oracle java 8 repository
-RUN apt-get -y install wget
-#software-properties-common
-
-# get maven 3.2.2
-RUN wget --no-verbose -O /tmp/apache-maven-3.2.2.tar.gz http://archive.apache.org/dist/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
-
-# verify checksum
-RUN echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.2.2.tar.gz" | md5sum -c
-
-# install maven
-RUN tar xzf /tmp/apache-maven-3.2.2.tar.gz -C /opt/
-RUN ln -s /opt/apache-maven-3.2.2 /opt/maven
-RUN ln -s /opt/maven/bin/mvn /usr/local/bin
-RUN rm -f /tmp/apache-maven-3.2.2.tar.gz
-ENV MAVEN_HOME /opt/maven
-
-# install git
-RUN apt-get install -y git
-
-# install nano
-RUN apt-get install -y nano
-
-# remove download archive files
-RUN apt-get clean
 
 # set shell variables for java installation
 ENV java_version 1.8.0_66

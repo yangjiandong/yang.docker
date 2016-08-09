@@ -21,12 +21,15 @@ ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL zh_CN.UTF-8
 ENV HOME /root
 
-RUN apt-get install -y curl man software-properties-common unzip wget gcc fontconfig build-essential git
+RUN apt-get install -y curl unzip wget gcc 
 
 # supervisor installation and create directory for child images to store configuration in
 RUN apt-get -y install supervisor && \
   mkdir -p /var/log/supervisor && \
   mkdir -p /etc/supervisor/conf.d
+
+# remove download archive files
+RUN apt-get clean
 
 # supervisor base configuration
 ADD supervisor.conf /etc/supervisor.conf

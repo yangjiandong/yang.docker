@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t yangjiandong/java8base .
+docker build -t yangjiandong/java8base:v1 .

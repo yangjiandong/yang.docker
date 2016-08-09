@@ -1,6 +1,11 @@
 Docker
 ===
 
+说明
+---
+
+ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
+
 08.06
 ---
 
