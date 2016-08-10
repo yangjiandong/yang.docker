@@ -24,8 +24,39 @@ docker-machine restart default
 
 ### mysql
 
+Run the mysql image
 ```
-docker pull docker.io/mysql
+docker run --name mysql -d yangjiandong/mysql:latest
+```
+ 
+You can access the mysql server as the root user using the following command:
+```
+docker run -it --rm --volumes-from=mysql yangjiandong/mysql:latest mysql -uroot
+```
+
+- 解决mac下 mysql 权限问题
+
+[参考](http://www.cnblogs.com/yjmyzz/p/run-mysql-in-docker-using-mac.html)
+[2](http://stackoverflow.com/questions/34442831/permission-denied-when-mounting-docker-volume-in-osx)
+
+Dockerfile
+```
+RUN usermod -u 1000 mysql
+RUN mkdir -p /var/run/mysqld
+RUN chmod -R 777 /var/run/mysqld
+RUN mkdir -p /var/lib/mysql
+RUN chmod -R 777 /var/lib/mysql
+```
+
+mysql data store dir
+```
+mkdir data
+chmod 777 data
+```
+
+run.sh
+```
+docker run --name mysql -v ~/workspace/docker/yang.docker/mysql/data:/var/lib/mysql -d yangjiandong/mysql:latest
 ```
 
 07.28
