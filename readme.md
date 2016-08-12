@@ -6,6 +6,20 @@ Docker
 
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 
+yangjiandong/centos:6.5 --> yangjiandong/hadoop:2.6.0 --> yangjiandong/spark:1.6
+
+08.12
+---
+
+### spark 1.6
+
+[参考](https://hub.docker.com/r/sequenceiq/spark/builds/birjne8ndykylp5si7u5qmt/)
+[1.6](https://hub.docker.com/r/sequenceiq/spark/tags/)
+
+Hadoop 2.6.0 and Apache Spark v1.6.0 on Centos
+
+参考[1](https://github.com/sequenceiq/docker-spark) 构建自己的docker
+
 08.06
 ---
 
@@ -331,12 +345,12 @@ docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
 
 ### 2015.08.20
 
-### create new image
+- create new image
 
 `docker ps` - show container id
 `docker commit <container id> images-id` - 可以覆盖原有images
 
-### export,save
+- export,save
 
 ```
 # 容器的导出
@@ -350,7 +364,7 @@ docker save image_name > filename.tar
 docker load < filename.tar
 ```
 
-### error
+- error
 
 `An error occurred trying to connect: Get https://192.168.59.103:2376/v1.19/containers/json: x509: certificate is valid for 127.0.0.1, 10.0.2.15, not 192.168.59.103`
 
@@ -358,16 +372,22 @@ docker load < filename.tar
 boot2docker ssh 'sudo /etc/init.d/docker restart'
 ```
 
-### Remove all untagged images
+- Remove all untagged images
 
 ```
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 
 ```
 
-### Stop / remove all Docker containers
+- Stop / remove all Docker containers
 
 ```
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
+```
+
+- 进入运行的容器
+
+```
+docker attach f357e2faab77
 ```
