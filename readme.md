@@ -6,8 +6,6 @@ Docker
 
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 
-yangjiandong/centos:6.5 --> yangjiandong/hadoop:2.6.0 --> yangjiandong/spark:1.6
-
 08.12
 ---
 
@@ -18,7 +16,46 @@ yangjiandong/centos:6.5 --> yangjiandong/hadoop:2.6.0 --> yangjiandong/spark:1.6
 
 Hadoop 2.6.0 and Apache Spark v1.6.0 on Centos
 
-参考[1](https://github.com/sequenceiq/docker-spark) 构建自己的docker
+参考[1](https://github.com/sequenceiq/docker-spark) 构建自己的docker, 不能运行，还是采用官方镜像`docker pull sequenceiq/spark:1.6.0`
+
+- create java8/sprark:1.6.0 base sequenceiq/spark:1.6.0
+
+```
+# install java8
+### Install Java with Alternatives
+### dowload soft/jdk-8u66-linux-x64.tar.gz
+
+tar xvf jdk-8u66-linux-x64.tar.gz /usr/java
+
+After extracting Java archive file, we just need to set up to use newer version of Java using alternatives. Use the following commands to do it.
+
+# cd /usr/java/jdk1.8.xx
+# alternatives --install /usr/bin/java java /usr/java/jdk1.8.xx/bin/java 2
+# alternatives --config java
+
+Now you may also required to set up javac and jar commands path using alternatives command.
+
+# alternatives --install /usr/bin/jar jar /usr/java/jdk1.8.xx/bin/jar 2
+# alternatives --install /usr/bin/javac javac /usr/java/jdk1.8.xx/bin/javac 2
+# alternatives --set jar /usr/java/jdk1.8.xx/bin/jar
+# alternatives --set javac /usr/java/jdk1.8.xx/bin/javac
+
+### Check Installed Java Version
+
+Uses following command to check which version of Java is currently being used by system.
+
+# java -version
+
+javaca version "1.8.xx"
+
+```
+
+- run
+
+```
+#spark/run.sh
+docker run --name master -it -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8085:8080 -p 4040:4040 -p 7077:7077 -p 2022:22  -v ~/data:/data -v ~/data/log:/usr/local/hadoop/logs -h master java8/spark:1.6.0 bash
+```
 
 08.06
 ---
@@ -40,12 +77,12 @@ docker-machine restart default
 
 Run the mysql image
 ```
-docker run --name mysql -d yangjiandong/mysql:latest
+docker run --name mysql -d yangjiandong/mysql:5.6
 ```
  
 You can access the mysql server as the root user using the following command:
 ```
-docker run -it --rm --volumes-from=mysql yangjiandong/mysql:latest mysql -uroot
+docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.6 mysql -uroot
 ```
 
 - 解决mac下 mysql 权限问题
