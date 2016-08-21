@@ -1,6 +1,3 @@
-# Creates pseudo distributed hadoop 2.6.0
-#
-# docker build -t sequenceiq/hadoop .
 
 FROM tianon/centos:6.5
 MAINTAINER yangjiandong

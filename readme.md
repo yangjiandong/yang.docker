@@ -78,12 +78,12 @@ docker-machine restart default
 
 Run the mysql image
 ```
-docker run --name mysql -d yangjiandong/mysql:5.6
+docker run --name mysql -d yangjiandong/mysql:5.5
 ```
  
 You can access the mysql server as the root user using the following command:
 ```
-docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.6 mysql -uroot
+docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.5 mysql -uroot
 ```
 
 - 解决mac下 mysql 权限问题

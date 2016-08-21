@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t yangjiandong/mysql:5.6 .
+docker build -t yangjiandong/mysql:5.5 .
