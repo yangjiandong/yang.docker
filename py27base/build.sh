@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t yangjiandong/py27base .
+docker build -t yangjiandong/py27base:v1 .

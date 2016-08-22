@@ -3,4 +3,6 @@ hadoop/2.6.0/hadoop-2.6.4.tar.gz
 hadoop/2.6.0/hadoop-native-64-2.6.0.tar 
 spark/spark-1.6.2-bin-hadoop2.6.tgz 
 java8centos/jdk-8u73-linux-x64.tar.gz 
+hive/apache-hive-1.2.1-bin.tar.gz 
+hive/mysql-connector-java-5.1.39-bin.jar 
 

@@ -1,4 +1,5 @@
-FROM yangjiandong/base
+FROM yangjiandong/base:v1
+
 MAINTAINER yangjiandong <59338947@qq.com>
 
 RUN apt-get install -y \

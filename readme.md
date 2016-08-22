@@ -86,6 +86,9 @@ You can access the mysql server as the root user using the following command:
 docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.5 mysql -uroot
 ```
 
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
+flush privileges;
+
 - 解决mac下 mysql 权限问题
 
 [参考](http://www.cnblogs.com/yjmyzz/p/run-mysql-in-docker-using-mac.html)
@@ -102,13 +105,19 @@ RUN chmod -R 777 /var/lib/mysql
 
 mysql data store dir
 ```
-mkdir data
-chmod 777 data
+cd
+mkdir -p mysql_data/data
+chmod 777 mysql_data
 ```
 
 run.sh
 ```
 docker run --name mysql -v ~/workspace/docker/yang.docker/mysql/data:/var/lib/mysql -d yangjiandong/mysql:latest
+```
+
+in run mysql container
+```
+docker exec -it mysql /bin/bash
 ```
 
 07.28

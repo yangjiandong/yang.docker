@@ -131,6 +131,7 @@ listen_on_all_interfaces() {
   cat > /etc/mysql/conf.d/mysql-listen.cnf <<EOF
 [mysqld]
 bind = 0.0.0.0
+bind-address = 0.0.0.0
 EOF
 }
 
