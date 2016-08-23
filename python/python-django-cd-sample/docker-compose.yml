@@ -10,8 +10,6 @@ web:
 
 mysql:
   image: daocloud.io/mysql:latest
-  volumes:
-    - ./db:/var/lib/mysql
   environment:
     - MYSQL_DATABASE=django
     - MYSQL_ROOT_PASSWORD=mysql
