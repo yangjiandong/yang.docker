@@ -1,8 +1,9 @@
-FROM yangjiandong/base:v1
+FROM yangjiandong/base:v2
 
 MAINTAINER yangjiandong <59338947@qq.com>
 
-RUN apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y \
     python-pip \
     libxml2-dev \
     libc6-dev \
@@ -17,6 +18,10 @@ RUN apt-get install -y \
     zlib1g-dev  \
     libfreetype6 \
     libfreetype6-dev \
-    libmysqlclient-dev
+    libmysqlclient-dev \
+    # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
+    && apt-get clean \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 #EOP

@@ -84,6 +84,9 @@ initialize_mysql_database() {
     echo "Creating debian-sys-maint user..."
     mysql -uroot -e "GRANT ALL PRIVILEGES on *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY '' WITH GRANT OPTION;"
 
+    echo "Grant ALL to root"
+    mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION;"
+
     if [ -n "${DB_REMOTE_ROOT_NAME}" -a -n "${DB_REMOTE_ROOT_HOST}" ]; then
       echo "Creating remote user \"${DB_REMOTE_ROOT_NAME}\" with root privileges..."
       mysql -uroot \

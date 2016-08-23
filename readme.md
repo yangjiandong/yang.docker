@@ -5,7 +5,21 @@ Docker
 ---
 
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
+
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
+
+08.23
+---
+
+### ubuntu time
+
+You can make this change permanent for yourself by appending the line
+       	TZ='Asia/Shanghai'; export TZ
+to the file '.profile' in your home directory; then log out and log in again.
+
+Here is that TZ value again, this time on standard output so that you
+can use the /usr/bin/tzselect command in shell scripts:
+Asia/Shanghai
 
 08.12
 ---
@@ -48,7 +62,6 @@ Uses following command to check which version of Java is currently being used by
 # java -version
 
 javaca version "1.8.xx"
-
 ```
 
 - run
@@ -75,6 +88,8 @@ docker-machine restart default
 ```
 
 ### mysql
+
+http://siddontang.com/2015/01/09/docker-practise/
 
 Run the mysql image
 ```
@@ -438,3 +453,11 @@ docker rm $(docker ps -a -q)
 ```
 docker attach f357e2faab77
 ```
+or
+
+in run container
+```
+docker exec -it [container name] /bin/bash
+```
+
+

@@ -1,6 +1,3 @@
-#
-# Thanks: https://github.com/Krijger/docker-cookbooks/tree/master/supervisor
-#
 FROM yangjiandong/base:v1
 MAINTAINER yangjiandong <59338947@qq.com>
 
