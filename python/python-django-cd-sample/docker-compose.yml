@@ -11,9 +11,14 @@ web:
 mysql:
   #image: daocloud.io/mysql:latest
   image: yangjiandong/mysql:5.5
+  volumes:
+    - ./db:/var/lib/mysql
   environment:
-    - MYSQL_DATABASE=django
-    - MYSQL_ROOT_PASSWORD=mysql
+    #- MYSQL_DATABASE=django
+    #- MYSQL_ROOT_PASSWORD=mysql
+    - DB_NAME=django
+      #- DB_REMOTE_ROOT_NAME=root
+      #- DB_REMOTE_ROOT_PASS=123
   ports:
     - "3306:3306"
 

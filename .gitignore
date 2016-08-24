@@ -5,4 +5,4 @@ spark/spark-1.6.2-bin-hadoop2.6.tgz
 java8centos/jdk-8u73-linux-x64.tar.gz 
 hive/apache-hive-1.2.1-bin.tar.gz 
 hive/mysql-connector-java-5.1.39-bin.jar 
-
+python/python-django-cd-sample/db 

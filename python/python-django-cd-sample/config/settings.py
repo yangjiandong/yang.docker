@@ -93,6 +93,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # }
 DAO_TEST = bool(os.environ.get('DAO_TEST'))
 
+DATABASES_old = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': '123',
+        'HOST': 'mysql',
+        'PORT': 3306,
+    }
+}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
