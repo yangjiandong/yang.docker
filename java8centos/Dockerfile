@@ -26,4 +26,7 @@ RUN tar -zxvf jdk-8u73-linux-x64.tar.gz && \
 ENV JAVA_HOME /usr/java/jdk1.8.0_73
 ENV PATH $JAVA_HOME/bin:$PATH
 
+RUN cp /etc/skel/.bashrc /root \
+    && cp /etc/skel/.bash_profile /root
+
 

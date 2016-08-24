@@ -9,7 +9,8 @@ web:
 #  command: /code/manage.py runserver 0.0.0.0:8000
 
 mysql:
-  image: daocloud.io/mysql:latest
+  #image: daocloud.io/mysql:latest
+  image: yangjiandong/mysql:5.5
   environment:
     - MYSQL_DATABASE=django
     - MYSQL_ROOT_PASSWORD=mysql
