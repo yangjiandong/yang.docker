@@ -10,6 +10,8 @@ COPY mysql-connector-java-5.1.39-bin.jar /usr/local/hive/lib
 #COPY hive-site.xml /usr/local/hive/conf
 
 ENV HIVE_HOME /usr/local/hive
+ENV PATH $HIVE_HOME/bin:$PATH
+ENV HADOOP_HOME /usr/local/hadoop
 
 RUN mkdir /usr/local/hive/iotemp
 
