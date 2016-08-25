@@ -4,17 +4,25 @@ MAINTAINER yangjiandong
 
 USER root
 
-# install dev tools
-RUN yum install -y curl which tar sudo openssh-server openssh-clients rsync
-# update libselinux. see https://github.com/sequenceiq/hadoop-docker/issues/14
-RUN yum update -y libselinux
+## install dev tools
+#RUN yum install -y curl which tar sudo openssh-server openssh-clients rsync
+## update libselinux. see https://github.com/sequenceiq/hadoop-docker/issues/14
+#RUN yum update -y libselinux
 
-# passwordless ssh
-RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
-RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
-RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
-RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+## passwordless ssh
+#RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
+#RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
+#RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
+#RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
+RUN yum install -y curl which tar sudo glibc-common
+
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # java
 COPY jdk-8u73-linux-x64.tar.gz .

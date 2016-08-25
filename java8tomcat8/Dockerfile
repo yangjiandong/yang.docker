@@ -12,11 +12,15 @@ RUN tar -zxvf $TOMCAT_INSTALL && \
     rm -rf tomcat/webapps/ROOT tomcat/webapps/docs tomcat/webapps/examples tomcat/webapps/host-manager tomcat/webapps/manager &&\
     rm $TOMCAT_INSTALL 
 
-#ENV JAVA_HOME /usr/java/jdk1.8.0_73
-#ENV PATH $JAVA_HOME/bin:$PATH
+RUN echo "CATALINA_OPTS=-Djava.security.egd=file:/dev/./urandom" > /tomcat/bin/setenv.sh && \
+    chmod a+x tomcat/bin/setenv.sh
 
-#RUN cp /etc/skel/.bashrc /root \
-#    && cp /etc/skel/.bash_profile /root
+ENV JAVA_OPTS="-server -Xms512m -Xmx1024m -XX:PermSize=128M -XX:MaxNewSize=256m -XX:MaxPermSize=256m"
+
+# web config
+ENV SSH_CONFIG_DIR /ssh-work
+RUN mkdir -p /ssh-work/config /ssh-work/upload \
+    && chmod -R 777 /ssh-work
 
 ENV CATALINA_HOME /tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
