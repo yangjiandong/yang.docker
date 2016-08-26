@@ -15,9 +15,12 @@ ENV HADOOP_HOME /usr/local/hadoop
 
 RUN mkdir /usr/local/hive/iotemp
 
+# jline-0.9.94.jar
+RUN cp $HIVE_HOME/lib/jline-2.12.jar $HADOOP_HOME/share/hadoop/yarn/lib/jline-0.9.94.jar
+
 COPY bootstrap.sh /etc/bootstrap.sh
 RUN chown root.root /etc/bootstrap.sh
 RUN chmod 700 /etc/bootstrap.sh
 
-#ENTRYPOINT ["/etc/bootstrap.sh"]
+# ENTRYPOINT ["/etc/bootstrap.sh"]
 

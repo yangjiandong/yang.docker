@@ -17,7 +17,7 @@ cp $HIVE_HOME/conf/hive-log4j.properties.template $HIVE_HOME/conf/hive-log4j.pro
 service sshd start
 $HADOOP_PREFIX/sbin/start-dfs.sh
 $HIVE_HOME/bin/hive --service metastore
-$HIVE_HOME/bin/hive --service hiveserver
+$HIVE_HOME/bin/hive --service hiveserver2
 
 if [[ $1 == "-d" ]]; then
   while true; do sleep 1000; done
