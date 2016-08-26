@@ -3,6 +3,8 @@
 docker run -it \
     --name hive \
     -h hive \
+    --link mysql:mysql \
+    -h hive \
     -p 9083:9083 \
     -p 8088:8088 \
     -p 8042:8042 \

@@ -9,7 +9,6 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
 FLUSH RIVILEGES
 ```
 
-TODO
 ```
 alter database hive character set latin1;
 FLUSH RIVILEGES

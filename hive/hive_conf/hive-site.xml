@@ -402,7 +402,7 @@
     <value>jdbc:derby:;databaseName=metastore_db;create=true</value>
     <value>jdbc:mysql://192.168.1.109:3306/hive?useUnicode=true&amp;characterEncoding=UTF-8&amp;createDatabaseIfNotExist=true</value>
     -->
-    <value>jdbc:mysql://192.168.1.109:3306/hive?createDatabaseIfNotExist=true</value>
+    <value>jdbc:mysql://mysql:3306/hive?createDatabaseIfNotExist=true</value>
 <description>JDBC connect string for a JDBC metastore</description>
   </property>
   <property>
@@ -419,8 +419,8 @@
     <description>Username to use against metastore database</description>
   </property>
   <property>
-        <name>javax.jdo.option.ConnectionPassword</name>
-        <value>123</value>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>123</value>
   </property>
   
   <property>
