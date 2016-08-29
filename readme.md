@@ -8,6 +8,11 @@ ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
+08.29
+---
+
+### openresty add php5.6
+
 08.25
 ---
 

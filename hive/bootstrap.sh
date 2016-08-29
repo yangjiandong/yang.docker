@@ -12,17 +12,15 @@ cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; 
 # altering the core-site configuration
 sed s/HOSTNAME/$HOSTNAME/ /usr/local/hadoop/etc/hadoop/core-site.xml.template > /usr/local/hadoop/etc/hadoop/core-site.xml
 
-cp $HIVE_HOME/conf/hive-log4j.properties.template $HIVE_HOME/conf/hive-log4j.properties
+#service sshd start
+#$HADOOP_PREFIX/sbin/start-dfs.sh
+#$HIVE_HOME/bin/hive --service metastore
+#$HIVE_HOME/bin/hive --service hiveserver2
 
-service sshd start
-$HADOOP_PREFIX/sbin/start-dfs.sh
-$HIVE_HOME/bin/hive --service metastore
-$HIVE_HOME/bin/hive --service hiveserver2
+#if [[ $1 == "-d" ]]; then
+  #while true; do sleep 1000; done
+#fi
 
-if [[ $1 == "-d" ]]; then
-  while true; do sleep 1000; done
-fi
-
-if [[ $1 == "-bash" ]]; then
-  /bin/bash
-fi
+#if [[ $1 == "-bash" ]]; then
+  #/bin/bash
+#fi
