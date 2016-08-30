@@ -22,22 +22,17 @@ COPY bootstrap.sh /etc/bootstrap.sh
 RUN chown root.root /etc/bootstrap.sh
 RUN chmod 700 /etc/bootstrap.sh
 
-# supervisor
-#RUN yum clean all -y \
-#    && yum update -y \
-RUN yum install -y python-setuptools 
+#ENTRYPOINT ["/etc/bootstrap.sh"]
+#CMD ["/etc/bootstrap.sh", "-d"]
 
-RUN easy_install pip
-RUN pip install supervisor meld3==0.6.7
+## supervisor
+#RUN yum install -y python-setuptools 
+#RUN easy_install pip
+#RUN pip install supervisor meld3==0.6.7
+#ADD supervisor.conf /etc/supervisord.conf
 
-CMD ["/etc/bootstrap.sh"]
-# supervisor base configuration
-ADD supervisor.conf /etc/supervisord.conf
-
-CMD ["/usr/bin/supervisord"]
+#CMD ["/usr/bin/supervisord"]
 # default command (创建容器时执行)
 # CMD ["supervisord", "-c", "/etc/supervisor.conf"]
 
-
-# ENTRYPOINT ["/etc/bootstrap.sh"]
 

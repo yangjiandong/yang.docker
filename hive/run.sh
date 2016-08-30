@@ -19,4 +19,5 @@ docker run -it \
     -v ~/workspace/docker/yang.docker/hive/hive_conf:/usr/local/hive/conf \
     -v ~/data:/data \
     -v ~/data/log:/usr/local/hadoop/logs \
+    -v ~/data/hive/log:/tmp/root \
     yangjiandong/hive:1.2.1 /bin/bash

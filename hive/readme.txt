@@ -1,6 +1,27 @@
 hive
 ===
 
+TODO
+---
+
+## hive 自启动服务
+
+hive 
+---
+
+同时启动两个服务
+```
+$HIVE_HOME/bin/hive --service metastore >> /tmp/root/metastore.log 2>&1 &
+$HIVE_HOME/bin/hive --service hiveserver2 >> /tmp/root/hiveserver2.log 2>&1 &
+```
+
+run
+```
+-v ~/data/hive/log:/tmp/root 
+```
+
+需要预先产生 metastore.log, hiveserver2.log file
+
 mysql
 ---
 

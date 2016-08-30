@@ -14,13 +14,13 @@ sed s/HOSTNAME/$HOSTNAME/ /usr/local/hadoop/etc/hadoop/core-site.xml.template > 
 
 service sshd start
 $HADOOP_PREFIX/sbin/start-dfs.sh
-$HIVE_HOME/bin/hive --service metastore >> /tmp/root/metastore.log 2>&1 &
-$HIVE_HOME/bin/hive --service hiveserver2 >> /tmp/root/hiveserver2.log 2>&1 &
+#$HIVE_HOME/bin/hive --service metastore
+#$HIVE_HOME/bin/hive --service hiveserver2
 
-if [[ $1 == "-d" ]]; then
-  while true; do sleep 1000; done
-fi
+#if [[ $1 == "-d" ]]; then
+  #while true; do sleep 1000; done
+#fi
 
-if [[ $1 == "-bash" ]]; then
-  /bin/bash
-fi
+#if [[ $1 == "-bash" ]]; then
+  #/bin/bash
+#fi
