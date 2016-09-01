@@ -148,8 +148,22 @@ RUN yum -y install \
 #EXPOSE 9000 22
 ## end php
 
+RUN yum -y install curl which tar sudo glibc-common \
+  && yum clean all
+
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN cp /etc/skel/.bashrc /root \
+    && cp /etc/skel/.bash_profile /root
+
 # add code
 ADD . /app
 WORKDIR /app
 
+#CMD ["/app/docker_start_nginx.sh"]
 

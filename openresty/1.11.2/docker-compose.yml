@@ -1,0 +1,28 @@
+web:
+  image: yangjiandong/openresty:1.11.2
+  ports:
+    - "6699:6699"
+  volumes:
+    - ./mysite:/code
+    - ~/workspace/openresty/openresty-test:/app 
+  links:
+    - mysql:mysql
+    - redis:redis
+  env_file: .env
+
+mysql:
+  image: yangjiandong/mysql:5.5
+  volumes:
+    - ./db:/var/lib/mysql
+  environment:
+    - DB_NAME=openresty
+  ports:
+    - "3306:3306"
+
+redis:
+  image: daocloud.io/redis:latest
+  ports:
+    - "6379:6379"
+  volumes:
+    - ./redisdata:/data
+
