@@ -1,6 +1,4 @@
-# Creates pseudo distributed hadoop 2.6.0
-#
-# docker build -t sequenceiq/hadoop .
+# hadoop 2.6.0
 
 FROM yangjiandong/java8centos
 MAINTAINER yangjiandong
@@ -57,14 +55,6 @@ RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.
 ADD ssh_config /root/.ssh/config
 RUN chmod 600 /root/.ssh/config
 RUN chown root:root /root/.ssh/config
-
-# # installing supervisord
-# RUN yum install -y python-setuptools
-# RUN easy_install pip
-# RUN curl https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -o - | python
-# RUN pip install supervisor
-#
-# ADD supervisord.conf /etc/supervisord.conf
 
 ADD bootstrap.sh /etc/bootstrap.sh
 RUN chown root:root /etc/bootstrap.sh

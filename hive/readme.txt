@@ -6,6 +6,9 @@ TODO
 
 ## hive 自启动服务
 
+## Cannot create directory /tmp/hive. Name node is in safe mode.
+
+
 hive 
 ---
 
