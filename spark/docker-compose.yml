@@ -1,0 +1,24 @@
+spark-master:
+  image: yangjiandong/spark:1.6.0
+  ports:
+    - "8088:8088"
+    - "8042:8042"
+    - "50070:50070"
+    - "8085:8080"
+    - "4040:4040"
+    - "7077:7077"
+    - "2022:22"
+  volumes:
+    - ./conf:/mconf
+    - ./log:/usr/local/hadoop/logs
+  links:
+    - spark-slaver1
+  hostname: spark-master
+
+spark-slaver1:
+  image: yangjiandong/spark:1.6.0
+  volumes:
+    - ./conf:/mconf
+    - ./log2:/usr/local/hadoop/logs
+  hostname: spark-slaver1
+
