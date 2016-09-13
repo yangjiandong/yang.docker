@@ -17,3 +17,8 @@ install
 ```
 build.sh
 ```
+
+3.2
+---
+
+[github](https://github.com/docker-library/redis)
