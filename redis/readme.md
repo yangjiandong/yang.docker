@@ -5,6 +5,8 @@ redis
 
 建议采用 yangjiandong/redis:3.2 or 3/run_redis.sh
 
+[参考](https://hub.docker.com/r/sickp/alpine-redis/)
+
 ### create docker
 
 http://littlespit.me/docker-learning-note.html

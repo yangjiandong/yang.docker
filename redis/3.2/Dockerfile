@@ -28,6 +28,11 @@ RUN set -x \
 	&& rm -r /usr/src/redis \
 	&& apk del .build-deps
 
+#WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128
+#RUN echo 511 >> /proc/sys/net/core/somaxconn
+#ENTRYPOINT sysctl -p net.core.somaxconn=65535
+#RUN echo "net.core.somaxconn=65535">>/etc/sysctl.d/00-alpine.conf
+
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
