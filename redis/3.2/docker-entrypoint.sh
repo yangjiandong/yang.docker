@@ -42,3 +42,4 @@ if [ "$1" = 'redis-server' ]; then
 fi
 
 exec "$@"
+

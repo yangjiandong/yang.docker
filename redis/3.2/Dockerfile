@@ -33,7 +33,7 @@ VOLUME /data
 WORKDIR /data
 
 COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 EXPOSE 6379
 CMD [ "redis-server" ]

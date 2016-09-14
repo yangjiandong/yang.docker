@@ -1,6 +1,10 @@
 redis
 ===
 
+### redis
+
+建议采用 yangjiandong/redis:3.2 or 3/run_redis.sh
+
 ### create docker
 
 http://littlespit.me/docker-learning-note.html
