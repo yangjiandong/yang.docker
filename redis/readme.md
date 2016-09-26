@@ -1,6 +1,12 @@
 redis
 ===
 
+### PyRedisAdmin 
+
+- 下载源码
+- 配置config.py,加入要管理的redis的主机地址和端口、密码等
+- 运行: `python routes.py`
+
 ### redis
 
 建议采用 yangjiandong/redis:3.2 or 3/run_redis.sh
