@@ -20,8 +20,24 @@ create base:v3
 09.02
 ---
 
-### elasticsearch 
+### elasticsearch 2.4
 
+```
+chmod +x docker-entrypoint.sh
+mkdir esdata
+chmod 777 esdata 
+```
+
+### Elasticsearch, Logstash, Kibana (ELK) Docker image
+
+- [github](https://github.com/spujadas/elk-docker)
+- [docs](https://elk-docker.readthedocs.io/)
+- elasticsearch/elk-docker/ 
+
+```
+$ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
+    -v elk-data:/var/lib/elasticsearch --name elk sebp/elk
+```
 
 08.29
 ---
