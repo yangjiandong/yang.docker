@@ -1,3 +1,52 @@
+ELK
+===
+
+2016.09.29
+---
+
+参考 https://elk-docker.readthedocs.io
+
+### run
+
+```
+docker-compose up
+```
+### service
+
+ELASTICSEARCH_START: if set and set to anything other than 1, then Elasticsearch will not be started.
+
+LOGSTASH_START: if set and set to anything other than 1, then Logstash will not be started.
+
+KIBANA_START: if set and set to anything other than 1, then Kibana will not be started.
+
+For example, the following command starts Elasticsearch only:
+```
+$ sudo docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -p 5000:5000 -it \
+    -e LOGSTASH_START=0 -e KIBANA_START=0 --name elk sebp/elk
+```
+
+### Persisting log data
+
+In order to keep log data across container restarts, this image mounts /var/lib/elasticsearch — which is the directory that Elasticsearch stores its data in — as a volume.
+
+```
+$ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
+    -v elk-data:/var/lib/elasticsearch --name elk sebp/elk
+```
+
+This command mounts the named volume elk-data to /var/lib/elasticsearch (and automatically creates the volume if it doesn't exist; you could also pre-create it manually using docker volume create --name elk-data, use docker volumn ls you can keep trace volume).
+
+### test
+
+```
+docker exec -it elkdocker_elk_1 /bin/bash
+# start logstash
+/opt/logstash/bin/logstash -e 'input { stdin { } } output { elasticsearch { hosts => ["localhost"] } }'
+```
+
+2016.09.28
+---
+
 # Elasticsearch, Logstash, Kibana (ELK) Docker image
 
 [![](https://badge.imagelayers.io/sebp/elk:latest.svg)](https://imagelayers.io/?images=sebp/elk:latest 'Get your own badge on imagelayers.io')

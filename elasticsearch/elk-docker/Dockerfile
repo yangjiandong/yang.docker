@@ -138,6 +138,14 @@ RUN chmod 644 /etc/logrotate.d/elasticsearch \
  && chmod 644 /etc/logrotate.d/kibana
 
 
+### install plugin
+
+#WORKDIR ${LOGSTASH_HOME}
+#RUN gosu logstash bin/logstash-plugin install logstash-input-rss
+
+#WORKDIR ${KIBANA_HOME}
+#RUN gosu kibana bin/kibana plugin -i elastic/sense
+
 ###############################################################################
 #                                   START
 ###############################################################################
