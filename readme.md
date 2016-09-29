@@ -77,6 +77,11 @@ $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
     -v elk-data:/var/lib/elasticsearch --name elk sebp/elk
 ```
 
+- 5601 (Kibana web interface).
+- 9200 (Elasticsearch JSON interface).
+- 5044 (Logstash Beats interface, receives logs from Beats such as Filebeat – see the Forwarding logs with Filebeat section).
+- 5000 (Logstash Lumberjack interface, receives logs from Logstash forwarders – see the Forwarding logs with Logstash forwarder section).
+
 08.29
 ---
 
