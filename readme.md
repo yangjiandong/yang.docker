@@ -4,9 +4,47 @@ Docker
 说明
 ---
 
+```
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
+```
+
+09.29
+---
+
+### git 删除历史文件
+
+- 步骤一: 从你的资料库中清除文件
+```
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
+#如果你看到类似下面这样的, 就说明删除成功了:
+Rewrite 48dc599c80e20527ed902928085e7861e6b3cbe6 (266/266)
+# Ref 'refs/heads/master' was rewritten
+```
+- 推送我们修改后的repo
+```
+git push origin master --force
+```
+- 步骤三: 清理和回收空间
+```
+rm -rf .git/refs/original/
+
+git reflog expire --expire=now --all
+
+git gc --prune=now
+Counting objects: 2437, done.
+# Delta compression using up to 4 threads.
+# Compressing objects: 100% (1378/1378), done.
+# Writing objects: 100% (2437/2437), done.
+# Total 2437 (delta 1461), reused 1802 (delta 1048)
+git gc --aggressive --prune=now
+Counting objects: 2437, done.
+# Delta compression using up to 4 threads.
+# Compressing objects: 100% (2426/2426), done.
+# Writing objects: 100% (2437/2437), done.
+# Total 2437 (delta 1483), reused 0 (delta 0)
+```
 
 09.14
 ---
