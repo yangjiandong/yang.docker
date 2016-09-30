@@ -1,4 +1,6 @@
-FROM openjdk:8-jre
+#FROM openjdk:8-jre
+
+FROM yangjiandong/java8base:v1 
 
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.7

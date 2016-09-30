@@ -36,6 +36,16 @@ $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
 
 This command mounts the named volume elk-data to /var/lib/elasticsearch (and automatically creates the volume if it doesn't exist; you could also pre-create it manually using docker volume create --name elk-data, use docker volumn ls you can keep trace volume).
 
+可以通过 `docker volume rm elk-data` 删除
+
+参看 host 路径
+
+```
+docker inspect elkdocker_elk_1
+..
+Mounts
+```
+
 ### test
 
 ```
