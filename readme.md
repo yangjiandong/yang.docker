@@ -10,6 +10,15 @@ ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 ```
 
+11.03
+---
+
+### docker 考虑磁盘容量
+
+```
+docker-machine create --virtualbox-disk-size "50000" --virtualbox-memory "4096" -d virtualbox dev
+```
+
 09.29
 ---
 
