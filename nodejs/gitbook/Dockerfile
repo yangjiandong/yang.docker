@@ -25,6 +25,9 @@ RUN gitbook fetch 2.6.4
 RUN mkdir /gitbook
 WORKDIR /gitbook
 
-EXPOSE 4000
+#EXPOSE 4000
 
-CMD ["gitbook", "serve", "/gitbook"]
+#CMD ["gitbook", "serve", "/gitbook"]
+
+# run GitBook when the container starts
+ENTRYPOINT ["gitbook"]
