@@ -8,7 +8,10 @@ VOLUME /root/.npm
 # Use private npm
 ADD npmrc /root/.npmrc
 
-RUN npm install -g nodeppt
+#RUN npm cache clean -f
+
+#RUN npm install -g cnpm --registry=https://registry.npm.taobao.org && \
+#    npm install -g nodeppt
 
 #WORKDIR /data
 #VOLUME /data
