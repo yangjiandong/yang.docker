@@ -20,10 +20,8 @@ ADD npmrc /root/.npmrc
 
 # npm install -g nodeppt
 
-#WORKDIR /data
+EXPOSE 8080
+
+WORKDIR /workspace
 #VOLUME /data
 
-#EXPOSE 8080
-#ADD run_json-server.sh /run.sh
-#ENTRYPOINT ["bash", "/run.sh"]
-#CMD []
