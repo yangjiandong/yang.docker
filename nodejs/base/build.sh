@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t one/nodejs:7.0 .
+docker build -t one/nodejs:6.0 .

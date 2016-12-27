@@ -2,8 +2,7 @@ FROM yangjiandong/base:v3
 
 # Use private npm
 # ADD npmrc /root/.npmrc
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y nodejs npm \
     && apt-get clean \
     && apt-get autoclean \
