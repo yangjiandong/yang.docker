@@ -15,6 +15,7 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
 ### nodejs
 
+采用 node/base
 
 11.03
 ---

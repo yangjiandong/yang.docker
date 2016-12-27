@@ -21,6 +21,7 @@ ADD npmrc /root/.npmrc
 # npm install -g nodeppt
 
 EXPOSE 8080
+EXPOSE 3000
 
 WORKDIR /workspace
 #VOLUME /data
