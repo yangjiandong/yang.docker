@@ -15,7 +15,8 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
 ### nodejs
 
-采用 node/base
+[参考](https://by-example.org/install-node-js-6-on-ubuntu-16-04-xenial-xerus-lts/)
+采用 node/base, ubunt 16.04, node 6.9
 
 11.03
 ---

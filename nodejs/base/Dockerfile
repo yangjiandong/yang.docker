@@ -3,13 +3,18 @@ FROM yangjiandong/base:v3
 # Use private npm
 # ADD npmrc /root/.npmrc
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-    apt-get update && \
-    apt-get install -y nodejs npm \
-    && apt-get clean \
-    && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+    apt-get update 
 
-RUN ln -s `which nodejs` /usr/bin/node
+#RUN apt-get install -y nodejs \
+    #&& apt-get clean \
+    #&& apt-get autoclean \
+    #&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+
+# RUN ln -s `which nodejs` /usr/bin/node
+
+ADD nodejs_6.9.2-1nodesource1-xenial1_amd64.deb /root/nodejs_6.9.2-1nodesource1-xenial1_amd64.deb
+
+RUN dpkg -i /root/nodejs_6.9.2-1nodesource1-xenial1_amd64.deb
 
 # Use private npm
 ADD npmrc /root/.npmrc
