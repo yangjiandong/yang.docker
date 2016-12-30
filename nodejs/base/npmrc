@@ -1,4 +1,10 @@
-registry=https://r.cnpmjs.org/
+registry = https://r.cnpmjs.org
+## https://registry.npm.taobao.org/
 chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
-PHANTOMJS_CDNURL=https://npm.taobao.org/dist/phantomjs 
+chromedriver_cdnurl http://cdn.npm.taobao.org/dist/chromedriver # chromedriver 二进制包镜像
+operadriver_cdnurl http://cdn.npm.taobao.org/dist/operadriver # operadriver 二进制包镜像
+phantomjs_cdnurl http://cdn.npm.taobao.org/dist/phantomjs # phantomjs 二进制包镜像
+fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents # fsevents 二进制包
+sass_binary_site http://cdn.npm.taobao.org/dist/node-sass # node-sass 二进制包镜像
+electron_mirror http://cdn.npm.taobao.org/dist/electron/ # electron 二进制包镜像
 
