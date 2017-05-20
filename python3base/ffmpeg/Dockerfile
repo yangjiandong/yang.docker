@@ -6,14 +6,6 @@ ENV NUM_CORES 4
 
 WORKDIR /usr/local/src
 
-RUN apt-get update -qq && apt-get install -y --force-yes \
-    git \
-    mercurial \
-    # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
-    && apt-get clean \
-    && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
-
 RUN git clone --depth 1 https://github.com/l-smash/l-smash 
 RUN git clone --depth 1 git://git.videolan.org/x264.git 
 RUN hg clone https://bitbucket.org/multicoreware/x265 
@@ -112,5 +104,45 @@ WORKDIR /usr/local/
 RUN rm -rf /usr/local/src
 RUN apt-get autoremove -y; apt-get clean -y
 # =================================
+
+# moviepy
+
+ENV NUMPY_VERSION 1.10.4
+# Pillow 3 is not compatible with MoviePy
+# https://github.com/Zulko/moviepy/issues/241
+ENV PILLOW_VERSION 2.8.1
+ENV SCIPY_VERSION 0.17.0
+
+# Install moviepy and related packages
+# ====================================
+RUN pip install -U numpy==$NUMPY_VERSION
+RUN pip install -U Pillow==$PILLOW_VERSION
+RUN pip install -U scipy==$SCIPY_VERSION
+#RUN pip install -U moviepy==$MOVIEPY_VERSION
+
+ENV FFMPEG_BINARY ffmpeg
+ENV IMAGEMAGICK_BINARY convert
+# Manually build version that allows control of FFMPEG exe
+# See https://github.com/Zulko/moviepy/issues/237
+# Use PIP when issue fixed. For now, change the defaults
+# manually
+RUN pip install tqdm
+
+WORKDIR /usr/local/src
+RUN git clone -q https://github.com/Zulko/moviepy.git
+WORKDIR /usr/local/src/moviepy
+#ADD config_defaults.py moviepy/config_defaults.py
+RUN sudo python setup.py install
+
+# Remove all tmpfile and cleanup
+# =================================
+WORKDIR /usr/local/
+RUN rm -rf /usr/local/src
+# =================================
+
+# Setup a working directory to allow for
+# docker run --rm -ti -v ${PWD}:/code ...
+# =======================================
+WORKDIR /work
 
 #EOP

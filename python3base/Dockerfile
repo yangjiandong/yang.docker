@@ -9,6 +9,8 @@ ENV PYTHON_PIP_VERSION 8.0.3
 RUN apt-get purge -y python.*
 
 RUN apt-get update -qq && apt-get install -y --force-yes \
+    git \
+    mercurial \
     ant \
     autoconf \
     automake \
@@ -82,4 +84,34 @@ RUN cd /usr/local/bin \
     
 RUN pip3 install --no-cache-dir --upgrade --ignore-installed pip==$PYTHON_PIP_VERSION
 
+ENV YASM_VERSION    1.3.0
+ENV NUM_CORES 4
+
+WORKDIR /usr/local/src
+
+RUN curl -Os http://www.tortall.net/projects/yasm/releases/yasm-${YASM_VERSION}.tar.gz \
+    && tar xzvf yasm-${YASM_VERSION}.tar.gz
+                  
+
+# Build YASM
+# =================================
+WORKDIR /usr/local/src/yasm-${YASM_VERSION}
+RUN ./configure \
+    && make -j ${NUM_CORES} \
+    && make install
+# =================================
+
+# Remove all tmpfile and cleanup
+# =================================
+WORKDIR /usr/local/
+RUN rm -rf /usr/local/src
+
+RUN apt-get autoremove -y; apt-get clean -y
+# =================================
+
+# Setup a working directory to allow for
+# docker run --rm -ti -v ${PWD}:/work ...
+# =======================================
+RUN mkdir /work
+WORKDIR /work
 #EOP

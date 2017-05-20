@@ -23,8 +23,20 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 ### py3ffmpeg
 
 [参考](https://github.com/ampervue/docker-ffmpeg/blob/master/Dockerfile)
+[moviepy](https://github.com/ampervue/docker-ffmpeg-moviepy/blob/master/Dockerfile)
 
 base on python3base
+
+- ffmpeg
+- moviepy
+
+run
+
+```
+docker run --rm -ti dkarchmervue/moviepy ffmpeg -version
+docker run --rm -ti -v ${PWD}:/work dkarchmervue/moviepy python your-moviepy-script.py
+docker run --rm -ti dkarchmervue/moviepy bash
+```
 
 2017.01.16
 ---
