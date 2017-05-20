@@ -152,6 +152,9 @@ WORKDIR /usr/local/
 RUN rm -rf /usr/local/src
 # =================================
 
+# ImageMagick policy.xml
+ADD policy.xml /etc/ImageMagick/policy.xml
+
 # Setup a working directory to allow for
 # docker run --rm -ti -v ${PWD}:/code ...
 # =======================================
