@@ -107,6 +107,18 @@ RUN apt-get autoremove -y; apt-get clean -y
 
 # moviepy
 
+# COPY pip.conf ~/.pip/pip.conf
+# PYPI repository location
+ARG pypi_url=https://mirrors.aliyun.com/
+# PYPI index location
+ARG pypi_index_url=https://mirrors.aliyun.com/pypi/simple
+
+RUN mkdir ~/.pip && \
+    echo "[global]" > ~/.pip/pip.conf && \
+    echo "index = $pypi_url" >> ~/.pip/pip.conf && \
+    echo "index-url = $pypi_index_url" >> ~/.pip/pip.conf && \
+    echo "trusted-host = $(echo $pypi_url | perl -pe 's|^.*?://(.*?)(:.*?)?/.*$|$1|')" >> ~/.pip/pip.conf
+
 ENV NUMPY_VERSION 1.10.4
 # Pillow 3 is not compatible with MoviePy
 # https://github.com/Zulko/moviepy/issues/241
