@@ -38,6 +38,21 @@ docker run --rm -ti -v ${PWD}:/work dkarchmervue/moviepy python your-moviepy-scr
 docker run --rm -ti dkarchmervue/moviepy bash
 ```
 
+error:
+
+```
+[MoviePy] This command returned an error !Traceback (most recent call last):
+...
+convert: not authorized...
+...
+```
+
+```
+vim /etc/ImageMagick/policy.xml
+
+change from <policy domain="path" rights="none" pattern="@*" /> to <!--<policy domain="path" rights="none" pattern="@*" /> -->.
+```
+
 2017.01.16
 ---
 
