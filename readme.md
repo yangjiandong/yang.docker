@@ -10,6 +10,22 @@ ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 ```
 
+05.20
+---
+
+### update python3base
+
+[参考](https://github.com/ampervue/docker-python35/blob/master/Dockerfile)
+
+- python 3.5.1
+- imagemagick
+
+### py3ffmpeg
+
+[参考](https://github.com/ampervue/docker-ffmpeg/blob/master/Dockerfile)
+
+base on python3base
+
 2017.01.16
 ---
 
@@ -38,18 +54,18 @@ docker-machine create --virtualbox-disk-size "50000" --virtualbox-memory "4096" 
 
 ### git 删除历史文件
 
-- 步骤一: 从你的资料库中清除文件
+- 步骤一：从你的资料库中清除文件
 ```
 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
-#如果你看到类似下面这样的, 就说明删除成功了:
+#如果你看到类似下面这样的，就说明删除成功了：
 Rewrite 48dc599c80e20527ed902928085e7861e6b3cbe6 (266/266)
 # Ref 'refs/heads/master' was rewritten
 ```
-- 推送我们修改后的repo
+- 推送我们修改后的 repo
 ```
 git push origin master --force
 ```
-- 步骤三: 清理和回收空间
+- 步骤三：清理和回收空间
 ```
 rm -rf .git/refs/original/
 
@@ -86,14 +102,14 @@ create base:v3
 ```
 chmod +x docker-entrypoint.sh
 mkdir esdata
-chmod 777 esdata 
+chmod 777 esdata
 ```
 
 ### Elasticsearch, Logstash, Kibana (ELK) Docker image
 
 - [github](https://github.com/spujadas/elk-docker)
 - [docs](https://elk-docker.readthedocs.io/)
-- elasticsearch/elk-docker/ 
+- elasticsearch/elk-docker/
 
 ```
 $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
@@ -128,7 +144,7 @@ $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
 
 `--dns=IP_ADDRESS` 添加 DNS 服务器到容器的 `/etc/resolv.conf` 中，让容器用这个服务器来解析所有不在 `/etc/hosts` 中的主机名。
 
-`--dns-search=DOMAIN` 设定容器的搜索域，当设定搜索域为 `.example.com` 时，在搜索一个名为 host 的主机时，DNS 不仅搜索host，还会搜索 `host.example.com`。 注意：如果没有上述最后 2 个选项，Docker 会默认用主机上的 `/etc/resolv.conf` 来配置容器。
+`--dns-search=DOMAIN` 设定容器的搜索域，当设定搜索域为 `.example.com` 时，在搜索一个名为 host 的主机时，DNS 不仅搜索 host，还会搜索 `host.example.com`。 注意：如果没有上述最后 2 个选项，Docker 会默认用主机上的 `/etc/resolv.conf` 来配置容器。
 
 08.23
 ---
@@ -153,7 +169,7 @@ Asia/Shanghai
 
 Hadoop 2.6.0 and Apache Spark v1.6.0 on Centos
 
-参考[1](https://github.com/sequenceiq/docker-spark) 构建自己的docker, 不能运行，还是采用官方镜像`docker pull sequenceiq/spark:1.6.0`
+参考 [1](https://github.com/sequenceiq/docker-spark) 构建自己的 docker, 不能运行，还是采用官方镜像`docker pull sequenceiq/spark:1.6.0`
 
 - create java8/sprark:1.6.0 base sequenceiq/spark:1.6.0
 
@@ -202,7 +218,7 @@ docker run --name master -it -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8085:80
 user:youngjiandong@sina.cn,qazwsx
 
 ```
-Docker Toolbox 
+Docker Toolbox
 docker-machine ssh default
 sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://2c661460.m.daocloud.io |g" /var/lib/boot2docker/profile
 exit
@@ -217,7 +233,7 @@ Run the mysql image
 ```
 docker run --name mysql -d yangjiandong/mysql:5.5
 ```
- 
+
 You can access the mysql server as the root user using the following command:
 ```
 docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.5 mysql -uroot
@@ -226,7 +242,7 @@ docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.5 mysql -uroot
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
 flush privileges;
 
-- 解决mac下 mysql 权限问题
+- 解决 mac 下 mysql 权限问题
 
 [参考](http://www.cnblogs.com/yjmyzz/p/run-mysql-in-docker-using-mac.html)
 [2](http://stackoverflow.com/questions/34442831/permission-denied-when-mounting-docker-volume-in-osx)
@@ -260,19 +276,19 @@ docker exec -it mysql /bin/bash
 07.28
 ---
 
-[局域网访问docker](http://www.jscon.cc/docker-serial-2/)
+[局域网访问 docker](http://www.jscon.cc/docker-serial-2/)
 
 virtualbox 网络设置 - 网络地址转换 - 端口转发 add
 ```
 nginx tcp 192.168.1.109 8080  8080
 ```
 
-redis.dev - 可以用的redis
+redis.dev - 可以用的 redis
 
 07.20
 ---
 
-json-server 修改了json需重新启动
+json-server 修改了 json 需重新启动
 ```
 docker stop my-json-server
 docker rm my-josn-server
@@ -294,7 +310,7 @@ run docker
 
 ### 07.16
 
-在 `yangjiandong/openresty` 基础上安装 `ffmpeg`， 准备安装[nginx+rtmp服务器](http://www.jianshu.com/p/02222073b3f1)
+在 `yangjiandong/openresty` 基础上安装 `ffmpeg`， 准备安装 [nginx+rtmp 服务器](http://www.jianshu.com/p/02222073b3f1)
 
 参考
 - [centos7 install ffmpeg](http://www.icnws.com/articles/2016/02/29/1456739902248.html)
@@ -312,7 +328,7 @@ docker commit 336600fa7f5c yangjiandong/openresty_ffmpeg
 ```
 
 ```
-install libvpx 出现Neither yasm nor nasm have been found
+install libvpx 出现 Neither yasm nor nasm have been found
 解决
 ./configure --prefix="$HOME/ffmpeg_build" --as=yasm --disable-examples
 
@@ -352,11 +368,11 @@ docker-machine rm default
 docker-machine create --driver virtualbox default
 ```
 
-以前的docker image 就没有了
+以前的 docker image 就没有了
 
 #### Alpine
 
-最小的docker 镜像
+最小的 docker 镜像
 
 ### 06.17
 
@@ -383,16 +399,16 @@ docker pull sebp/elk
     ```
 docker exec -it elk /bin/bash
 /opt/logstash/bin/logstash -e 'input { stdin { } } output { elasticsearch { host => localhost } }'
-#192.168.99.100:9200/_search?pretty 
+#192.168.99.100:9200/_search?pretty
 ```
 
 [github source](https://github.com/spujadas/elk-docker)
 
-- [logstash elasticsearch kibana日志集中解决方案](http://my.oschina.net/chaun/blog/670928)
+- [logstash elasticsearch kibana 日志集中解决方案](http://my.oschina.net/chaun/blog/670928)
 
 ### 05.28
 
-docker 访问问题，虽然`docker inspect redis | grep IPA` 查看到了IP，但访问不了，只能访问 `docker-machine env default` 显示的ip
+docker 访问问题，虽然`docker inspect redis | grep IPA` 查看到了 IP，但访问不了，只能访问 `docker-machine env default` 显示的 ip
 
 ### 2016.02.22
 
@@ -465,7 +481,7 @@ $docker run -t -i code /bin/bash
 docker dial tcp 192.168.99.100:2376: getsockopt: connection refused
     ```
 
-    解决:
+    解决：
 
     ```
 docker-machine stop default
@@ -487,7 +503,7 @@ docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso
   - `docker-machine ip default`
   - brower to `http://ip:8080`
 
-  > 注意：如果你在 OS X windows或者Linux上使用 boot2docker 虚拟机，你需要获取虚拟机的 ip 来代替localhost 使用，你可以通过运行 boot2docker shell 来获取 ip。
+  > 注意：如果你在 OS X windows 或者 Linux 上使用 boot2docker 虚拟机，你需要获取虚拟机的 ip 来代替 localhost 使用，你可以通过运行 boot2docker shell 来获取 ip。
 
 ### 2015.08.26
 
@@ -509,12 +525,12 @@ docker run --name redis -d -p 6379:6379 redis:3.0.3 -v ~/workspace/docker/redis-
     ```
 
     参数说明：
-    
-    - name是给container取一个别名，以后再stop和attach的时候就可以使用这个别名，
-    - d 是作为一个后台服务运行，
-    - p是端口映射，把container的6379映射到host的6379端口，
 
-    这样就可以在host机上使用192.168.59.103:6379来连接container中的redis服务了。
+    - name 是给 container 取一个别名，以后再 stop 和 attach 的时候就可以使用这个别名，
+    - d 是作为一个后台服务运行，
+    - p 是端口映射，把 container 的 6379 映射到 host 的 6379 端口，
+
+    这样就可以在 host 机上使用 192.168.59.103:6379 来连接 container 中的 redis 服务了。
 
     另一个容器访问 redis:
 
@@ -532,7 +548,7 @@ docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
 - create new image
 
 `docker ps` - show container id
-`docker commit <container id> images-id` - 可以覆盖原有images
+`docker commit <container id> images-id` - 可以覆盖原有 images
 
 - export,save
 
