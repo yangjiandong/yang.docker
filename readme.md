@@ -6,9 +6,22 @@ Docker
 
 ```
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
-
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
+
 ```
+
+06.23
+---
+
+### centos6,7
+
+[163](https://c.163.com/hub#/m/repository/?repoId=1055)
+
+one/centos:7.2 --> hub.c.163.com/public/centos:7.2.1511
+
+- one/centos:7.2
+
+仿照了 7.2-tools, yum 源更换为网易源，并安装了常用软件 openssh-server、supervisor、vim、tar、wget、curl、rsync、bzip2、iptables、tcpdump、less、telnet、net-tools、lsof、sysstat、cron。
 
 05.20
 ---
@@ -65,6 +78,7 @@ change from <policy domain="path" rights="none" pattern="@*" /> to <!--<policy d
 ### nodejs
 
 [参考](https://by-example.org/install-node-js-6-on-ubuntu-16-04-xenial-xerus-lts/)
+
 采用 node/base, ubunt 16.04, node 6.9
 
 11.03
@@ -82,6 +96,7 @@ docker-machine create --virtualbox-disk-size "50000" --virtualbox-memory "4096" 
 ### git 删除历史文件
 
 - 步骤一：从你的资料库中清除文件
+
 ```
 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
 #如果你看到类似下面这样的，就说明删除成功了：
@@ -587,6 +602,8 @@ docker export <CONTAINER ID> > /home/export.tar
 ```
 # 保存镜像到文件，方便在另外机器上安装
 docker save image_name > filename.tar
+or
+docker save image_name | gzip > filename.tar.gz
 # 还原
 docker load < filename.tar
 ```
