@@ -12,6 +12,12 @@ RUN yum install -y curl wget tar bzip2 unzip vim-enhanced passwd sudo yum-utils 
     yum install -y --enablerepo=epel pwgen python-pip && \
     yum clean all
 
+# meld3
+COPY meld3-1.0.2.tar.gz .
+RUN tar -zxf meld3-1.0.2.tar.gz && \
+    cd meld3-1.0.2 && \
+    python setup.py install
+
 RUN pip install supervisor
 ADD supervisord.conf /etc/supervisord.conf
 
@@ -20,4 +26,9 @@ RUN mkdir -p /etc/supervisor.conf.d && \
 
 EXPOSE 22
 
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
+# ENTRYPOINT 
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
