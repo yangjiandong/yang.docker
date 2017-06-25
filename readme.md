@@ -19,9 +19,12 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
 one/centos:7.2 --> hub.c.163.com/public/centos:7.2.1511
 
-- one/centos:7.2
+- one/centos:7.2(centos/7.x)
 
 仿照了 7.2-tools, yum 源更换为网易源，并安装了常用软件 openssh-server、supervisor、vim、tar、wget、curl、rsync、bzip2、iptables、tcpdump、less、telnet、net-tools、lsof、sysstat、cron。
+
+- one/centos:6.9(centos/6.x)
+
 
 05.20
 ---
