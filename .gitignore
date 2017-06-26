@@ -13,4 +13,5 @@ hive/db
 openresty/1.11.2/db
 spark/log
 spark/log2
+centos/java8/jdk-8u73-linux-x64.tar.gz
 
