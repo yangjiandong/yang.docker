@@ -15,7 +15,7 @@ RUN tar -zxvf $TOMCAT_INSTALL && \
 RUN echo "CATALINA_OPTS=-Djava.security.egd=file:/dev/./urandom" > /tomcat/bin/setenv.sh && \
     chmod a+x tomcat/bin/setenv.sh
 
-ENV JAVA_OPTS="-server -Xms512m -Xmx1024m -XX:PermSize=128M -XX:MaxNewSize=256m -XX:MaxPermSize=256mM"
+ENV JAVA_OPTS="-server -Xms512m -Xmx1024m"
 
 # web config
 ENV SSH_CONFIG_DIR /ssh-work
