@@ -25,6 +25,22 @@ one/centos:7.2 --> hub.c.163.com/public/centos:7.2.1511
 
 - one/centos:6.9(centos/6.x)
 
+注意：作为后台运行任务，centos7不能正常运行，6.9 正常
+
+```
+docker logs [container name]
+```
+
+进入后台运行的docker container
+
+```
+docker exec -it centos6.supervisor /bin/bash
+```
+
+运行步骤：
+
+- run_supervisord.sh
+- run_in_container.sh
 
 05.20
 ---

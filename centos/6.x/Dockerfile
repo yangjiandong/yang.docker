@@ -18,6 +18,7 @@ RUN tar -zxf meld3-1.0.2.tar.gz && \
     cd meld3-1.0.2 && \
     python setup.py install
 
+COPY pip.conf ~/.pip/pip.conf
 RUN pip install supervisor
 ADD supervisord.conf /etc/supervisord.conf
 

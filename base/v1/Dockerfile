@@ -35,6 +35,6 @@ RUN apt-get clean
 ADD supervisor.conf /etc/supervisor.conf
 
 # default command (创建容器时执行)
-# CMD ["supervisord", "-c", "/etc/supervisor.conf"]
+CMD ["supervisord", "-c", "/etc/supervisor.conf"]
 
 #EOP
