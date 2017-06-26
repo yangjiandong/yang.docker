@@ -14,10 +14,6 @@ RUN echo [include] >> /etc/supervisord.conf
 RUN echo 'files = /etc/supervisor/conf.d/*.conf' >> /etc/supervisord.conf
 
 COPY locale.conf /etc/locale.conf
-COPY sshd.conf /etc/supervisor/conf.d/sshd.conf
-
-#ENV LANG="zh_CN.UTF-8"
-#ENV LC_ALL="zh_CN.UTF-8"
 
 ENV LANG zh_CN.UTF-8
 ENV LANGUAGE zh_CN.UTF-8
@@ -26,4 +22,9 @@ ENV LC_ALL zh_CN.UTF-8
 # locale -a 问题，不显示 zh_CN
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 
 
-CMD ["/usr/bin/supervisord"]
+COPY sshd.conf /etc/supervisor/conf.d/sshd.conf
+
+#不能启动，需手工操作
+# /tmp/supervisor.log
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
