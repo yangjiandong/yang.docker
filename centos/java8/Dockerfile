@@ -34,4 +34,8 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 WORKDIR $CATALINA_HOME
 EXPOSE 8080
 
-CMD ["catalina.sh", "run"]
+# run by supervisor
+# CMD ["catalina.sh", "run"]
+
+COPY tomcat.conf /etc/supervisor.conf.d/tomcat.conf
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

@@ -10,6 +10,47 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
 ```
 
+### DockerToolbox
+
+- docker 1.11.2
+
+### Docker CE for Mac
+
+Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使用VirtualBox来做中间代理
+
+- 卸载原有dockerToolbox，virtualBox
+- rm -rf ~/.docker
+- 暂时取消掉 `~/.bash_profile` 有关docker 配置
+- rm docker
+```
+sudo rm -f /usr/local/bin/docker
+sudo rm -f /usr/local/bin/boot2docker
+sudo rm -f /usr/local/bin/docker-machine
+sudo rm -r /usr/local/bin/docker-machine-driver*
+sudo rm -f /usr/local/bin/docker-compose
+
+sudo rm -rf /usr/local/share/boot2docker
+rm -rf ~/.boot2docker
+rm ~/.ssh/id_boot2docker*
+
+```
+
+`could not read CA certificate`
+
+解决
+
+`env | grep DOCKER`
+
+保证环境变量已经清除
+
+重新 `docker info`  正常
+
+```
+$ docker --version
+Docker version 17.03.1-ce, build c6d412e
+```
+
+
 06.23
 ---
 
