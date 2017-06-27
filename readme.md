@@ -18,6 +18,8 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
 Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使用VirtualBox来做中间代理
 
+[uninstall-toolbox](https://docs.docker.com/toolbox/toolbox_install_mac/#how-to-uninstall-toolbox)
+
 - 卸载原有dockerToolbox，virtualBox
 - rm -rf ~/.docker
 - 暂时取消掉 `~/.bash_profile` 有关docker 配置
