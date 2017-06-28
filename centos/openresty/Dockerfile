@@ -102,9 +102,13 @@ RUN cd /tmp \
 
 # ENTRYPOINT ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
 
-# add code
-# ADD . /app
-# WORKDIR /app
+EXPOSE 8000
+COPY openresty.conf /etc/supervisor.conf.d/openresty.conf
 
+# add code
+ADD . /app
+WORKDIR /app
+
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
 #CMD ["/app/docker_start_nginx.sh"]
 

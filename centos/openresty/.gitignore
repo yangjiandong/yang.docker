@@ -1,0 +1,5 @@
+app/logs/*
+app/www
+app/client_body_temp
+app/proxy_temp
+
