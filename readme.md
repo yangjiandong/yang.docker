@@ -51,7 +51,80 @@ rm ~/.ssh/id_boot2docker*
 $ docker --version
 Docker version 17.03.1-ce, build c6d412e
 ```
+06.29
+---
 
+### alisql, mysql
+
+alisql docker
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/acs-sample/alisql:latest
+```
+
+run
+
+```
+# custom mysql conf
+docker run \
+    --name alisql \
+    -v $(pwd)/custom:/etc/mysql \
+    -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+    -d \
+    registry.cn-hangzhou.aliyuncs.com/acs-sample/alisql:latest
+```
+
+```
+# store data
+docker run \
+    --name alisql \
+    -v $(pwd)/mysql:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=123 \
+    -d \
+    registry.cn-hangzhou.aliyuncs.com/acs-sample/alisql:latest
+```
+
+```
+# Creating database dumps
+docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/on/your/host/all-databases.sql
+```
+
+client
+
+```
+mysql -uroot -p -h192.168.1.109
+```
+
+mysql sysbench 性能测试
+
+```
+brew install sysbench
+```
+
+utf8mb4
+
+1.MySQL中的utf-8并不是真正意义上的utf-8,它只能存储1~3个字节长度的utf-8编码，而存储4个字节的必须用utf8mb4(mysql>=5.5.3支持)，否则会出现乱码。例如在微信管理系统中，消息文本使用了emoji表情:符号，必须使用utf8mb4进行储存。
+2.注意最大字符长度：以INNODB为基础，utf8最长VARCHAR(255)，utf8mb4最长为VARCHAR(191)。
+3.如果使用PHP来操作到 MySQL，字符串仍可能面临在数据库中以非 UTF-8 的格式进行存储的问题。
+4.为了字符串从 PHP 到 MySQL都使用 UTF-8，确认数据表都设定为 utf8mb4 字符集和整理，并且确保 PDO 连接请求也使用了 utf8mb4 字符集,这是非常重要的。要求在的mysql>=5.5.3版本，表、字段必须使用utf8mb4字符集和utf8mb4整理。
+
+
+06.28
+---
+
+### openresty
+
+API statistics/summary and health datas in NGINX based on OpenResty/ngx_lua, just like NGINX Plus
+
+```
+git@github.com:iresty/Mio.git
+```
+
+wrk 压测
+
+```
+brew install wrk
+```
 
 06.23
 ---
@@ -704,4 +777,8 @@ in run container
 docker exec -it [container name] /bin/bash
 ```
 
+- 拷贝容器文件
 
+```
+docker cp <containerId>:/file/path/within/container /host/path/target
+```
