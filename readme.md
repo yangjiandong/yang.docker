@@ -10,10 +10,6 @@ tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 
 ```
 
-### DockerToolbox
-
-- docker 1.11.2
-
 ### Docker CE for Mac
 
 Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使用VirtualBox来做中间代理
@@ -51,6 +47,32 @@ rm ~/.ssh/id_boot2docker*
 $ docker --version
 Docker version 17.03.1-ce, build c6d412e
 ```
+
+07.15
+---
+
+### one/debian:jessie
+
+### redis3.2.9 from one/debian:jessie
+
+### 最新Dockerfile
+
+```
+cetons/6.x
+      /java8
+      /openresty
+
+mysql/5.7
+
+```
+
+07.04
+---
+
+### redis
+
+https://hub.docker.com/_/redis/
+
 06.29
 ---
 

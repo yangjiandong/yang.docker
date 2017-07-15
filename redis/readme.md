@@ -1,6 +1,8 @@
 redis
 ===
 
+### redis3.2.9
+
 ### PyRedisAdmin 
 
 - 下载源码
