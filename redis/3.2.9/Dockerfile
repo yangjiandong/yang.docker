@@ -41,9 +41,10 @@ RUN set -ex; \
     '; \
     apt-get update; \
     apt-get install -y $buildDeps --no-install-recommends; \
-    rm -rf /var/lib/apt/lists/*; \
-    \
-    wget -O redis.tar.gz "$REDIS_DOWNLOAD_URL"; \
+    rm -rf /var/lib/apt/lists/*
+    #; \
+
+RUN wget -O redis.tar.gz "$REDIS_DOWNLOAD_URL"; \
     echo "$REDIS_DOWNLOAD_SHA *redis.tar.gz" | sha256sum -c -; \
     mkdir -p /usr/src/redis; \
     tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1; \
@@ -61,6 +62,8 @@ RUN set -ex; \
     \
     make -C /usr/src/redis -j "$(nproc)"; \
     make -C /usr/src/redis install; \
+    \
+    cp /usr/src/redis/redis.conf /etc/redis.conf; \
     \
     rm -r /usr/src/redis; \
     \

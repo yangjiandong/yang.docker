@@ -1,5 +1,4 @@
-# config
-#-v $(pwd)/redis.conf:/usr/local/etc/redis/redis.conf
+#redis-server /data/redis.conf
 
 docker run --name redis \
         --rm \
