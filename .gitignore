@@ -17,3 +17,4 @@ centos/java8/jdk-8u73-linux-x64.tar.gz
 mysql/alisql/*.log
 mysql/alisql/mysql5.7
 mysql/alisql/mysql
+mysql/5.7/mysql5.7

@@ -11,7 +11,7 @@
 
 sysbench ./sysbench/update_index.lua \
 --tables=10 --table_size=100000 \
---mysql-host=192.168.1.109 \
+--mysql-host=127.0.0.1 \
 --mysql-port=3336 \
 --mysql-user=root \
 --mysql-password=123 \
