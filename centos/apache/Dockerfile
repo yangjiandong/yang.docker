@@ -16,3 +16,7 @@ RUN mkdir /var/svn && \
 RUN mkdir -p /var/www/html/svnadmin/data && \
     chmod -R 777 /var/www/html/svnadmin/data/ && \
     chown -R apache:apache /var/www/html/svnadmin/
+
+EXPOSE 80
+
+ENTRYPOINT apachectl -k start && /bin/bash
