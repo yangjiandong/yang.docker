@@ -8,6 +8,7 @@ RUN yum install -y httpd subversion mod_dav_svn && \
 
 RUN mkdir /var/svn && \
     mkdir /var/svn/repo && \
+    chown -R apache:apache /var/svn/repo &&\
     touch /var/svn/accessfile && \
     touch /var/svn/passwdfile && \
     chmod 777 /var/svn/accessfile && \
