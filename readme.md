@@ -58,6 +58,18 @@ Docker version 17.03.1-ce, build c6d412e
 - svn1.6
 - php5.3
 
+q:
+
+Can't open file '/root/.subversion/servers': Permission denied)
+
+[参考](http://www.wohenniucha.com/index.php/archives/90/)
+
+解决
+
+```
+chmod 551 /root 
+```
+
 0810
 ---
 

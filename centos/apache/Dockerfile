@@ -19,4 +19,7 @@ RUN mkdir -p /var/www/html/svnadmin/data && \
 
 EXPOSE 80
 
+# Can't open file '/root/.subversion/servers': Permission denied)
+RUN chmod 551 /root
+
 ENTRYPOINT apachectl -k start && /bin/bash

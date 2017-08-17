@@ -12,6 +12,7 @@
 
 docker run --rm -it \
     -p 81:80  \
+    -v $(pwd)/ssh-work/logs:/etc/httpd/logs \
     -v $(pwd)/ssh-work/conf:/etc/httpd/conf \
     -v $(pwd)/ssh-work/conf.d:/etc/httpd/conf.d \
     -v $(pwd)/ssh-work/www:/var/www \
