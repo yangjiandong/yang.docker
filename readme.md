@@ -48,6 +48,33 @@ $ docker --version
 Docker version 17.03.1-ce, build c6d412e
 ```
 
+0817
+---
+
+## apache
+
+- from centos6.9
+- apache2.2
+- svn1.6
+- php5.3
+
+0810
+---
+
+## cloudera
+
+import
+
+```
+docker import - cloudera/quickstart:0810 < cloudera-quickstart-vm-*-docker/*.tar
+```
+
+run
+
+```
+docker run --hostname=quickstart.cloudera --privileged=true -t -i -p 8888:8888 -p 80:80 -p 7180:7180 cloudera/quickstart:0810 /usr/bin/docker-quickstart
+```
+
 07.15
 ---
 
