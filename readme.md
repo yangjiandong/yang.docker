@@ -48,6 +48,29 @@ $ docker --version
 Docker version 17.03.1-ce, build c6d412e
 ```
 
+加速源
+
+```
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://exomynm5.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+0825
+---
+
+## elk
+
+[Elasticsearch, Logstash, Kibana (ELK) Docker image](https://github.com/spujadas/elk-docker)
+
+- docker pull sebp/elk
+- docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
+
 0817
 ---
 
