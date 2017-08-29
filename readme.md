@@ -60,6 +60,12 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
+0829
+---
+
+## docker-elk
+
+[The ELK stack powered by Docker and Compose](https://github.com/deviantony/docker-elk)
 
 0825
 ---
@@ -74,6 +80,8 @@ sudo systemctl restart docker
     - 5601 (Kibana web interface).
     - 9200 (Elasticsearch JSON interface).
     - 5044 (Logstash Beats interface, receives logs from Beats such as Filebeat – see the Forwarding logs with Filebeat section).
+
+该方案tcp提交log 没成功，报访问不到4560端口
 
 0817
 ---
