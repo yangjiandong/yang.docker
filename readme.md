@@ -86,6 +86,24 @@ from yangjiandong/py3base:v2
 - python3.5
 - matplotlib
 
+boost
+
+安装报 `fatal error: pyconfig.h: No such file or directory`
+
+参考 https://svn.boost.org/trac10/ticket/11120
+
+手工进入docker，生成 `project-config.jam`
+
+```
+./bootstrap.sh --prefix=boost_output --with-icu= --with-python=python3
+find /usr -name pyconfig.h
+vi project-config.jam
+//edit
+using python : 3.5 : /usr/local : /usr/local/include/python3.5m ;
+```
+
+- face_recognition(人脸识别)
+
 0829
 ---
 

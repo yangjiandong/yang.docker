@@ -55,6 +55,24 @@ RUN make install
 
 RUN pip3 install ipython
 
+#boost
+WORKDIR /
+COPY boost_1_65_1.tar.gz ./
+RUN tar xvf boost_1_65_1.tar.gz \
+    && mv boost_1_65_1 /bootst
+
+WORKDIR /bootst
+
+RUN ./bootstrap.sh --prefix=/boost_output --with-icu= --with-python=python3
+COPY project-config.jam /bootst/project-config.jam
+
+RUN ./b2 install -j 8
+
+# update path
+ENV PATH="/boost_output/include/:/boost_output/lib/:${PATH}"
+RUN pip3 install dlib
+RUN pip3 install face_recognition
+
 WORKDIR /work
 
 CMD ["bash"]
