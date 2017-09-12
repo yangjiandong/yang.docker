@@ -60,6 +60,32 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
+
+DOCKER_OPTS into docker 
+
+```
+screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
+log in as root
+vi /etc/init.d/docker
+Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; quit vi.
+/etc/init.d/docker restart
+```
+
+或者直接在docker panel
+
+Daemon - Basic - Insecure registries - add `--userland-proxy=false`
+
+0912
+---
+
+## opencv
+
+from yangjiandong/py3base:v2
+
+- opencv 3.2.0
+- python3.5
+- matplotlib
+
 0829
 ---
 
@@ -71,6 +97,8 @@ sudo systemctl restart docker
 - 9200: Elasticsearch HTTP
 - 9300: Elasticsearch TCP transport
 - 5601: Kibana
+
+现在采用docker-elk
 
 0825
 ---
