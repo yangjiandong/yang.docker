@@ -75,6 +75,15 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+0914
+---
+
+## nodejs
+
+https://hub.docker.com/_/node/
+
+- nodejs 8.5
+
 0913
 ---
 
@@ -84,6 +93,14 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
 - 重新构建 python3 , 采用 unbutn 16.04 python 3.5
 - 暂时手工运行 jupyter, `sh /run_jupyter.sh`
+
+ip hosts:
+
+```
+#TensorFlow start 
+64.233.188.121 www.tensorflow.org 
+#TensorFlow end
+```
 
 0912
 ---
