@@ -1,0 +1,1 @@
+mycli -h localhost -u root -p 123
