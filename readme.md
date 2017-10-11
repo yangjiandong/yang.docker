@@ -54,7 +54,10 @@ Docker version 17.03.1-ce, build c6d412e
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["https://exomynm5.mirror.aliyuncs.com"]
+  "registry-mirrors" : [
+    "https://exomynm5.mirror.aliyuncs.com",
+    "https://registry.docker-cn.com"
+  ]
 }
 EOF
 sudo systemctl daemon-reload
@@ -74,6 +77,36 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 或者直接在docker panel
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
+
+10.10
+---
+
+## onlyoffice/documentserver
+
+文档服务
+
+- `docker pull onlyoffice/documentserver`
+- `docker run -i -t -d -p 9000:80 onlyoffice/documentserver`, 看到502报错，稍等
+
+Document Server的数据在容器中的储存位置如下：
+
+- `/var/log/onlyoffice` 存放ONLYOFFICE Document Server日志
+- `/var/www/onlyoffice/Data` 存放证书文件
+- `sudo docker run -i -t -d -p 80:80 \
+    -v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice  \
+    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  onlyoffice/documentserver`
+
+[参考](https://www.orgleaf.com/2588.html)
+
+## Nextcloud
+
+网盘方案，有各种插件，支持移动端
+
+- [github](https://github.com/nextcloud)
+- [docker](https://hub.docker.com/_/nextcloud/)
+
+- `docker pull nextcloud`
+- `docker run -d -p 8080:80 nextcloud`
 
 0914
 ---
