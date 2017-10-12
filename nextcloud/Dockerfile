@@ -84,5 +84,5 @@ COPY config/* /usr/src/nextcloud/config/
 COPY files_markdown.tar.gz /
 RUN tar -xvf /files_markdown.tar.gz -C /usr/src/nextcloud/apps/ 
 
-# ENTRYPOINT ["/entrypoint.sh"]
-# CMD ["apache2-foreground"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2-foreground"]

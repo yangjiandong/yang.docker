@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 # version_greater A B returns whether A > B
 function version_greater() {
 	[[ "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1" ]];
