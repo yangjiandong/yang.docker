@@ -107,6 +107,19 @@ Document Server的数据在容器中的储存位置如下：
 
 - `docker pull nextcloud`
 - `docker run -d -p 8080:80 nextcloud`
+- [markdown 插件](https://apps.nextcloud.com/apps/files_markdown)
+- [客户端](https://download.nextcloud.com/desktop/releases/)
+
+授权请求问题，没解决，[资料](http://www.jianshu.com/p/bc2bb6dd7c6e)
+
+- 另一个方案 [wonderfall/nextcloud](https://hub.docker.com/r/wonderfall/nextcloud)
+- [Aria2-AriaNg-X docker-compose](https://github.com/wahyd4/aria2-ariang-x-docker-compose)
+  
+  git clone https://github.com/wahyd4/aria2-ariang-x-docker-compose.git
+  
+- [wonderfall/nextcloud](https://hub.docker.com/r/wonderfall/nextcloud/)
+
+  docker pull wonderfall/nextcloud
 
 0914
 ---

@@ -22,3 +22,5 @@ python3base/opencv/3.2.0.zip
 python3base/opencv/boost_1_65_1.tar.gz
 nextcloud/data
 nextcloud/*.tar.gz
+nextcloud/data2
+nextcloud/apps2
