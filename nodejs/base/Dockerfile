@@ -25,7 +25,7 @@ ADD npmrc /root/.npmrc
     #&& PROJECT_NAME="node" PROJECT_URL="https://npm.taobao.org/mirrors/node/" n project stable
 
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org 
-RUN cnpm i node-sass
+#RUN cnpm i node-sass
 #RUN npm install node-sass -g
 
 # npm install -g nodeppt
