@@ -24,3 +24,4 @@ nextcloud/data
 nextcloud/*.tar.gz
 nextcloud/data2
 nextcloud/apps2
+centos/apache/ssh-work/svn/repo

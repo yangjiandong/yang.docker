@@ -7,7 +7,8 @@ Docker
 ```
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
-
+one/centos:6.9(centos/6.x) --> one/apache:1.0(centos/apache, svn, php)
+                           --> one/java8:1.0(centos/java8)
 ```
 
 ### Docker CE for Mac
