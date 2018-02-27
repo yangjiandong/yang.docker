@@ -79,6 +79,13 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+2018.02.27
+---
+
+### fastdfs
+
+[docker for fastdfs tracker](https://hub.docker.com/r/phinexdaz/fdfs_tracker/~/dockerfile/)
+
 10.10
 ---
 
