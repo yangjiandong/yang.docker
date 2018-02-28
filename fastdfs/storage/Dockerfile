@@ -8,15 +8,12 @@ FROM one/centos:7.2
 # Install env
 RUN yum -y install wget gcc git make unzip vixie-cron && yum clean all
 
-# Set timezone
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
 # Ready
 RUN groupadd nginx && \
     useradd -g nginx nginx -s /bin/false
 
-RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm && \
-    rpm -ivh epel-release-7-6.noarch.rpm && \
+RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm && \
+    rpm -ivh epel-release-7-11.noarch.rpm && \
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 
 # Install dependencies

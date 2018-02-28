@@ -8,9 +8,6 @@ FROM one/centos:7.2
 # Install env
 RUN yum -y install wget gcc git make unzip vixie-cron && yum clean all
 
-# Set timezone
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
 # Download and install package
 RUN cd /tmp && \
     git clone https://github.com/happyfish100/fastdfs.git && \

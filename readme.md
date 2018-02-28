@@ -84,7 +84,7 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
 ### fastdfs
 
-[docker for fastdfs tracker](https://hub.docker.com/r/phinexdaz/fdfs_tracker/~/dockerfile/)
+[docker for fastdfs tracker](https://github.com/phinexdaz/fdfs_tracker)
 
 10.10
 ---
