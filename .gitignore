@@ -25,3 +25,5 @@ nextcloud/*.tar.gz
 nextcloud/data2
 nextcloud/apps2
 centos/apache/ssh-work/svn/repo
+fastdfs/storage/data
+fastdfs/tracker/data

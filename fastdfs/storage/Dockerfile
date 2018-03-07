@@ -73,6 +73,7 @@ VOLUME ["/data/storage"]
 COPY nginx.conf /usr/local/nginx/conf/
 COPY thumbnail.lua /usr/local/nginx/conf/lua/
 COPY entrypoint.sh /
+RUN chmod 755 /entrypoint.sh
 
 EXPOSE 80 23000
 
