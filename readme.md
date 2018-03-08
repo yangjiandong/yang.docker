@@ -79,6 +79,36 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+03.07
+---
+
+### gitlab
+
+[docker](https://github.com/sameersbn/docker-gitlab)
+
+- 自己构建没成功，直接pull
+
+```
+docker pull sameersbn/gitlab:10.5.1
+```
+
+- docker-compose `wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml`, 调整下目录
+
+- 直接运行 `docker-compose up`
+- `http://localhost:10080` and login using the default username and password:
+
+  username: root
+  password: 5iveL!fe
+
+- update root pwd: `qaz123456789`
+
+### base:v3
+
+yangjiandong/base:v3 to one/base:v3
+
+### base/ubuntu/1604
+
+
 2018.02.27
 ---
 

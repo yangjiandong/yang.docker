@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t yangjiandong/base:v3 .
+docker build -t one/base:v3 .

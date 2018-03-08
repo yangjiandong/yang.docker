@@ -1,0 +1,8 @@
+
+docker run -d \
+    -p 3000:80 \
+    --name gitlab \
+    -v ./gitlab-config:/etc/gitlab \
+    -v ./gitlab-logs:/var/log/gitlab \
+    -v ./gitlab-data:/var/opt/gitlab \
+    twang2218/gitlab-ce-zh:10.5.1
