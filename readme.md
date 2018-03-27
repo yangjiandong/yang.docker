@@ -79,6 +79,23 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+03.27
+---
+
+### spring boot 监控 Prometheus & grafana
+
+- [Prometheus](https://prometheus.io/)
+- [Prometheus 采集 Spring Boot 指标数据](http://www.spring4all.com/article/265)
+- [Prometheus docker](https://hub.docker.com/r/prom/prometheus/)
+
+```
+docker pull prom/prometheus
+docker pull grafana/grafana
+```
+
+- `prometheus/run.sh`, access to `http://localhost:9090`
+- `grafana/run.sh`, access to `http://localhost:3000`
+
 03.07
 ---
 
