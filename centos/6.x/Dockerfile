@@ -31,5 +31,12 @@ ENV LANG zh_CN.UTF-8
 ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL zh_CN.UTF-8
 
+# Time Zone
+RUN echo 'ZONE="Asia/Shanghai"' > /etc/sysconfig/clock
+ENV TIME_ZONE "Asia/Shanghai"
+RUN rm -rf /etc/localtime && \
+    ln -s /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && \
+    echo $TIME_ZONE > /etc/timezone
+
 # ENTRYPOINT 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

@@ -79,6 +79,40 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+04.10
+---
+
+### centos 6.9 时区时间问题
+
+时区
+
+```
+# Time Zone
+RUN echo 'ZONE="Asia/Shanghai"' > /etc/sysconfig/clock
+ENV TIME_ZONE "Asia/Shanghai"
+RUN rm -rf /etc/localtime && \
+    ln -s /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && \
+    echo $TIME_ZONE > /etc/timezone
+```
+
+时间 总算相差3 分钟
+
+```
+-v $(pwd)/Shanghai:/etc/localtime \
+```
+
+03.30
+---
+
+### 区块链 Hyperledger Fabric 
+
+- [面向 Java 开发人员的区块链链代码](https://www.ibm.com/developerworks/cn/java/j-chaincode-for-java-developers/index.html)
+- `docker pull hyperledger/fabric-membersrvc`, `hyperledger/fabric-peer:x86_64-1.1.0`
+- hyperledger/
+  `docker-compose up`
+- `mkdir -p $GOPATH/src/github.com/hyperledger`
+- `cd $GOPATH/src/github.com/hyperledger`
+
 03.27
 ---
 
