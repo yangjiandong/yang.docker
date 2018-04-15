@@ -79,6 +79,23 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+04.15
+---
+
+### nginx
+
+```
+git pull nginx
+```
+
+监控: Amplify is a free monitoring tool that can be used to monitor microservice architectures based on nginx. Amplify is developed and maintained by the company behind the nginx software.
+
+```
+git clone https://github.com/nginxinc/docker-nginx-amplify.git
+cd docker-nginx-amplify
+docker build -t nginx-amplify .
+```
+
 04.10
 ---
 
