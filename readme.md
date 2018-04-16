@@ -79,6 +79,12 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+04.16
+---
+
+### postgresql 8.4
+
+
 04.15
 ---
 
