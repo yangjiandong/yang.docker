@@ -84,6 +84,7 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
 ### postgresql 8.4
 
+- [8.4](https://github.com/pcorace/postgresql-8.4-docker)
 
 04.15
 ---
