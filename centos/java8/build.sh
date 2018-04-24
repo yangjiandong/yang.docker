@@ -1,4 +1,4 @@
 #! /bin/bash
 
-docker build -t one/java8:1.0 .
+docker build -t one/java:8 .
 

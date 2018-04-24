@@ -8,7 +8,7 @@ Docker
 ubuntu:14.04 --> yangjiandong/base:v1 --> yangjiandong/java8base:v1
 tianon/centos:6.5 --> yangjiandong/java8centos --> yangjiandong/hadoop:2.6.0
 one/centos:6.9(centos/6.x) --> one/apache:1.0(centos/apache, svn, php)
-                           --> one/java8:1.0(centos/java8)
+                           --> one/java:8(centos/java8)
 ```
 
 ### Docker CE for Mac
@@ -78,6 +78,29 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 或者直接在docker panel
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
+
+04.24
+---
+
+### `one/java8:1.0· to `one/java:8`
+
+base on one/java:8, create one/java-media:8
+- imageMagick
+- `docker run --rm -i -t  -v (pwd)/work:/work one/java-media:8  /bin/bash`
+
+04.17
+---
+
+monitor `docker stats`
+
+### [docker 监控](https://my.oschina.net/hansonwang99/blog/1796507)
+
+- [monitoring-docker-containers](https://blog.codeship.com/monitoring-docker-containers/)
+
+
+- run_influxdb.sh
+- run_cadvisor.sh
+mac 下部署有点问题
 
 04.16
 ---
@@ -913,7 +936,7 @@ docker-machine create --driver virtualbox default
 
 - [elasticsearch](http://segmentfault.com/a/1190000003111556?utm_source=Weibo&utm_medium=shareLink&utm_campaign=socialShare)
 
-    ```
+```
 sudo docker run -d -p 9200:9200 -p 9300:9300 elasticsearch
 ```
 
@@ -921,7 +944,7 @@ sudo docker run -d -p 9200:9200 -p 9300:9300 elasticsearch
 
     For instance, the image containing Elasticsearch 1.7.3, Logstash 1.5.5, and Kibana 4.1.2 (which is the last image using the Elasticsearch 1.x and Logstash 1.x branches) bears the tag E1L1K4
 
-    ```
+```
 docker pull sebp/elk:E1L1K4
 docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -p 5000:5000 -it --name elk sebp/elk:E1L1K4
 # access 192.168.99.100:5601 kibana web interface
@@ -929,14 +952,13 @@ docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -p 5000:5000 -it --name elk se
 docker pull sebp/elk
 ```
 
-    ```
+```
 docker exec -it elk /bin/bash
 /opt/logstash/bin/logstash -e 'input { stdin { } } output { elasticsearch { host => localhost } }'
 #192.168.99.100:9200/_search?pretty
 ```
 
-[github source](https://github.com/spujadas/elk-docker)
-
+- [github source](https://github.com/spujadas/elk-docker)
 - [logstash elasticsearch kibana 日志集中解决方案](http://my.oschina.net/chaun/blog/670928)
 
 ### 05.28

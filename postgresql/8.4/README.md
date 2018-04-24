@@ -10,6 +10,7 @@ psql
     - `docker exec -it postgresql8 createuser -U postgres -P root`
     - `docker exec -it postgresql8 createdb -E UNICODE -U root jsalary`
 - load data
+    
     ```
     $ docker exec -it postgres-container bash
     cd /var/lib/postgresql/data/
