@@ -14,3 +14,4 @@ ENV PATH $JAVA_HOME/bin:$PATH
 ENV JAVA_OPTS="-server -Xms512m -Xmx1024m"
 
 EXPOSE 8080
+WORKDIR workspace

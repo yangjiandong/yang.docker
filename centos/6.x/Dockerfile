@@ -38,5 +38,8 @@ RUN rm -rf /etc/localtime && \
     ln -s /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && \
     echo $TIME_ZONE > /etc/timezone
 
+RUN yum install -y ImageMagick && \
+    yum clean all
+    
 # ENTRYPOINT 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

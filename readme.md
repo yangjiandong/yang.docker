@@ -79,6 +79,21 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+05.11
+---
+
+### 补充
+
+- 增加docker 连接数
+
+  ```
+  docker run --rm \
+    -it \
+    --sysctl net.ipv4.ip_local_port_range="8001 65000" \
+    one/centos:6.9 \
+    /bin/bash
+  ```
+  
 04.24
 ---
 
@@ -87,6 +102,8 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 base on one/java:8, create one/java-media:8
 - imageMagick
 - `docker run --rm -i -t  -v (pwd)/work:/work one/java-media:8  /bin/bash`
+
+调整，直接修改 centos6.9，增加 imageMagick 包
 
 04.17
 ---

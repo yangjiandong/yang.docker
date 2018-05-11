@@ -1,0 +1,1 @@
+java -server -Xms1024m -Xmx2048m -Djava.security.egd=file:/dev/./urandom -jar /app/app.jar
