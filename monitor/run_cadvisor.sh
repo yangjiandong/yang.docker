@@ -1,8 +1,9 @@
 docker run -d \
-    -v $(pwd)/cadvisor:/rootfs \
-    -v $(pwd)/cadvisor/var/run:/var/run \
-    -v $(pwd)/cadvisor/sys:/sys \
-    -v $(pwd)/cadvisor/var/lib/docker:/var/lib/docker \
+    -v /:/rootfs:ro \
+    -v /var/run:/var/run:rw \
+    -v /sys:/sys:ro \
+    -v /var/lib/docker:/var/lib/docker:ro \
+    - p 8081:8080
     --link=influxdb:influxdb \
     --name cadvisor \
     google/cadvisor \

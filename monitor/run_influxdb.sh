@@ -1,4 +1,5 @@
 #! /bin/bash
+# --privileged=true
 
 docker run -d \
     --name influxdb \

@@ -94,6 +94,8 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
     /bin/bash
   ```
   
+  查看 in container, `cat /proc/sys/net/ipv4/ip_local_port_range`
+  
 04.24
 ---
 
@@ -110,14 +112,30 @@ base on one/java:8, create one/java-media:8
 
 monitor `docker stats`
 
-### [docker 监控](https://my.oschina.net/hansonwang99/blog/1796507)
+### docker 监控
 
+- cAdvisor: Google开源的用于监控基础设施应用的工具，它是一个强大的监控工具，不需要任何配置就可以通过运行在Docker主机上的容器来监控Docker容器，而且可以监控Docker主机。更多详细操作和配置选项可以查看Github上的cAdvisor项目文档。
+- influxDB: 它是一个分布式时间序列数据库。cAdvisor仅仅显示实时信息，但是不存储监视数据。因此，我们需要提供时序数据库用于存储cAdvisor组件所提供的监控信息，以便显示除实时信息之外的时序数据。
+- Grafana: Grafana可视化展示平台允许我们可视化地展示监控信息。它允许我们对influxDB进行查询，并通过强大的图表功能进行可视化展示。
+
+use:
+- `docker pull tutum/influxdb`, `run_influxdb.sh`, 注意 linux 下建立卷需增加 `--privileged=true`
+  - access url: http://ip:8083
+  - `CREATE DATABASE "cadvisor"`
+  - `CREATE USER 'cadvisor' WITH PASSWORD 'cadvisor'`
+  - `grant all privileges on "cadvisor" to "cadvisor"`
+  - `grant WRITE on "cadvisor" to "cadvisor"`
+  - `grant READ on "cadvisor" to "cadvisor"`
+
+- [参考](https://www.jianshu.com/p/d078d353d12f)
+- (https://my.oschina.net/hansonwang99/blog/1796507)
 - [monitoring-docker-containers](https://blog.codeship.com/monitoring-docker-containers/)
 
+- run_cadvisor.sh, mac 下部署有点问题
+- use grafana
 
-- run_influxdb.sh
-- run_cadvisor.sh
-mac 下部署有点问题
+另外的方案采用 prometheus, 参考 `https://grafana.com/dashboards/893`
+
 
 04.16
 ---
@@ -192,7 +210,7 @@ docker pull grafana/grafana
 ```
 
 - `prometheus/run.sh`, access to `http://localhost:9090`
-- `grafana/run.sh`, access to `http://localhost:3000`
+- `prometheus/grafana/run.sh`, access to `http://localhost:3000`
 
 03.07
 ---
