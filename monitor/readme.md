@@ -6,7 +6,7 @@ prometheus
 
 另外的方案采用 prometheus, 参考 
 - `https://grafana.com/dashboards/893`
-- `https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml`
+- `https://github.com/vegasbrianc/prometheus`
 
 run
 - mkdir data, chmod -R 777 data
@@ -14,6 +14,22 @@ run
 - 第一次还不会成功，还有点权限问题，退出 docker-compose, `docker-compose stop`, `docker-compose rm`
 - `cd data, chmod -R 777 grafana, chmod -R 777 prometheus`
 
+查看 
+- cadvisor: http://ip:8081
+- prometheus: http://ip:9090/status, targets
+
+监测点: prometheus.yml
+- 'localhost:9090', 'node-exporter:9100'
+- '127.0.0.1:8081', 
+
+## 问题
+
+promethues 访问不了 cadvisor
+- `docker inspect monitoring_cadvisor`, 发现没有ip 地址
+- `docker inspect monitoring_prometheus`, Networks - dockermonitor_default - IPAddress 
+- 解决，取消 promethues depends on cadvisor，运行后再次查看以上信息已有ip
+    - 但只能通过容器地址访问，暂时不能访问局域网内其他服务状态
+    
 influxdb
 ---
 

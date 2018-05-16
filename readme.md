@@ -1178,6 +1178,12 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 ```
 
+- 查看容器内部详情细节
+
+```
+docker inspect <id/container_name>
+```
+
 - 进入运行的容器
 
 ```

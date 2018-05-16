@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   prometheus:
     image: prom/prometheus:latest
@@ -23,7 +24,13 @@ services:
   node-exporter:
     image: prom/node-exporter:latest
     container_name: monitoring_node_exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
     restart: unless-stopped
+    ports:
+      - 9100:9100
     expose:
       - 9100
 
@@ -40,7 +47,7 @@ services:
       - 8081:8080
     expose:
       - 8080
-  
+
   grafana:
     image: grafana/grafana:latest
     container_name: monitoring_grafana
@@ -57,4 +64,4 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=123
       - GF_USERS_ALLOW_SIGN_UP=false
-      
+        
