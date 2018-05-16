@@ -5,7 +5,7 @@ prometheus
 ---
 
 另外的方案采用 prometheus, 参考 
-- `https://grafana.com/dashboards/893`
+- [Docker hosts and containers monitoring with Prometheus, Grafana, cAdvisor, NodeExporter and AlertManager](https://github.com/stefanprodan/dockprom)
 - `https://github.com/vegasbrianc/prometheus`
 
 run
@@ -29,7 +29,7 @@ promethues 访问不了 cadvisor
 - `docker inspect monitoring_prometheus`, Networks - dockermonitor_default - IPAddress 
 - 解决，取消 promethues depends on cadvisor，运行后再次查看以上信息已有ip
     - 但只能通过容器地址访问，暂时不能访问局域网内其他服务状态
-    
+
 influxdb
 ---
 
