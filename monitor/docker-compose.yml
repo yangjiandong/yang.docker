@@ -87,7 +87,15 @@ services:
       - prometheus:prometheus
     volumes:
       - ./data/grafana:/var/lib/grafana:rw
+      - ./grafana/datasources:/etc/grafana/datasources
+      - ./grafana/dashboards:/etc/grafana/dashboards
+      - ./grafana/setup.sh:/setup.sh
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=123
       - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+
         
