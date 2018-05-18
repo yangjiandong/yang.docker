@@ -1,12 +1,30 @@
 monitor
 ===
 
+dockprom
+---
+
+暂时采用 dockprom 方案
+- 默认 volumes 统一存放 `/var/lib/docker/volumes`
+    ```
+    volumes:
+        prometheus_data: {}
+        grafana_data: {}
+    ```
+
+    改为存放到当前目录
+
 prometheus
 ---
 
+base2
+
 另外的方案采用 prometheus, 参考 
 - [Docker hosts and containers monitoring with Prometheus, Grafana, cAdvisor, NodeExporter and AlertManager](https://github.com/stefanprodan/dockprom)
-- `https://github.com/vegasbrianc/prometheus`
+- prometheus
+    - `https://github.com/vegasbrianc/prometheus`
+    - [prometheus,文档参考](https://songjiayang.gitbooks.io/prometheus/container/docker.html)
+    - [gitbook](https://github.com/songjiayang/prometheus_practice)
 
 run
 - mkdir data, chmod -R 777 data
@@ -22,6 +40,8 @@ run
 - 'localhost:9090', 'node-exporter:9100'
 - '127.0.0.1:8081', 
 
+in grafana container: docker exec -it grafana /bin/bash
+
 ## 问题
 
 promethues 访问不了 cadvisor
@@ -32,6 +52,8 @@ promethues 访问不了 cadvisor
 
 influxdb
 ---
+
+base
 
 ## 基本操作
 

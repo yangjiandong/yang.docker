@@ -17,7 +17,7 @@ services:
     volumes:
       - ./data/prometheus/config:/etc/prometheus/
       - ./data/prometheus/data:/prometheus:rw
-      - ./prometheus.yml:/prometheus.yml
+      - ./prometheus/prometheus.yml:/prometheus.yml
     command:
       - '--config.file=/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -39,7 +39,7 @@ services:
 
   node-exporter:
     image: prom/node-exporter:v0.16.0
-    container_name: node_exporter
+    container_name: node-exporter
     user: root
     privileged: true
     volumes:
@@ -90,7 +90,9 @@ services:
       - ./grafana/datasources:/etc/grafana/datasources
       - ./grafana/dashboards:/etc/grafana/dashboards
       - ./grafana/setup.sh:/setup.sh
+    entrypoint: /setup.sh
     environment:
+      - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=123
       - GF_USERS_ALLOW_SIGN_UP=false
     networks:
