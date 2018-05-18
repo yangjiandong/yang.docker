@@ -14,6 +14,18 @@ dockprom
 
     改为存放到当前目录
 
+exporter
+---
+
+- [oracle exporter](https://github.com/iamseth/oracledb_exporter)
+- [rabbitmq exporter](https://github.com/deadtrickster/prometheus_rabbitmq_exporter)
+- [Spring Boot 应用可视化监控](https://www.jianshu.com/p/7ecb57a3f326)
+
+grafana
+---
+
+- [3.0 汉化](https://github.com/moonstack/grafana-for-chinese)
+
 prometheus
 ---
 
