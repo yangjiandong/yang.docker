@@ -79,6 +79,20 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+05.24
+---
+
+### latex
+
+参考 [blang latex docker](https://github.com/blang/latex-docker)
+
+- base ubuntu 16.04(base/ubuntu/1604)
+  
+  or `docker pull blang/latex:ubuntu`, full `docker pull blang/latex:ctanfull`
+
+- [上海交大](http://www.latexstudio.net/archives/12480)
+  - shjd/Dockerfile
+
 05.11
 ---
 
