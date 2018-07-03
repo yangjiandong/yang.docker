@@ -79,6 +79,22 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+07.03
+---
+
+### python 3.6
+
+- base debian 9.4, stretch (cat /etc/debian_version)
+- [参考](https://hub.docker.com/r/library/python/tags/)
+- one/py3base:3.6
+- 进入容器，运行 jupyter, `sh /run_jupyter.sh`
+- brower, localhost:8888
+
+### turiCreate
+
+- turiCreate.iOS的机器学习
+- [如何用Python和深度神经网络寻找近似图片？](https://www.jianshu.com/p/6fe5c75a8aa5)
+
 05.24
 ---
 
@@ -98,7 +114,7 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
 ### 补充
 
-- 增加docker 连接数
+- 增加docker 可用连接端口数，方便docker 访问外部，可用来模拟多客户
 
   ```
   docker run --rm \
@@ -110,6 +126,10 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
   
   查看 in container, `cat /proc/sys/net/ipv4/ip_local_port_range`
   
+- 增加docker 打开文件数
+
+  --ulimit nofile=65536:65536 \
+
 04.24
 ---
 

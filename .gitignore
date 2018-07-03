@@ -27,3 +27,6 @@ nextcloud/apps2
 centos/apache/ssh-work/svn/repo
 fastdfs/storage/data
 fastdfs/tracker/data
+python3base/v3.6/work
+python3base/v3.6/work2
+python3base/v3.6/work3
