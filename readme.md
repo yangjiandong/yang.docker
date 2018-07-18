@@ -79,6 +79,28 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+07.17
+---
+
+### oracle 11g
+
+- [docker-oracle-ee-11g](https://github.com/MaksymBilenko/docker-oracle-ee-11g)
+- run
+  
+  docker run \
+  -d \
+  --name ora11g \
+  --privileged=true \
+  -p 8080:8080 -p 1521:1521 \
+  -v $(pwd)/oracle/data:/u01/app/oracle \
+  sath89/oracle-ee-11g
+
+- 直接下载镜像不能访问 em, apex, 重新构建镜像
+
+  Enterprise manager configuration failed due to the following error -
+  No value was set for the parameter SYSMAN_PWD.
+  Refer to the log file at /u01/app/oracle/cfgtoollogs/dbca/EE/emConfig.log for more details.
+
 07.03
 ---
 
