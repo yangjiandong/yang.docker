@@ -101,6 +101,8 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
   No value was set for the parameter SYSMAN_PWD.
   Refer to the log file at /u01/app/oracle/cfgtoollogs/dbca/EE/emConfig.log for more details.
 
+- apex,em
+
 07.03
 ---
 

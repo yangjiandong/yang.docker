@@ -1,4 +1,4 @@
-FROM sath89/oracle-ee-11g-base:latest
+FROM one/ora11g-base:latest
 
 ENV DBCA_TOTAL_MEMORY 4096
 ENV WEB_CONSOLE true
@@ -10,7 +10,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/o
 ADD entrypoint.sh /entrypoint.sh
 
 EXPOSE 1521
-EXPOSE 8080
+EXPOSE 1158 
 VOLUME ["/docker-entrypoint-initdb.d"]
 
 ENTRYPOINT ["/entrypoint.sh"]
