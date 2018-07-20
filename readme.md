@@ -15,43 +15,36 @@ one/centos:6.9(centos/6.x) --> one/apache:1.0(centos/apache, svn, php)
 
 Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使用VirtualBox来做中间代理
 
-[uninstall-toolbox](https://docs.docker.com/toolbox/toolbox_install_mac/#how-to-uninstall-toolbox)
-
+- [uninstall-toolbox](https://docs.docker.com/toolbox/toolbox_install_mac/#how-to-uninstall-toolbox)
 - 卸载原有dockerToolbox，virtualBox
 - rm -rf ~/.docker
 - 暂时取消掉 `~/.bash_profile` 有关docker 配置
 - rm docker
-```
+
+  ```
 sudo rm -f /usr/local/bin/docker
 sudo rm -f /usr/local/bin/boot2docker
 sudo rm -f /usr/local/bin/docker-machine
 sudo rm -r /usr/local/bin/docker-machine-driver*
 sudo rm -f /usr/local/bin/docker-compose
-
 sudo rm -rf /usr/local/share/boot2docker
 rm -rf ~/.boot2docker
 rm ~/.ssh/id_boot2docker*
-
 ```
 
-`could not read CA certificate`
+- `could not read CA certificate`
+  - 解决 `env | grep DOCKER`
+  - 保证环境变量已经清除
+  - 重新 `docker info`  正常
 
-解决
-
-`env | grep DOCKER`
-
-保证环境变量已经清除
-
-重新 `docker info`  正常
-
-```
+    ```
 $ docker --version
 Docker version 17.03.1-ce, build c6d412e
 ```
 
-加速源
+- 加速源
 
-```
+  ```
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
@@ -65,9 +58,9 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-DOCKER_OPTS into docker 
+- DOCKER_OPTS into docker 
 
-```
+  ```
 screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
 log in as root
 vi /etc/init.d/docker
@@ -75,9 +68,9 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 /etc/init.d/docker restart
 ```
 
-或者直接在docker panel
+  - 或者直接在docker panel
 
-Daemon - Basic - Insecure registries - add `--userland-proxy=false`
+    Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
 07.17
 ---
@@ -95,8 +88,20 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
   -v $(pwd)/oracle/data:/u01/app/oracle \
   -h ora11g one/ora11g
 
+- oracle
+
+  ```
+  hostname: 192.168.1.41
+  port: 1521
+  sid: EE
+  service name: EE.oracle.docker
+  username: system(sys)
+  password: oracle
+  ```
+
 - use
 
+  ```
   create tablespace tsp_hcost
   datafile '/u01/app/oracle/oradata/EE/aphcost.dbf'
   size 100M
@@ -112,7 +117,7 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
    GRANT "DBA" TO "HCOST";
    GRANT "CONNECT" TO "HCOST";
    GRANT "RESOURCE" TO "HCOST";
-
+   ```
 - em 过段时间失效，下次进了就没启动
 
   找不到 `/u01/app/oracle/product/11.2.0/EE/oc4j/j2ee/OC4J_DBConsole_b0482d3bf9ab_EE`
@@ -123,12 +128,32 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
   - docker exec -it orac11g /bin/bash
     - su oracle
     - emctl start dbconsole
+
+  - 但过段时间还是会失效
+    - emctl status dbconsole
+      
+      ...
+      EM Daemon is not running.
+    - 重新配置: emca -config dbcontrol db -repos recreate, 没解决
+
+  - q
+    - user root run: lsnrctl start
+    - /network/admin/listener.ora
+      (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=ora11g)(PORT=1521)))
+    - /u01/app/oracle/product/11.2.0/EE/ora11g_EE/sysman/logs, tail -f emagent.trc
+    
 - start em
   - 11g,use: emctl start(stop,status) dbconsole
   - 12,use: exec dbms_xdb_config.sethttpport(1158)
-    
-- [oracle Official](https://github.com/oracle/docker-images/tree/master/OracleDatabase)
+- 内存 ?
 
+- [oracle Official](https://github.com/oracle/docker-images/tree/master/OracleDatabase)
+- TZ='Asia/Shanghai' date
+- 字符集
+  ```
+  select * from nls_database_parameters;
+  ```
+  
 07.03
 ---
 
