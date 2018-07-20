@@ -19,6 +19,7 @@ mv database /home/oracle/
 su oracle -c 'cd /home/oracle/database && ./runInstaller -ignorePrereq -ignoreSysPrereqs -silent -responseFile /install/oracle-11g-ee.rsp -waitForCompletion 2>&1'
 rm -rf /home/oracle/database
 
+# ?
 mv /u01/app/oracle/product /u01/app/oracle-product
 
 #/u01/app/oraInventory/orainstRoot.sh

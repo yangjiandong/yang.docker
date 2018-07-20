@@ -91,17 +91,43 @@ Daemon - Basic - Insecure registries - add `--userland-proxy=false`
   -d \
   --name ora11g \
   --privileged=true \
-  -p 8080:8080 -p 1521:1521 \
+  -p 1158:8080 -p 1521:1521 \
   -v $(pwd)/oracle/data:/u01/app/oracle \
-  sath89/oracle-ee-11g
+  -h ora11g one/ora11g
 
-- 直接下载镜像不能访问 em, apex, 重新构建镜像
+- use
 
-  Enterprise manager configuration failed due to the following error -
-  No value was set for the parameter SYSMAN_PWD.
-  Refer to the log file at /u01/app/oracle/cfgtoollogs/dbca/EE/emConfig.log for more details.
+  create tablespace tsp_hcost
+  datafile '/u01/app/oracle/oradata/EE/aphcost.dbf'
+  size 100M
+  reuse
+  autoextend on
+  next 50M;
 
-- apex,em
+  CREATE USER "HCOST"
+    PROFILE "DEFAULT" IDENTIFIED BY "123"
+    DEFAULT TABLESPACE "TSP_HCOST" TEMPORARY TABLESPACE "TEMP"
+    ACCOUNT UNLOCK;
+
+   GRANT "DBA" TO "HCOST";
+   GRANT "CONNECT" TO "HCOST";
+   GRANT "RESOURCE" TO "HCOST";
+
+- em 过段时间失效，下次进了就没启动
+
+  找不到 `/u01/app/oracle/product/11.2.0/EE/oc4j/j2ee/OC4J_DBConsole_b0482d3bf9ab_EE`
+
+  - use one/ora11g run
+  - 重新生成镜像 `docker commit ora11g one/ora11g.2`
+  - run from one/org11g.2
+  - docker exec -it orac11g /bin/bash
+    - su oracle
+    - emctl start dbconsole
+- start em
+  - 11g,use: emctl start(stop,status) dbconsole
+  - 12,use: exec dbms_xdb_config.sethttpport(1158)
+    
+- [oracle Official](https://github.com/oracle/docker-images/tree/master/OracleDatabase)
 
 07.03
 ---

@@ -69,7 +69,7 @@ case "$1" in
 			#create DB for SID: EE
 			echo "Running initialization by dbca"
 			su oracle -c "$ORACLE_HOME/bin/dbca -silent -createDatabase -templateName General_Purpose.dbc -gdbname EE.oracle.docker -sid EE -responseFile NO_VALUE -characterSet $CHARACTER_SET -totalMemory $DBCA_TOTAL_MEMORY -emConfiguration LOCAL -sysmanPassword oracle -dbsnmpPassword oracle -sysPassword oracle -systemPassword oracle"
-			echo "Database initialized. Please visit http://#containeer:8080/em extra configuration if needed"
+			echo "Database initialized. Please visit http://#containeer:1158/em extra configuration if needed"
 
 			# echo "Configuring Apex console"
 			#cd $ORACLE_HOME/apex
@@ -79,13 +79,13 @@ case "$1" in
 			#echo "Database initialized. Please visit http://#containeer:8080/em http://#containeer:8080/apex for extra configuration if needed"
 		fi
 
-		if [ $WEB_CONSOLE == "true" ]; then
-			echo 'Starting web management console'
-			su oracle -c 'echo EXEC DBMS_XDB.sethttpport\(8080\)\; | $ORACLE_HOME/bin/sqlplus -S / as sysdba'
-		else
-			echo 'Disabling web management console'
-			su oracle -c 'echo EXEC DBMS_XDB.sethttpport\(0\)\; | $ORACLE_HOME/bin/sqlplus -S / as sysdba'
-		fi
+		# if [ $WEB_CONSOLE == "true" ]; then
+		# 	echo 'Starting web management console'
+		# 	su oracle -c 'echo EXEC DBMS_XDB.sethttpport\(1158\)\; | $ORACLE_HOME/bin/sqlplus -S / as sysdba'
+		# else
+		# 	echo 'Disabling web management console'
+		# 	su oracle -c 'echo EXEC DBMS_XDB.sethttpport\(0\)\; | $ORACLE_HOME/bin/sqlplus -S / as sysdba'
+		# fi
 
 		if [ $IMPORT_FROM_VOLUME ]; then
 			echo "Starting import from '/docker-entrypoint-initdb.d':"
