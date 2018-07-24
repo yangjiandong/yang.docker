@@ -72,6 +72,20 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+07.24
+---
+
+### 3.7.7-management
+
+`docker pull rabbitmq:3.7.7-management`
+
+### mongo
+
+`docker pull mongo:3.6.6`
+
+### nginx:1.14
+
+
 07.17
 ---
 
@@ -80,13 +94,27 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 - [docker-oracle-ee-11g](https://github.com/MaksymBilenko/docker-oracle-ee-11g)
 - run
   
+  ```
   docker run \
   -d \
   --name ora11g \
   --privileged=true \
-  -p 1158:8080 -p 1521:1521 \
+  -p 8080:1158 -p 1521:1521 \
   -v $(pwd)/oracle/data:/u01/app/oracle \
   -h ora11g one/ora11g
+```
+
+in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`, 具体路径还不知在哪
+
+  ```
+  rem 本地计算机策略 - 计算机配置 - windows 设置 - 安全设置 - 本地策略 - 安全选项 - 网络访问: 本地帐户的共享和安全模型 - 经典
+  docker run -d ^
+  --name ora11g ^
+  -v oradata:/u01/app/oracle ^
+  -e CHARACTER_SET=ZHS16GBK ^
+  -p 8001:1158 -p 1522:1521 ^
+  -h ora11g-gbk one/ora11g
+  ```
 
 - oracle
 
