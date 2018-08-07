@@ -8,3 +8,9 @@ COPY sources.163.txt /etc/apt/sources.list
 RUN     apt-get update &&\
         apt-get install -y cron curl &&\
         apt-get clean
+
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+
+WORKDIR workspace
