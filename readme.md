@@ -72,6 +72,19 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+08.08
+---
+
+### openresty 1.13.6
+
+- [base centos7](https://github.com/openresty/docker-openresty/blob/master/centos/Dockerfile)
+- `docker pull openresty/openresty:1.13.6.2-centos`
+
+### 与 Docker 使用的网络瓶颈
+
+- [参考](http://wiki.jikexueyuan.com/project/openresty/web/docker.html)
+- `docker run -d --net=host openresty/openresty:1.13.6.2-centos`
+
 07.24
 ---
 
