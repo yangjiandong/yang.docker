@@ -32,15 +32,15 @@ rm -rf ~/.boot2docker
 rm ~/.ssh/id_boot2docker*
 ```
 
-- `could not read CA certificate`
+- could not read CA certificate
   - 解决 `env | grep DOCKER`
   - 保证环境变量已经清除
   - 重新 `docker info`  正常
 
     ```
-$ docker --version
-Docker version 17.03.1-ce, build c6d412e
-```
+    $ docker --version
+    Docker version 17.03.1-ce, build c6d412e
+    ```
 
 - 加速源
 
