@@ -1,0 +1,6 @@
+location /demo {
+    default_type text/html;
+    content_by_lua '
+        ngx.say("<p>hello, world</p>")
+    ';
+}
