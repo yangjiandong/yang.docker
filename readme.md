@@ -72,6 +72,14 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+08.17
+---
+
+### latex
+
+- [blang/latex:ctanfull - Dockerfile.full](https://github.com/blang/latex-docker/blob/master/Dockerfile.full)full CTAN TexLive Scheme-full: Up-to-date, all packages (5.6GB)
+- `docker pull blang/latex:ctanfull`
+
 08.08
 ---
 

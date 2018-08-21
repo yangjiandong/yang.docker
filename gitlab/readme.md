@@ -1,4 +1,16 @@
 
+
+## GitLab Community Edition (中文社区版)
+
+- [gitlab-ce-zh](https://github.com/twang2218/gitlab-ce-zh)
+- 自己构建
+- 或直接拉取 `docker pull twang2218/gitlab-ce-zh:10.5.1`
+- 采用 docker-compose 方式启动
+    - start: `docker-compose up -d`
+    - stop: `docker-compose down`
+
+现在部署方案采用该版本
+
 ## sameersbn
 
 - [sameersbn](https://github.com/sameersbn/docker-gitlab#internal-redis-server)
@@ -21,12 +33,3 @@ docker pull sameersbn/gitlab:10.5.1
 - stop `docker-compose down`
 
 - 能在内网正常运行，通过 nginx 代理必须是root
-
-## GitLab Community Edition (中文社区版)
-
-- [gitlab-ce-zh](https://github.com/twang2218/gitlab-ce-zh)
-- 自己构建
-- 或直接拉取 `docker pull twang2218/gitlab-ce-zh:10.5.1`
-- 采用 docker-compose 方式启动
-    - start: `docker-compose up -d`
-    - stop: `docker-compose down`
