@@ -58,7 +58,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-- DOCKER_OPTS into docker 
+- DOCKER_OPTS into docker
 
   ```
 screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
@@ -79,6 +79,16 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 - [blang/latex:ctanfull - Dockerfile.full](https://github.com/blang/latex-docker/blob/master/Dockerfile.full)full CTAN TexLive Scheme-full: Up-to-date, all packages (5.6GB)
 - `docker pull blang/latex:ctanfull`
+
+08.14
+---
+
+### portainer
+
+- Docker可视化管理工具的安装配置及使用
+- [官网](https://www.portainer.io/)
+- portainer/run.sh
+- user: admin,123456789
 
 08.08
 ---
@@ -114,7 +124,7 @@ Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; qu
 
 - [docker-oracle-ee-11g](https://github.com/MaksymBilenko/docker-oracle-ee-11g)
 - run
-  
+
   ```
   docker run \
   -d \
@@ -180,7 +190,7 @@ in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`
 
   - 但过段时间还是会失效
     - emctl status dbconsole
-      
+
       ...
       EM Daemon is not running.
     - 重新配置: emca -config dbcontrol db -repos recreate, 没解决
@@ -190,7 +200,7 @@ in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`
     - /network/admin/listener.ora
       (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=ora11g)(PORT=1521)))
     - /u01/app/oracle/product/11.2.0/EE/ora11g_EE/sysman/logs, tail -f emagent.trc
-    
+
 - start em
   - 11g,use: emctl start(stop,status) dbconsole
   - 12,use: exec dbms_xdb_config.sethttpport(1158)
@@ -202,7 +212,7 @@ in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`
   ```
   select * from nls_database_parameters;
   ```
-  
+
 07.03
 ---
 
@@ -227,7 +237,7 @@ in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`
 参考 [blang latex docker](https://github.com/blang/latex-docker)
 
 - base ubuntu 16.04(base/ubuntu/1604)
-  
+
   or `docker pull blang/latex:ubuntu`, full `docker pull blang/latex:ctanfull`
 
 - [上海交大](http://www.latexstudio.net/archives/12480)
@@ -247,9 +257,9 @@ in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`
     one/centos:6.9 \
     /bin/bash
   ```
-  
+
   查看 in container, `cat /proc/sys/net/ipv4/ip_local_port_range`
-  
+
 - 增加docker 打开文件数
 
   --ulimit nofile=65536:65536 \
@@ -344,7 +354,7 @@ RUN rm -rf /etc/localtime && \
 03.30
 ---
 
-### 区块链 Hyperledger Fabric 
+### 区块链 Hyperledger Fabric
 
 - [面向 Java 开发人员的区块链链代码](https://www.ibm.com/developerworks/cn/java/j-chaincode-for-java-developers/index.html)
 - `docker pull hyperledger/fabric-membersrvc`, `hyperledger/fabric-peer:x86_64-1.1.0`
@@ -443,9 +453,9 @@ Document Server的数据在容器中的储存位置如下：
 
 - 另一个方案 [wonderfall/nextcloud](https://hub.docker.com/r/wonderfall/nextcloud)
 - [Aria2-AriaNg-X docker-compose](https://github.com/wahyd4/aria2-ariang-x-docker-compose)
-  
+
   git clone https://github.com/wahyd4/aria2-ariang-x-docker-compose.git
-  
+
 - [wonderfall/nextcloud](https://hub.docker.com/r/wonderfall/nextcloud/)
 
   docker pull wonderfall/nextcloud
@@ -472,8 +482,8 @@ https://hub.docker.com/_/node/
 ip hosts:
 
 ```
-#TensorFlow start 
-64.233.188.121 www.tensorflow.org 
+#TensorFlow start
+64.233.188.121 www.tensorflow.org
 #TensorFlow end
 ```
 
@@ -515,7 +525,7 @@ FROM ubuntu:16.04
 RUN apt-get update \
   && apt-get install -y build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python3 python3-pip python3.5-dev wget unzip python3-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev \
   && cd /opt \
-  && wget https://github.com/Itseez/opencv/archive/3.1.0.zip \ 
+  && wget https://github.com/Itseez/opencv/archive/3.1.0.zip \
   && unzip 3.1.0.zip \
   && cd opencv-3.1.0 \
   && mkdir build \
@@ -578,7 +588,7 @@ Can't open file '/root/.subversion/servers': Permission denied)
 解决
 
 ```
-chmod 551 /root 
+chmod 551 /root
 ```
 
 0810
