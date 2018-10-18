@@ -177,6 +177,20 @@ in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`
    GRANT "CONNECT" TO "HCOST";
    GRANT "RESOURCE" TO "HCOST";
    ```
+
+  remove old data
+  ```
+  drop tablespace cdr including contents and datafiles cascade constraint;
+
+  CREATE TABLESPACE cdr
+  LOGGING
+  DATAFILE '/u01/app/oracle/oradata/EE/CDR.DBF'
+  SIZE 2048M
+  AUTOEXTEND ON
+  NEXT 1024M MAXSIZE UNLIMITED
+  EXTENT MANAGEMENT LOCAL AUTOALLOCATE SEGMENT SPACE MANAGEMENT AUTO;
+  ```
+
 - em 过段时间失效，下次进了就没启动
 
   找不到 `/u01/app/oracle/product/11.2.0/EE/oc4j/j2ee/OC4J_DBConsole_b0482d3bf9ab_EE`
