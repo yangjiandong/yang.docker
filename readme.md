@@ -22,15 +22,15 @@ Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使�
 - rm docker
 
   ```
-sudo rm -f /usr/local/bin/docker
-sudo rm -f /usr/local/bin/boot2docker
-sudo rm -f /usr/local/bin/docker-machine
-sudo rm -r /usr/local/bin/docker-machine-driver*
-sudo rm -f /usr/local/bin/docker-compose
-sudo rm -rf /usr/local/share/boot2docker
-rm -rf ~/.boot2docker
-rm ~/.ssh/id_boot2docker*
-```
+  sudo rm -f /usr/local/bin/docker
+  sudo rm -f /usr/local/bin/boot2docker
+  sudo rm -f /usr/local/bin/docker-machine
+  sudo rm -r /usr/local/bin/docker-machine-driver*
+  sudo rm -f /usr/local/bin/docker-compose
+  sudo rm -rf /usr/local/share/boot2docker
+  rm -rf ~/.boot2docker
+  rm ~/.ssh/id_boot2docker*
+  ```
 
 - could not read CA certificate
   - 解决 `env | grep DOCKER`
@@ -45,32 +45,50 @@ rm ~/.ssh/id_boot2docker*
 - 加速源
 
   ```
-sudo mkdir -p /etc/docker
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-  "registry-mirrors" : [
-    "https://exomynm5.mirror.aliyuncs.com",
-    "https://registry.docker-cn.com"
-  ]
-}
-EOF
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-```
+  sudo mkdir -p /etc/docker
+  sudo tee /etc/docker/daemon.json <<-'EOF'
+  {
+    "registry-mirrors" : [
+      "https://exomynm5.mirror.aliyuncs.com",
+      "https://registry.docker-cn.com"
+    ]
+  }
+  EOF
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+  ```
 
 - DOCKER_OPTS into docker
 
   ```
-screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
-log in as root
-vi /etc/init.d/docker
-Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; quit vi.
-/etc/init.d/docker restart
-```
+  screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
+  log in as root
+  vi /etc/init.d/docker
+  Append --insecure-registry foo.local.machine:5000 to DOCKER_OPTS; write file; quit vi.
+  /etc/init.d/docker restart
+  ```
 
   - 或者直接在docker panel
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
+
+11.20
+---
+
+### [sentry](https://github.com/getsentry)
+
+Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
+
+- redis
+- postgresql
+- mail
+- [sentry docker offical](https://github.com/getsentry/onpremise)
+  - clone this repos
+  - make build
+  - create_secret-key.sh
+  - 每次新版本第一次运行前运行: run_migratins.sh
+  - run_command.sh, createuser, 新建用户: admin@gmail.com, admin
+  - run.sh, start web
 
 08.17
 ---

@@ -1,14 +1,14 @@
 mysql/data
-hadoop/2.6.0/hadoop-2.6.4.tar.gz 
-hadoop/2.6.0/hadoop-native-64-2.6.0.tar 
-spark/spark-1.6.2-bin-hadoop2.6.tgz 
-java8centos/jdk-8u73-linux-x64.tar.gz 
-hive/apache-hive-1.2.1-bin.tar.gz 
-hive/mysql-connector-java-5.1.39-bin.jar 
+hadoop/2.6.0/hadoop-2.6.4.tar.gz
+hadoop/2.6.0/hadoop-native-64-2.6.0.tar
+spark/spark-1.6.2-bin-hadoop2.6.tgz
+java8centos/jdk-8u73-linux-x64.tar.gz
+hive/apache-hive-1.2.1-bin.tar.gz
+hive/mysql-connector-java-5.1.39-bin.jar
 python/python-django-cd-sample/db
 java8tomcat8/logs
 java8tomcat8/webapps
-java8tomcat8/apache-tomcat-8.0.30.tar.gz 
+java8tomcat8/apache-tomcat-8.0.30.tar.gz
 hive/db
 openresty/1.11.2/db
 spark/log
@@ -30,3 +30,5 @@ fastdfs/tracker/data
 python3base/v3.6/work
 python3base/v3.6/work2
 python3base/v3.6/work3
+sentry/postgresql/data
+sentry/redis/data
