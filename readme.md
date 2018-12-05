@@ -79,16 +79,20 @@ Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使�
 
 Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
-- redis
-- postgresql
-- mail
+- redis, start
+- postgresql, start
+- mail, start
 - [sentry docker offical](https://github.com/getsentry/onpremise)
   - clone this repos
   - make build
-  - create_secret-key.sh
-  - 每次新版本第一次运行前运行: run_migratins.sh
-  - run_command.sh, createuser, 新建用户: admin@gmail.com, admin
-  - run.sh, start web
+  - 第一次运行
+    - create_secret-key.sh, 得到 key，拷贝到启动脚本
+    - 每次新版本第一次运行前运行: run_migratins.sh
+    - run_command.sh, createuser, 新建用户: admin@gmail.com, admin
+   - run.sh, start web
+  - 启动, run.sh
+
+- 注意 `--detach`, 命令行后台运行
 
 08.17
 ---
@@ -151,9 +155,9 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
   -p 8080:1158 -p 1521:1521 \
   -v $(pwd)/oracle/data:/u01/app/oracle \
   -h ora11g one/ora11g
-```
+  ```
 
-in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`, 具体路径还不知在哪
+  in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`, 具体路径还不知在哪
 
   ```
   rem 本地计算机策略 - 计算机配置 - windows 设置 - 安全设置 - 本地策略 - 安全选项 - 网络访问: 本地帐户的共享和安全模型 - 经典
@@ -434,6 +438,7 @@ docker pull sameersbn/gitlab:10.5.1
   password: 5iveL!fe
 
 - update root pwd: `qaz123456789`
+  - youngjiandong@sina.cn, qaz123456789
 
 ### base:v3
 
