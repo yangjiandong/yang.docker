@@ -497,6 +497,11 @@ Document Server的数据在容器中的储存位置如下：
 
   docker pull wonderfall/nextcloud
 
+### docker-compose 安装方式
+
+- `https://github.com/nextcloud/docker`
+- nextcloud/compose
+
 0914
 ---
 
