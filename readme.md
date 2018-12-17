@@ -72,6 +72,15 @@ Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使�
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+12.07
+---
+
+### mindoc
+
+Golang实现的基于beego框架的接口在线文档管理系统 https://www.iminho.me
+
+- docker pull daocloud.io/lifei6671/mindoc:latest
+
 11.20
 ---
 
@@ -338,8 +347,9 @@ use:
 - run_cadvisor.sh, mac 下部署有点问题
 - use grafana
 
-另外的方案采用 prometheus, 参考 `https://grafana.com/dashboards/893`
+### 最终部署方案
 
+- `monitor/dockprom`
 
 04.16
 ---
@@ -413,7 +423,7 @@ docker pull prom/prometheus
 docker pull grafana/grafana
 ```
 
-- `prometheus/run.sh`, access to `http://localhost:9090`
+- `prometheus/run.sh`, access to `http://localhost:9090`, user: admin,admin
 - `prometheus/grafana/run.sh`, access to `http://localhost:3000`
 
 03.07
