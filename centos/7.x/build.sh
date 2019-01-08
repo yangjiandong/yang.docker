@@ -1,4 +1,4 @@
 #! /bin/bash
 
-docker build -t one/centos:7.2 .
+docker build -t one/centos:7.6 .
 

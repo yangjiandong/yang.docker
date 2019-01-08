@@ -72,6 +72,17 @@ Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使�
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+2019.01.08
+---
+
+### centos7
+
+one/centos:7.2 - 7.6
+
+### tsung
+
+base one/centos7.6
+
 12.07
 ---
 
