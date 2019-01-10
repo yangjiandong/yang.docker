@@ -1,0 +1,6 @@
+{
+  "http://10.3.10.33/config/tsung/id_rsa":"/root/.ssh/id_rsa",
+  "http://10.3.10.33/config/tsung/authorized_keys":"/root/.ssh/authorized_keys",
+  "http://10.3.10.33/config/tsung/tsung.xml":"/data/tsung.xml",
+  "http://10.3.10.33/config/tsung/sshd_config":"/etc/ssh/sshd_config"
+  }

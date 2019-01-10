@@ -1,5 +1,5 @@
 #! /bin/bash
-
+# openresty/openresty:1.13.6.2-centos
 docker run \
     -d \
     --name openresty \
@@ -10,4 +10,4 @@ docker run \
     -v $(pwd)/www:/usr/local/openresty/nginx/html \
     -v $(pwd)/workspace:/app \
     -p 8088:80 \
-    openresty/openresty:1.13.6.2-centos
+    one/openresty:1.13.6

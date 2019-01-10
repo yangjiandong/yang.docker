@@ -72,6 +72,16 @@ Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使�
 
     Daemon - Basic - Insecure registries - add `--userland-proxy=false`
 
+01.10
+---
+
+### logrotate
+
+nginx, openresty 日志分割
+
+- nginx 已带分割脚本
+- openresty 重新构建，参考 nginx 分割，具体参看 openresty/1.13.6/readme
+
 2019.01.08
 ---
 
@@ -81,7 +91,9 @@ one/centos:7.2 - 7.6
 
 ### tsung
 
-base one/centos7.6
+- base one/centos7.6
+- [参考](https://juejin.im/entry/56fb58c02e958a005944f063)
+- [Dataman-Cloud git](https://github.com/Dataman-Cloud/OpenDockerFile)
 
 12.07
 ---
@@ -318,7 +330,9 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 - 增加docker 打开文件数
 
-  --ulimit nofile=65536:65536 \
+  - `--ulimit nofile=65536:65536`
+  - update to `--ulimit nofile=1048576:1048576`
+  - centos7.6, 默认就 `1048576`
 
 04.24
 ---
