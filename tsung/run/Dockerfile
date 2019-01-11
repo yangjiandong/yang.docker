@@ -10,5 +10,10 @@ COPY ./scripts/entrypoint.sh /
 
 RUN chmod +x /DM_DOCKER_URI.py /entrypoint.sh /filedownload.sh
 
+# for one tsung
+COPY ./config/tsung/id_rsa /root/.ssh/id_rsa
+COPY ./config/tsung/authorized_keys /root/.ssh/authorized_keys
+COPY ./config/tsung/sshd_config /etc/ssh/sshd_config
+
 WORKDIR workspace
 # ENTRYPOINT ["/entrypoint.sh"]

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/tsung/share/tsung/tsung-1.0.dtd">
+<tsung>
+  <clients>
+    <!-- 在这里添加测试主机（客户端） -->
+    <client host="localhost" cpu="4" maxusers="30000"/>
+  </clients>
+
+  <servers>
+    <!-- 在这里添加被测试的主机（服务端） -->
+    <server host="192.168.1.109" port="8088" type="tcp"/>
+  </servers>
+
+  <load>
+    <!-- 在这里添加加载过程配置 -->
+    <!-- 这个阶段的总时长是1分钟，在这一分钟里，每秒钟会有1万个虚拟用户来访问 -->
+    <arrivalphase phase="1" duration="1" unit="minute">
+      <users arrivalrate="10000" unit="second"/>
+  </arrivalphase>
+  </load>
+
+  <sessions>
+    <!-- 在这里添加会话（即一系列HTTP请求） -->
+    <session name="s1" type="ts_http" weight="1">
+      <request>
+        <http url="/" method="GET" version="1.1"/>
+      </request>
+      <thinktime min="2" max="10" random="true"/>
+    </session>
+  </sessions>
+</tsung>

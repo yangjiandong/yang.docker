@@ -94,6 +94,7 @@ one/centos:7.2 - 7.6
 - base one/centos7.6
 - [参考](https://juejin.im/entry/56fb58c02e958a005944f063)
 - [Dataman-Cloud git](https://github.com/Dataman-Cloud/OpenDockerFile)
+- tsung/readme.md
 
 12.07
 ---
