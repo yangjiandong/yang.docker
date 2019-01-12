@@ -10,6 +10,10 @@ tsung
 
   mv  /data/config/tsung/id_rsa.pub /data/config/tsung/authorized_keys
 
+参考 `OpenDockerFile-master.zip`
+- tsung.xml 说明
+- example, 测试示例
+
 ## run
 
 ```
@@ -20,7 +24,7 @@ sh ./entrypoint.sh
 sh ./tsung-start.sh
 ```
 
-## create png
+## create reports
 
 ```
 cd logs/xxx

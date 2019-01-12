@@ -32,3 +32,4 @@ python3base/v3.6/work2
 python3base/v3.6/work3
 sentry/postgresql/data
 sentry/redis/data
+openresty/1.13.6/openresty-www.zip
