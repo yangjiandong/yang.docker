@@ -11,6 +11,12 @@
     <server host="192.168.1.109" port="8088" type="tcp"/>
   </servers>
 
+  <!-- to start os monitoring (cpu, network, memory). Use an erlang
+  agent on the remote machine or SNMP. erlang is the default -->
+  <monitoring>
+    <monitor host="myserver" type="snmp"></monitor>
+  </monitoring>
+
   <load>
     <!-- 在这里添加加载过程配置 -->
     <!-- 这个阶段的总时长是1分钟，在这一分钟里，每秒钟会有1万个虚拟用户来访问 -->

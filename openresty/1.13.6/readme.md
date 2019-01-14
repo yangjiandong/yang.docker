@@ -10,26 +10,42 @@ openresty 1.13.6
 - `conf.d`, 具体项目配置
 - `workspace`, 工作目录，一般存放项目
     - `reload.sh`, 重启 nginx
-- `logs`, 日志，参考 nginx 按日期分割
+- `logs`, 日志，参考 nginx 按日期分割,
+  - docker add: `RUN yum -y install logrotate && yum clean all`
+  - add `/etc/logrotate.d/openresty`
 
-  ```
-  cat nginx
-  /var/log/nginx/*.log {
-          daily
-          missingok
-          rotate 52
-          compress
-          delaycompress
-          notifempty
-          create 640 nginx adm
-          sharedscripts
-          postrotate
-                  if [ -f /var/run/nginx.pid ]; then
-                          kill -USR1 `cat /var/run/nginx.pid`
-                  fi
-          endscript
-  }
-  ```
+    ```
+    /var/log/nginx/*.log {
+            daily
+            missingok
+            rotate 52
+            compress
+            delaycompress
+            notifempty
+            create 640 nginx adm
+            sharedscripts
+            postrotate
+                    if [ -f /var/run/nginx.pid ]; then
+                            kill -USR1 `cat /var/run/nginx.pid`
+                    fi
+            endscript
+    }
+    ```
+
+    测试 `logrotate -vf /etc/logrotate.d/openresty`
+
+  - add cron daily, add `/etc/cron.daily/logrotate`
+
+    ```
+    #!/bin/sh
+
+    /usr/sbin/logrotate /etc/logrotate.conf
+    EXITVALUE=$?
+    if [ $EXITVALUE != 0 ]; then
+        /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"
+    fi
+    exit 0
+    ```
 
 - `default-config`, 镜像默认配置，参考用
 

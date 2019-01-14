@@ -60,6 +60,10 @@ COPY ./build/logrotate.d.openresty /etc/logrotate.d/openresty
 
 CMD ["/usr/bin/openresty", "-g", "daemon off;"]
 
+# add logrotate
+RUN yum -y install logrotate \
+    && yum clean all
+
 # Use SIGQUIT instead of default SIGTERM to cleanly drain requests
 # See https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
 STOPSIGNAL SIGQUIT

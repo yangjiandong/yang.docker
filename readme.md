@@ -79,7 +79,7 @@ Docker for Mac用的是macOS的一个框架HyperKit来实现的，不需要使�
 
 nginx, openresty 日志分割
 
-- nginx 已带分割脚本
+- one/nginx 还需增加 `logrotate` package
 - openresty 重新构建，参考 nginx 分割，具体参看 openresty/1.13.6/readme
 
 2019.01.08
