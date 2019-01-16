@@ -9,7 +9,9 @@ RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
 RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 #ssh
-RUN yum install -y openssh openssh-server openssh-clients
+RUN yum install -y \
+  openssh openssh-server openssh-clients \
+  cronie
 RUN mkdir /var/run/sshd
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
