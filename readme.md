@@ -88,6 +88,7 @@ nginx, openresty 日志分割
 ### centos7
 
 one/centos:7.2 - 7.6
+- [centos7 + supervisor](https://blog.csdn.net/lemontree1945/article/details/80508443)
 
 ### tsung
 

@@ -3,6 +3,7 @@ FROM nginx:1.14
 ENV TZ Asia/Shanghai
 
 COPY sources.163.txt /etc/apt/sources.list
+COPY crontab /etc/crontab
 
 ##install cron and curl — so we can register dns regularly
 RUN apt-get update &&\

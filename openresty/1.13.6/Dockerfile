@@ -53,17 +53,20 @@ ENV LUA_PATH="/usr/local/openresty/site/lualib/?.ljbc;/usr/local/openresty/site/
 
 ENV LUA_CPATH="/usr/local/openresty/site/lualib/?.so;/usr/local/openresty/lualib/?.so;./?.so;/usr/local/lib/lua/5.1/?.so;/usr/local/openresty/luajit/lib/lua/5.1/?.so;/usr/local/lib/lua/5.1/loadall.so;/usr/local/openresty/luajit/lib/lua/5.1/?.so"
 
-# Copy nginx configuration files
-COPY ./build/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
-COPY ./build/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
-COPY ./build/logrotate.d.openresty /etc/logrotate.d/openresty
-
-CMD ["/usr/bin/openresty", "-g", "daemon off;"]
-
 # add logrotate
 RUN yum -y install logrotate \
     && yum clean all
 
+# Copy nginx configuration files
+COPY ./build/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY ./build/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
+COPY ./build/logrotate.d.openresty /etc/logrotate.d/openresty
+COPY ./build/crontab /etc/crontab
+
+CMD ["/usr/bin/openresty", "-g", "daemon off;"]
+
 # Use SIGQUIT instead of default SIGTERM to cleanly drain requests
 # See https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
 STOPSIGNAL SIGQUIT
+
+# CMD crond -n
