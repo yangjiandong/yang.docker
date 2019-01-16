@@ -34,12 +34,8 @@ openresty 1.13.6
 
     测试 `logrotate -vf /etc/logrotate.d/openresty`
 
-  - 会自动 add cron daily
-  - 问题排查
-    - in nginx's docker, check cron service, `service cron status`
-    - check crontab, `cat /etc/crontab`, show cron.daily...
-    - in openresty(centos7) docker, check cron, `ps -ef | grep cron`
-    
+  - cron 自动分割日志, use supervisor
+
 - `default-config`, 镜像默认配置，参考用
 
 > 注意 log、pid 路径不要再改动，日志分割脚本已固化
