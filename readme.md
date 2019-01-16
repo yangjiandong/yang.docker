@@ -89,6 +89,10 @@ nginx, openresty 日志分割
 
 one/centos:7.2 - 7.6
 - [centos7 + supervisor](https://blog.csdn.net/lemontree1945/article/details/80508443)
+- 注意
+  - 镜像 CMD 只能执行一次，考虑以后会出现各种应用启动，所以采用 supervisor 方式启动应用
+  - docker 启动, `CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf`
+  - ssh, `ssh root@localhost -p 4426`, passwd:123456, 查看 supervisor, `supervisorctl -c /etc/supervisor/supervisord.conf status`
 
 ### tsung
 
