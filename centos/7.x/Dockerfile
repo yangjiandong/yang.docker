@@ -6,6 +6,7 @@ ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL zh_CN.UTF-8
 # locale -a 问题，不显示 zh_CN
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
+RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 #ssh
 RUN yum install -y openssh openssh-server openssh-clients
@@ -18,24 +19,16 @@ RUN /bin/echo 'root:123456' |chpasswd
 RUN /bin/sed -i 's/.*session.*required.*pam_loginuid.so.*/session optional pam_loginuid.so/g' /etc/pam.d/sshd
 
 #supervisor
-# RUN rpm -Uvh https://mirrors.aliyun.com/fedora/epel/7/x86_64/e/epel-release-7-8.noarch.rpm
-
 RUN yum update -y && \
   yum install -y epel-release && \
-  yum -y install supervisor
+  yum install -y supervisor
 RUN yum clean all
-
-RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-EXPOSE 22
-
 RUN mkdir -p /etc/supervisor/conf.d/
 COPY supervisord.conf /etc/supervisor/
 
-# RUN /usr/bin/echo_supervisord_conf > /etc/supervisord.conf
-# RUN echo [include] >> /etc/supervisord.conf
-# RUN echo 'files = /etc/supervisor/conf.d/*.conf' >> /etc/supervisord.conf
-
+# sshd
 COPY sshd.conf /etc/supervisor/conf.d/sshd.conf
+EXPOSE 22
 
 # 注意，只能有一个 cmd，并且 docker run 指定cmd 时也会覆盖原有cmd
 # /tmp/supervisord.log
