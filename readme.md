@@ -95,6 +95,9 @@ one/centos:7.2 - 7.6
   - use ssh see container, `ssh root@localhost -p 4426`, passwd:123456,
     - 查看 supervisor, `supervisorctl -c /etc/supervisor/supervisord.conf status`
     - start, `supervisorctl -c /etc/supervisor/supervisord.conf start nginx`
+- use cronie
+  - centos7.6 只增加cron package，没具体安排任务
+  - openresty 定义 cron
 
 ### tsung
 

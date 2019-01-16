@@ -67,6 +67,8 @@ COPY ./build/crontab /etc/crontab
 
 # nginx
 COPY nginx.conf /etc/supervisor/conf.d/nginx.conf
+# cron
+COPY cron.conf /etc/supervisor/conf.d/cron.conf
 
 # Use SIGQUIT instead of default SIGTERM to cleanly drain requests
 # See https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
