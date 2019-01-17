@@ -1,6 +1,20 @@
 Docker
 ===
 
+01.17
+---
+
+### nginx, openresty
+
+- base one/centos:7.6
+- use supervisor, crond, logrotate
+- hide nginx version, nginx.conf
+
+  http {
+    # do not show the nginx version
+    # use curl -I http://localhost
+    server_tokens   off;
+
 01.10
 ---
 
@@ -17,6 +31,7 @@ nginx, openresty 日志分割
 ### centos7
 
 one/centos:7.2 - 7.6
+- sshd
 - [centos7 + supervisor](https://blog.csdn.net/lemontree1945/article/details/80508443)
 - use supervisor 启动多个应用
   - 镜像 CMD 只能执行一次，考虑以后会出现各种应用启动，所以采用 supervisor 方式启动应用

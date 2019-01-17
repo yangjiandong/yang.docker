@@ -63,8 +63,6 @@ COPY ./build/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 COPY ./build/logrotate.d.openresty /etc/logrotate.d/openresty
 COPY ./build/crontab /etc/crontab
 
-# CMD ["/usr/bin/openresty", "-g", "daemon off;"]
-
 # nginx
 COPY nginx.conf /etc/supervisor/conf.d/nginx.conf
 # cron
@@ -74,4 +72,3 @@ COPY cron.conf /etc/supervisor/conf.d/cron.conf
 # See https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
 STOPSIGNAL SIGQUIT
 
-# CMD crond -n
