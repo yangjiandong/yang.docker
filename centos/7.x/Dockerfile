@@ -6,7 +6,9 @@ ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL zh_CN.UTF-8
 # locale -a 问题，不显示 zh_CN
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
-RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' >/etc/timezone
 
 #ssh
 RUN yum install -y \

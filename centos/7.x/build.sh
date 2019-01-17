@@ -1,4 +1,4 @@
 #! /bin/bash
 
-docker build -t one/centos:7.6 .
+docker build --no-cache -t one/centos:7.6 .
 
