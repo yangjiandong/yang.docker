@@ -12,11 +12,11 @@
 #     -p 8088:80 -p 4426:22 \
 #     one/openresty:1.13.6
 
+# sshd,-p 4426:22 \
 docker run \
     -d \
     --name nginx \
     -p 8888:80 \
-    -p 4426:22 \
     -v $(pwd)/conf:/etc/nginx:ro \
     -v $(pwd)/logs:/var/log/nginx \
     -v $(pwd)/www:/usr/share/nginx/html \

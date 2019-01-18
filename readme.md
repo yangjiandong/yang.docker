@@ -4,26 +4,18 @@ Docker
 01.17
 ---
 
-### nginx, openresty
+### nginx1.12, openresty1.13.6
 
 - base one/centos:7.6
-- use supervisor, crond, logrotate
+- use supervisor, crond, logrotate, 提供日志分割功能
 - hide nginx version, nginx.conf
 
   http {
     # do not show the nginx version
     # use curl -I http://localhost
     server_tokens   off;
-
-01.10
----
-
-### logrotate
-
-nginx, openresty 日志分割
-
-- one/nginx 还需增加 `logrotate` package
-- openresty 重新构建，参考 nginx 分割，具体参看 openresty/1.13.6/readme
+- centos/nginx, openresty/1.13.6
+- 具体参看 openresty/1.13.6/readme
 
 2019.01.08
 ---
