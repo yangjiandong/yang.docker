@@ -45,3 +45,7 @@ openresty 1.13.6
 
 - [微服务](https://github.com/horan-geeker/nana)
 - [openresty-test](http://58.216.212.154:10080/yangjiandong/openresty-test)
+
+## 2019.02.14
+
+- [看下 lua-nginx](https://github.com/openresty/lua-nginx-module)

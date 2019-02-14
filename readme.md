@@ -10,10 +10,12 @@ Docker
 - use supervisor, crond, logrotate, 提供日志分割功能
 - hide nginx version, nginx.conf
 
+  ```conf
   http {
     # do not show the nginx version
     # use curl -I http://localhost
     server_tokens   off;
+  ```
 - centos/nginx, openresty/1.13.6
 - 具体参看 openresty/1.13.6/readme
 
@@ -126,7 +128,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - [docker-oracle-ee-11g](https://github.com/MaksymBilenko/docker-oracle-ee-11g)
 - run
 
-  ```
+  ```shell
   docker run \
   -d \
   --name ora11g \
@@ -138,7 +140,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
   in win10, 共享目录路径问题还没解决，展示只能设置为 `oradata`, 具体路径还不知在哪
 
-  ```
+  ```shell
   rem 本地计算机策略 - 计算机配置 - windows 设置 - 安全设置 - 本地策略 - 安全选项 - 网络访问: 本地帐户的共享和安全模型 - 经典
   docker run -d ^
   --name ora11g ^
@@ -150,7 +152,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 - oracle
 
-  ```
+  ```conf
   hostname: 192.168.1.41
   port: 1521
   sid: EE
@@ -161,7 +163,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 - use
 
-  ```
+  ```sql
   create tablespace tsp_hcost
   datafile '/u01/app/oracle/oradata/EE/aphcost.dbf'
   size 100M
@@ -180,7 +182,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
    ```
 
   remove old data
-  ```
+  ```sql
   drop tablespace cdr including contents and datafiles cascade constraint;
 
   CREATE TABLESPACE cdr
@@ -224,7 +226,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - [oracle Official](https://github.com/oracle/docker-images/tree/master/OracleDatabase)
 - TZ='Asia/Shanghai' date
 - 字符集
-  ```
+  ```sql
   select * from nls_database_parameters;
   ```
 
@@ -265,7 +267,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 - 增加docker 可用连接端口数，方便docker 访问外部，可用来模拟多客户
 
-  ```
+  ```shell
   docker run --rm \
     -it \
     --sysctl net.ipv4.ip_local_port_range="8001 65000" \
