@@ -7,5 +7,18 @@ docker run --name mysql5.7 \
     -e 'MYSQL_ROOT_PASSWORD=123' \
     -d \
     one/mysql:5.7
+    --max-connections=500
 
+# on centos7
+# docker run --name mysql \
+#     -v $(pwd)/conf/my.cnf:/etc/mysql/my.cnf:ro \
+#     -v $(pwd)/mysql:/var/lib/mysql:rw \
+#     --privileged=true \
+#     -p 3306:3306 \
+#     -e 'MYSQL_ROOT_PASSWORD=123' \
+#     -d \
+#     one/mysql:5.7 \
+      # --max-connections=500
+      # --character-set-server=utf8mb4
+      # --collation-server=utf8mb4_unicode_ci
 

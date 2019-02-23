@@ -9,7 +9,7 @@ Docker
 - 1.9
 - 2
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
-
+- 指定的中文字体要增加
 
 02.22
 ---
