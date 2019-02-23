@@ -1,6 +1,16 @@
 Docker
 ===
 
+02.23
+---
+
+### pandoc
+
+- 1.9
+- 2
+  - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
+
+
 02.22
 ---
 
