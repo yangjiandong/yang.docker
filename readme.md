@@ -1,6 +1,24 @@
 Docker
 ===
 
+02.22
+---
+
+### keras
+
+base python 3.6, use
+- keras
+- tensorflow
+- [A neural network that transforms a design mock-up into a static website](https://github.com/emilwallner/Screenshot-to-code), 深度学习，设计稿转换代码
+- run
+
+  ```shell
+  sh run.sh
+  #进入容器，运行 jupyter,
+  sh /run_jupyter.sh
+  # brower, localhost:8888, 根据提示拷贝url 访问
+  ```
+
 01.17
 ---
 

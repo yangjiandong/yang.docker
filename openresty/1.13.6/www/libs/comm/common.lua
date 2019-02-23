@@ -1,4 +1,18 @@
 local count = 0
+local u = [[
+  多行字符
+]]
+
+-- 支持闭包及匿名函数：
+function adder(x)
+  -- 调用adder时，会创建返回的函数，
+  -- 并且会记住x的值：
+  return function (y) return x + y end
+end
+-- a1 = adder(9)
+-- a2 = adder(36)
+-- print(a1(16))  --> 25
+-- print(a2(64))  --> 100
 
 local function hello()
     count = count + 1
@@ -15,7 +29,7 @@ local function swap(a,b)
     return b,a
 end
 
--- 重载 __add 
+-- 重载 __add
 local union = function(self, another)
     local set = {}
     local result = {}
