@@ -9,8 +9,9 @@ Docker
 base on latex
 
 - 1.9, base latex-2015
-- 2
+- 2, base ubuntu:18.10
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
+  - [thomasWeise-github](https://github.com/thomasWeise/docker-pandoc)
 - 指定的中文字体要增加
 
 02.22
