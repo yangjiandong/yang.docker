@@ -6,7 +6,9 @@ Docker
 
 ### pandoc
 
-- 1.9
+base on latex
+
+- 1.9, base latex-2015
 - 2
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
 - 指定的中文字体要增加
