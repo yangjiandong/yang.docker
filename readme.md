@@ -12,19 +12,38 @@ base on latex
 - 2, base ubuntu:18.10, have: python2,python3.6
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
   - [thomasWeise-github](https://github.com/thomasWeise/docker-pandoc)
-  - ttf-wqy-microhei(文泉驿微黑字体库), 字体定义 `/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset`
+  - ttf-wqy-microhei(文泉驿微黑字体库), 字体定义 `/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset`, 主要中文字体
   - out pdf, `pandoc --toc --toc-depth=3 -f markdown  readme.md --pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei" -o readme.pdf`
-- pandoc、latex 中文方案
+  - list fonts, `fc-list`
+- pandoc + latex 中文方案，use `one/pandoc:2.0`，步骤
+  - run docker
 
-  ```
-  pandoc --toc --toc-depth=3 ls.md --pdf-engine=xelatex \
-  -V mainfont="WenQuanYi Micro Hei" \
-  -V documentclass=book \
-  --template=my.tex \
-	-o ls.pdf
-  ```
+    ```
+    docker run \
+    --rm -it \
+    -v $(pwd)/works:/source \
+    one/pandoc:2.0 \
+    /bin/bash
+    ```
 
-  - 主要字体 `WenQuanYi Micro Hei`
+  - in container
+
+    ```
+    # 如果想重新设置中文字体
+    # -V CJKmainfont="WenQuanYi Micro Hei" \
+    # 设置英文字体，中文字体在my.tex 设置
+    # -V mainfont="Georgia" \
+    pandoc --toc --toc-depth=3 readme.md --pdf-engine=xelatex \
+    --template=my.tex \
+    -V CJKmainfont="AR PL UMing CN" \
+    -V mainfont="Georgia" \
+    -o readme3.pdf
+    ```
+
+  - 中文字体
+    - `WenQuanYi Zen Hei` - zhhei
+    - `AR PL UMing CN` - zhsong
+    - `AR PL UKai CN` - zhkai
   - 模版 `templates/my.tex`
 
 02.22
