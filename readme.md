@@ -9,10 +9,23 @@ Docker
 base on latex
 
 - 1.9, base latex-2015
-- 2, base ubuntu:18.10
+- 2, base ubuntu:18.10, have: python2,python3.6
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
   - [thomasWeise-github](https://github.com/thomasWeise/docker-pandoc)
-- 指定的中文字体要增加
+  - ttf-wqy-microhei(文泉驿微黑字体库), 字体定义 `/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset`
+  - out pdf, `pandoc --toc --toc-depth=3 -f markdown  readme.md --pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei" -o readme.pdf`
+- pandoc、latex 中文方案
+
+  ```
+  pandoc --toc --toc-depth=3 ls.md --pdf-engine=xelatex \
+  -V mainfont="WenQuanYi Micro Hei" \
+  -V documentclass=book \
+  --template=my.tex \
+	-o ls.pdf
+  ```
+
+  - 主要字体 `WenQuanYi Micro Hei`
+  - 模版 `templates/my.tex`
 
 02.22
 ---
