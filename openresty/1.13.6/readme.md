@@ -1,6 +1,13 @@
 openresty 1.13.6
 ===
 
+## 2019.02.27
+
+- use resty.upload
+  - '/upfile'
+  - `http://xx/html/myupload.html`
+  - webuploader, 没成功
+
 说明
 ---
 
