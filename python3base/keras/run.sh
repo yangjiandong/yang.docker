@@ -4,4 +4,6 @@
 
 docker run -p 8888:8888 \
     -v ${PWD}/work:/work \
-    --rm -it one/keras /bin/bash
+    --rm -it \
+    one/keras \
+    /bin/bash
