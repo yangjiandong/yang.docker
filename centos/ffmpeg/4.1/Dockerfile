@@ -5,13 +5,10 @@
 # https://hub.docker.com/r/jrottenberg/ffmpeg/
 #
 #
-FROM one/centos:7.6
+FROM one/centos:7.6 AS base
 
 RUN     yum -y install libgomp && \
         yum clean all;
-
-
-FROM        base AS build
 
 WORKDIR     /tmp/workdir
 
@@ -362,15 +359,15 @@ RUN \
         cp -r ${PREFIX}/share/ffmpeg /usr/local/share/ && \
         LD_LIBRARY_PATH=/usr/local/lib64 ffmpeg -buildconf
 
-FROM        base
-MAINTAINER  Julien Rottenberg <julien@rottenberg.info>
+# FROM        base
+# MAINTAINER  Julien Rottenberg <julien@rottenberg.info>
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]
 
 ENV LD_LIBRARY_PATH=/usr/local/lib64
 
-COPY --from=build /usr/local/ /usr/local/
+# COPY --from=build /usr/local/ /usr/local/
 
 # Let's make sure the app built correctly
 # Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
