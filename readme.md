@@ -6,7 +6,8 @@ Docker
 
 ### ffmpeg 4.1
 
-base centos:7.6
+- base centos:7.6
+- use 参考 [](https://hub.docker.com/r/jrottenberg/ffmpeg)
 
 02.23
 ---
