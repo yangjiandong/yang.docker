@@ -19,8 +19,12 @@ plt.plot(data['SP500'])
 data.drop('DATE',axis=1,inplace=True)
 
 # 划分训练集和测试集
+# 分配比为8:2
 data_train = data.iloc[:int(data.shape[0] * 0.8), :]
 data_test = data.iloc[int(data.shape[0] * 0.8):, :]
+# show data
+data_train.shape
+data_test.shape
 
 # 数据归一化
 scaler = MinMaxScaler(feature_range=(-1, 1))
