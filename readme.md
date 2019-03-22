@@ -1,6 +1,27 @@
 Docker
 ===
 
+03.21
+---
+
+### aws openjdk
+
+- build, `docker build -t amazon-corretto-8 github.com/corretto/corretto-8-docker`
+- run, `docker run -it amazon-corretto-8`
+- create, centos/corretto-8
+
+  ```conf
+FROM amazonlinux:2
+RUN yum -y update \
+ && amazon-linux-extras enable corretto8 \
+ && yum -y install java-1.8.0-amazon-corretto-devel \
+ && yum clean all
+
+ENV LANG zh_CN.utf8
+
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64
+```
+
 03.11
 ---
 
