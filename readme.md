@@ -1,12 +1,24 @@
 Docker
 ===
 
+03.11
+---
+
+### npm
+
+- nodejs/npm
+  - node: 11.11.0, npm: 6.7.0
+  - use my-vli3-app as app
+  - ? 代码全部打包，docker 中有源码
+- [如何使用 docker 部署前端应用](https://juejin.im/post/5c83cbaa6fb9a04a0f65fdaa)
+
 03.06
 ---
 
 ### ffmpeg 4.1
 
 - base centos:7.6
+- centos/ffmpeg/4.1
 - [use 参考](https://hub.docker.com/r/jrottenberg/ffmpeg)
 
 02.23
