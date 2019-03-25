@@ -1,6 +1,23 @@
 Docker
 ===
 
+03.22
+---
+
+### jupyterLab
+
+- python3base/jupyterLab
+- run
+
+  - in container, `sh /run_jupyter.sh`
+  - open brower, `http://localhost:8888/lab`, pwd=123
+- install plugins
+  - @jupyterlab/latex
+  
+- 参考
+  - https://github.com/facebookresearch/maskrcnn-benchmark
+  - [mask-rcnn benchmark & docker & jupyterlab](https://zhuanlan.zhihu.com/p/55516749)
+
 03.21
 ---
 
@@ -93,6 +110,7 @@ base on latex
 ### keras
 
 base python 3.6, use
+- python3base/keras
 - keras
 - tensorflow
 - [A neural network that transforms a design mock-up into a static website](https://github.com/emilwallner/Screenshot-to-code), 深度学习，设计稿转换代码
