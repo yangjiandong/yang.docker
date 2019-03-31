@@ -1,6 +1,13 @@
 Docker
 ===
 
+03.30
+---
+
+### nacos 0.9 base one/java:8
+
+- [参考 nacos-docker](https://github.com/nacos-group/nacos-docker)
+
 03.22
 ---
 
@@ -13,7 +20,7 @@ Docker
   - open brower, `http://localhost:8888/lab`, pwd=123
 - install plugins
   - @jupyterlab/latex
-  
+
 - 参考
   - https://github.com/facebookresearch/maskrcnn-benchmark
   - [mask-rcnn benchmark & docker & jupyterlab](https://zhuanlan.zhihu.com/p/55516749)
