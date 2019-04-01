@@ -13,7 +13,7 @@ Docker
   - open brower, `http://localhost:8888/lab`, pwd=123
 - install plugins
   - @jupyterlab/latex
-  
+
 - 参考
   - https://github.com/facebookresearch/maskrcnn-benchmark
   - [mask-rcnn benchmark & docker & jupyterlab](https://zhuanlan.zhihu.com/p/55516749)
@@ -28,16 +28,16 @@ Docker
 - create, centos/corretto-8
 
   ```conf
-FROM amazonlinux:2
-RUN yum -y update \
- && amazon-linux-extras enable corretto8 \
- && yum -y install java-1.8.0-amazon-corretto-devel \
- && yum clean all
+  FROM amazonlinux:2
+  RUN yum -y update \
+  && amazon-linux-extras enable corretto8 \
+  && yum -y install java-1.8.0-amazon-corretto-devel \
+  && yum clean all
 
-ENV LANG zh_CN.utf8
+  ENV LANG zh_CN.utf8
 
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64
-```
+  ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64
+  ```
 
 03.11
 ---
