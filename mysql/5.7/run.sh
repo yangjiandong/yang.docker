@@ -1,4 +1,5 @@
 
+# max-connections 在 docker-compose 方式下通过 my.conf 配置有效
 docker run --name mysql5.7 \
     -v $(pwd)/mysql5.7:/var/lib/mysql \
     -v $(pwd)/mysql5.7/run:/var/run/mysqld \
