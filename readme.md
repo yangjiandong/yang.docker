@@ -7,6 +7,8 @@ Docker
 ### nacos 0.9 base one/java:8
 
 - [参考 nacos-docker](https://github.com/nacos-group/nacos-docker)
+- 注意，centos6.9 采用了 `supervisord`，需好好利用
+- nohup 安装, `yum install coreutils`
 
 03.22
 ---
@@ -28,7 +30,7 @@ Docker
 03.21
 ---
 
-### aws openjdk
+### aws openjdk，corretto-8
 
 - build, `docker build -t amazon-corretto-8 github.com/corretto/corretto-8-docker`
 - run, `docker run -it amazon-corretto-8`
@@ -154,7 +156,7 @@ base python 3.6, use
 ### centos7
 
 one/centos:7.2 - 7.6
-- sshd
+- sshd, port 22
 - [centos7 + supervisor](https://blog.csdn.net/lemontree1945/article/details/80508443)
 - use supervisor 启动多个应用
   - 镜像 CMD 只能执行一次，考虑以后会出现各种应用启动，所以采用 supervisor 方式启动应用

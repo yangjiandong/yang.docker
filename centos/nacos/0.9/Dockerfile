@@ -24,7 +24,9 @@ RUN rm -rf /home/nacos-server-${NACOS_VERSION}.tar.gz /home/nacos/bin/* /home/na
     && yum clean all
 
 
-
+# nohup 安装, `yum install
+RUN yum install coreutils \
+  && yum clean all
 
 ADD bin/docker-startup.sh bin/docker-startup.sh
 ADD conf/application.properties conf/application.properties
@@ -40,4 +42,8 @@ RUN mkdir -p logs \
 RUN chmod +x bin/docker-startup.sh
 
 EXPOSE 8848
+ENV JAVA="$JAVA_HOME/bin/java"
+
 ENTRYPOINT ["bin/docker-startup.sh"]
+# supervisor
+# COPY ./supervisor/nacos.conf /etc/supervisor/conf.d/nacos.conf
