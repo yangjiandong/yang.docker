@@ -25,6 +25,7 @@
   - 减少进程数, `unicorn['worker_processes'] = 2`
   - 减少数据库缓存, `postgresql['shared_buffers'] = "128MB"`
   - 减少sidekiq并发数, `sidekiq['concurrency'] = 12`
+  - 完整文件参考 `gitlab.rb`
 
 ## GitLab Community Edition (中文社区版)
 
