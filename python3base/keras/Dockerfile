@@ -12,6 +12,10 @@ COPY "jupyter_notebook_config.py" ${CONFIG_PATH}
 
 COPY run_jupyter.sh /
 # node
-# RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
-# RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs
+
+# extension
+RUN jupyter labextension install @jupyterlab/toc
+

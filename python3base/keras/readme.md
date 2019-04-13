@@ -3,13 +3,13 @@ keras
 
 ### 04.12
 
-add jupyterlab
+- add jupyterlab
 
-- run
+  - run
+    - in container, `sh /run_jupyter.sh`
+    - open brower, `http://localhost:8888/lab`, pwd=123
 
-  - in container, `sh /run_jupyter.sh`
-  - open brower, `http://localhost:8888/lab`, pwd=123
-
+- [《自学是门手艺》](https://github.com/selfteaching/the-craft-of-selfteaching)
 
 ### 2019.02.28
 
