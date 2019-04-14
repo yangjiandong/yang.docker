@@ -10,6 +10,14 @@ keras
     - open brower, `http://localhost:8888/lab`, pwd=123
 
 - [《自学是门手艺》](https://github.com/selfteaching/the-craft-of-selfteaching)
+- matplotlib 图表 中文字体
+
+  ```python
+  from matplotlib.font_manager import FontProperties
+  font= FontProperties(fname=r"Songti.ttc", size=12)
+  ...
+  plt.title('中国\n' + note, fontproperties=font)
+  ```
 
 ### 2019.02.28
 
