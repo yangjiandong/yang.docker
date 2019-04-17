@@ -19,3 +19,4 @@ RUN apt-get install -y nodejs
 # extension
 RUN jupyter labextension install @jupyterlab/toc
 
+RUN apt-get -y install graphviz

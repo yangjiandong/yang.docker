@@ -18,6 +18,7 @@ keras
   ...
   plt.title('中国\n' + note, fontproperties=font)
   ```
+- [python pep](https://www.python.org/dev/peps/pep-0008/)
 
 ### 2019.02.28
 
