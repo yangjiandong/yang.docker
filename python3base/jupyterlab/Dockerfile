@@ -22,4 +22,4 @@ RUN apt-get update && \
         gnuplot ghostscript && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
+RUN pip install octave_kernel
