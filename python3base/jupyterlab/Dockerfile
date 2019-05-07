@@ -22,4 +22,4 @@ RUN apt-get install -y --no-install-recommends octave \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install octavel_kernel
+RUN pip install octave_kernel
