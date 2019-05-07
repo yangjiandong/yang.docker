@@ -1,6 +1,11 @@
 keras
 ---
 
+### jupyterLab
+
+- [《自学是门手艺》](https://github.com/selfteaching/the-craft-of-selfteaching)
+- [基于Jupyter Notebook从头学习机器学习](https://zhuanlan.zhihu.com/p/47230091)
+
 ### 04.12
 
 - add jupyterlab
@@ -9,7 +14,6 @@ keras
     - in container, `sh /run_jupyter.sh`
     - open brower, `http://localhost:8888/lab`, pwd=123
 
-- [《自学是门手艺》](https://github.com/selfteaching/the-craft-of-selfteaching)
 - matplotlib 图表 中文字体
 
   ```python

@@ -15,8 +15,7 @@ RUN apt-get install -y nodejs
 # ENTRYPOINT ["sh", "-c", "jupyter notebook --allow-root -y --no-browser --ip=0.0.0.0 --config=${CONFIG_PATH}"]
 
 # Octave
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends octave \
+RUN apt-get install -y --no-install-recommends octave \
         octave-symbolic octave-miscellaneous \
         python-sympy \
         gnuplot ghostscript && \
