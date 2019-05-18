@@ -1,6 +1,20 @@
 Docker
 ===
 
+tips
+---
+
+### docker registry mirrors
+- https://exomynm5.mirror.aliyuncs.com
+- https://registry.docker-cn.com
+
+05.18
+---
+
+### relaxedjs
+
+- node/relaxedjs
+
 04.25
 ---
 
