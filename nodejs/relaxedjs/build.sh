@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t one/relaxedjs .
+docker build -t one/relaxedjs:10.15-alpine .

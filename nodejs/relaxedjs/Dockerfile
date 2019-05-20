@@ -1,4 +1,4 @@
-FROM node:8.16.0-alpine
+FROM node:10.15-alpine
 
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
