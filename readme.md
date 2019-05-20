@@ -14,8 +14,8 @@ tips
 ### relaxedjs
 
 - node/relaxedjs
-  - chromimu 问题
-  
+  - alphine 下运行，chromimu 问题，不能正常使用
+
 04.25
 ---
 
