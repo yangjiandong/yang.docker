@@ -8,6 +8,28 @@ tips
 - https://exomynm5.mirror.aliyuncs.com
 - https://registry.docker-cn.com
 
+05.21
+---
+
+### nvm
+
+- node/nvm
+
+### update relaxedjs
+
+- [参考 relaxed-docker](https://github.com/WeihanLi/docker-env/blob/master/docker-puppeteer/node10/stable.Dockerfile)，由于访问不了 google，直接使用 [puppeteer docker](https://hub.docker.com/r/weihanli/puppeteer/tags)
+- use
+  - create alias
+
+  ```
+  alias relaxed-docker="docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):$(pwd) -w $(pwd) --name relaxed one/relaxedjs:node10-stable $@"
+  ```
+  - goto examples dir
+
+  ```
+  relaxed-docker book.pug
+  ```
+  
 05.18
 ---
 

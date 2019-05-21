@@ -1,35 +1,23 @@
-FROM node:10.15-alpine
+FROM weihanli/puppeteer:node10-stable
 
-ENV CHROME_BIN="/usr/bin/chromium-browser"\
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+LABEL maintainer="one@qq.com"
 
-#更新Alpine的软件源为国内（清华大学）的站点，因为从默认官源拉取实在太慢了。。。
-RUN echo "https://mirrors.aliyun.com/alpine/v3.9/main/" > /etc/apk/repositories \
-      && echo "https://mirrors.aliyun.com/alpine/v3.9/community/" >> /etc/apk/repositories \
-        && apk update \
-        && apk upgrade \
-        && apk add --no-cache bash \
-        udev \
-        ttf-freefont \
-        bash \
-        chromium \
-        && rm -rf /var/cache/apk/* \
-        && /bin/bash
-
-# RUN apk add --update bash && rm -rf /var/cache/apk/*
+# It's a good idea to use dumb-init to help prevent zombie chrome processes.
+# ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
+# RUN chmod +x /usr/local/bin/dumb-init
 
 # Use private npm
+ADD npmrc /home/pptruser/.npmrc
 ADD npmrc /root/.npmrc
+RUN npm i puppeteer
 
-# Create app directory
-RUN mkdir /workspace
-WORKDIR /workspace
+USER root
+# RUN git clone https://github.com/RelaxedJS/ReLaXed.git
+COPY ReLaXed-master.zip .
+RUN unzip ReLaXed-master.zip \
+  && cd ReLaXed-master && npm install && npm link --unsafe-perm=true
 
-# Bundle app source
-# COPY . /workspace
-# RUN npm install
-# CMD [ "npm", "start" ]
+ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
 
-EXPOSE 8888
-
-RUN npm i -g relaxedjs --unsafe-perm
+ENTRYPOINT ["dumb-init", "relaxed"]
