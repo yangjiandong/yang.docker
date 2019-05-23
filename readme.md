@@ -463,6 +463,8 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
   - update to `--ulimit nofile=1048576:1048576`
   - one/centos7.6, 默认就 `1048576`
 
+  查看 in container, `ulimit -n`
+
 04.24
 ---
 
