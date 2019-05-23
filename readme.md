@@ -11,7 +11,7 @@ tips
 ### py3base:3.6
 
 - jupyter_notebook
-- 混淆代码保护, `RUN pip3 install pyarmor`
+- 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
 05.21
 ---
@@ -450,12 +450,13 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
   ```shell
   docker run --rm \
     -it \
-    --sysctl net.ipv4.ip_local_port_range="8001 65000" \
+  --sysctl net.ipv4.ip_local_port_range="1024 65535" \
+  --ulimit nofile=65536:65536 \
     one/centos:6.9 \
     /bin/bash
   ```
 
-  查看 in container, `cat /proc/sys/net/ipv4/ip_local_port_range`
+  查看 in container, `cat /proc/sys/net/ipv4/ip_local_port_range`,`sysctl -a | grep ipv4.ip_local_port_range`
 
 - 增加docker 打开文件数
 
