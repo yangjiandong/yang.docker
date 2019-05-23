@@ -8,6 +8,11 @@ tips
 - https://exomynm5.mirror.aliyuncs.com
 - https://registry.docker-cn.com
 
+### py3base:3.6
+
+- jupyter_notebook
+- 混淆代码保护, `RUN pip3 install pyarmor`
+
 05.21
 ---
 
