@@ -29,7 +29,7 @@ tips
   ```
   relaxed-docker book.pug
   ```
-  
+
 05.18
 ---
 
@@ -456,7 +456,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
   - `--ulimit nofile=65536:65536`
   - update to `--ulimit nofile=1048576:1048576`
-  - one/centos7.6, 默认就 `1048576`
+  - one/centos7.6, 默认就 `1048576`(有可能和宿主机有关, fs.file-max=1048576)
 
 04.24
 ---
