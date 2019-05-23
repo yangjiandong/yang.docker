@@ -48,9 +48,12 @@ RUN apt-get update && apt-get install -y \
     # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
     && apt-get clean \
     && apt-get autoclean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip3 install -U turicreate
+
+# 混淆代码保护
+RUN pip3 install pyarmor
 
 # Setup a working directory to allow for
 # docker run --rm -ti -v ${PWD}:/work ...
