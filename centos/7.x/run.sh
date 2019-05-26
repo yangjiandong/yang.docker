@@ -13,7 +13,9 @@
 docker run --rm -it \
   -e TZ=Asia/Shanghai \
   -p 4426:22 \
+  -p 9111:9111 \
   --sysctl net.ipv4.ip_local_port_range="1024 65535" \
   --ulimit nofile=65536:65536 \
   --privileged=true \
-  one/centos:7.6 /bin/bash
+  --name centos7 \
+  one/centos:7

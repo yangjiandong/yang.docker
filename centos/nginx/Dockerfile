@@ -1,4 +1,4 @@
-FROM one/centos:7.6
+FROM one/centos:7
 
 # add nginx, logrotate
 RUN yum install -y nginx\
