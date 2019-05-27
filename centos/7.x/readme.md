@@ -36,3 +36,4 @@ centos 7.6
 - base one/centos:7
 - logrotate, 日志处理，按天归档
 - cron
+- 监测 /etc/nginx 目录，更改配置后不用手工重启

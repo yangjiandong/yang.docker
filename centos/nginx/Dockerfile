@@ -8,3 +8,4 @@ RUN yum install -y nginx\
 
 ADD container-files /
 
+EXPOSE 80 443
