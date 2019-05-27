@@ -25,3 +25,14 @@ centos 7.6
 - 增加项目
   - ssh, user: root,123456
   - croni
+
+### one/centos:7 操作说明
+
+- ssh,port 22, user:root,123456
+- supervisorctl, 9111, user: sv, password
+
+### one/nginx:1.12
+
+- base one/centos:7
+- logrotate, 日志处理，按天归档
+- cron

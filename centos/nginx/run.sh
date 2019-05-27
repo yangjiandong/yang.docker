@@ -14,11 +14,16 @@
 
 # sshd,-p 4426:22 \
 docker run \
-    -d \
+    --rm \
+    -it \
     --name nginx \
     -p 8888:80 \
+    -p 4426:22 \
+    -p 9111:9111 \
+    --sysctl net.ipv4.ip_local_port_range="1024 65535" \
+    --ulimit nofile=65536:65536 \
+    --privileged=true \
     -v $(pwd)/conf:/etc/nginx:ro \
     -v $(pwd)/logs:/var/log/nginx \
     -v $(pwd)/www:/usr/share/nginx/html \
-    -v $(pwd)/workspace:/app \
     one/nginx:1.12

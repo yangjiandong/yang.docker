@@ -13,6 +13,13 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+05.27
+---
+
+### one/nginx:1.12
+
+base on one/centos:7
+
 05.26
 ---
 
