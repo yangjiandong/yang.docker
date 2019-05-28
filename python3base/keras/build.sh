@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker build -t one/keras .
+docker build -t one/keras:x .

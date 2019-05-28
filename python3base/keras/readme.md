@@ -6,6 +6,12 @@ keras
 - [《自学是门手艺》](https://github.com/selfteaching/the-craft-of-selfteaching)
 - [基于Jupyter Notebook从头学习机器学习](https://zhuanlan.zhihu.com/p/47230091)
 
+### 05.27
+
+- [使用TensorFlow 来实现一个简单的验证码识别过程](https://juejin.im/post/5ceb621f6fb9a07ec955ebd8)
+- [使用深度学习来破解captcha验证码](http://www.qingpingshan.com/bc/jsp/243150.html)
+- [Kaggle Python docker image](https://github.com/Kaggle/docker-python), image `kaggle/python-build`
+
 ### 04.12
 
 - add jupyterlab
