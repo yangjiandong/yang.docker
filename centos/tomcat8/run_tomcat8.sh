@@ -16,4 +16,4 @@ docker run -d -p 8080:8080 \
     -v $(pwd)/logs:/tomcat/bin/logs \
     -v $(pwd)/ssh-work:/ssh-work \
     --name tomcat8 \
-    one/java8:1.0
+    one/tomcat:8

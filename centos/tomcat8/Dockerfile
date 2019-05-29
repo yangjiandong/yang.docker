@@ -1,5 +1,7 @@
 
-FROM one/java8:1.0
+FROM one/java:8
+
+WORKDIR /
 
 # tomcat
 ENV TOMCAT_INSTALL=apache-tomcat-8.0.30.tar.gz
@@ -7,7 +9,7 @@ COPY $TOMCAT_INSTALL .
 RUN tar -zxvf $TOMCAT_INSTALL && \
     mv apache-tomcat-8.0.30 tomcat && \
     rm -rf tomcat/webapps/ROOT tomcat/webapps/docs tomcat/webapps/examples tomcat/webapps/host-manager tomcat/webapps/manager &&\
-    rm $TOMCAT_INSTALL 
+    rm $TOMCAT_INSTALL
 
 RUN echo "CATALINA_OPTS=-Djava.security.egd=file:/dev/./urandom" > /tomcat/bin/setenv.sh && \
     chmod a+x tomcat/bin/setenv.sh
@@ -21,7 +23,7 @@ RUN mkdir -p /ssh-work/config /ssh-work/upload \
 
 ENV CATALINA_HOME /tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
-WORKDIR $CATALINA_HOME
+
 EXPOSE 8080
 
 # run by supervisor

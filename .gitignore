@@ -36,3 +36,4 @@ sentry/postgresql/data
 sentry/redis/data
 openresty/1.13.6/openresty-www.zip
 .history
+centos/tomcat8.tar.gz
