@@ -13,6 +13,15 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+06.14
+---
+
+### searx
+
+- [参考](https://hub.docker.com/r/wonderfall/searx/)
+- 互联网元搜索引擎 Searx
+- python3base/searx
+
 05.27
 ---
 
