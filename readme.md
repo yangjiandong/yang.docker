@@ -13,6 +13,14 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+08.11
+---
+
+### Python-for-Epidemiologists
+
+- use ubuntu:bionic
+- python3base/ubuntu
+
 06.14
 ---
 
