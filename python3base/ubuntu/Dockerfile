@@ -5,6 +5,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
     apt install -y python3-pip tzdata \
+    octave \
+    octave-symbolic octave-miscellaneous \
+    python-sympy \
+    gnuplot ghostscript \
     && apt-get clean \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -23,23 +27,14 @@ RUN ln -s `which pip3` /usr/bin/pip && \
   matplotlib \
   statsmodels \
   lifelines \
-  sklearn
+  sklearn \
+  octave_kernel
 
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
   ipykernel \
   jupyter \
   jupyterlab && \
   python3 -m ipykernel.kernelspec
-
-# # 类似 maltab，开源统计软件, Octave
-# RUN apt-get install -y --no-install-recommends octave \
-#         octave-symbolic octave-miscellaneous \
-#         python-sympy \
-#         gnuplot ghostscript && \
-#     apt-get clean && \
-#     rm -rf /var/lib/apt/lists/*
-
-# RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple octave_kernel
 
 ENV CONFIG_PATH="/root/.jupyter/jupyter_notebook_config.py"
 COPY "jupyter_notebook_config.py" ${CONFIG_PATH}
