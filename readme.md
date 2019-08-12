@@ -13,6 +13,15 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+08.12
+---
+
+### Octave
+
+- [类似 maltab，开源统计软件](https://github.com/lujun9972/linux-document/blob/master/tools/3%20open%20source%20alternatives%20to%20MATLAB.org)
+- python3base/jupyterlab
+- python3base/ubuntu
+
 08.11
 ---
 

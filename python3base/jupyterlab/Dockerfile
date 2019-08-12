@@ -14,7 +14,7 @@ RUN apt-get install -y nodejs
 
 # ENTRYPOINT ["sh", "-c", "jupyter notebook --allow-root -y --no-browser --ip=0.0.0.0 --config=${CONFIG_PATH}"]
 
-# Octave
+# 类似 maltab，开源统计软件, Octave
 RUN apt-get install -y --no-install-recommends octave \
         octave-symbolic octave-miscellaneous \
         python-sympy \
