@@ -44,6 +44,10 @@ COPY run_jupyter.sh /
 # jupyter
 EXPOSE 8888
 
+# matplotlib 中文字体
+# COPY font/Songti.ttc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf
+# COPY font/matplotlibrc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/
+
 RUN mkdir /work
 WORKDIR /work
 #EOP

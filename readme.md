@@ -22,6 +22,15 @@ tips
 - python3base/jupyterlab
 - python3base/ubuntu
 
+### matplotlib 图表 中文字体
+
+  ```python
+  from matplotlib.font_manager import FontProperties
+  font= FontProperties(fname=r"Songti.ttc", size=12)
+  ...
+  plt.title('中国\n' + note, fontproperties=font)
+  ```
+
 08.11
 ---
 
