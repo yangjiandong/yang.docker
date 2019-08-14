@@ -2,7 +2,11 @@ Python-for-Epidemiologists
 ---
 
 - [python 流行病学](https://github.com/pzivich/Python-for-Epidemiologists)
-
+- python:3.6.6
+    - python
+    - python3
+    - java11
+    
 ### numpy
 
 - https://www.numpy.org.cn/
