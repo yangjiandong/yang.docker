@@ -11,7 +11,11 @@ Python-for-Epidemiologists
 
 - python3, java11
 - run /work/run_jupyter.sh, 指定 `--NotebookApp.base_url=/jub`
+- nginx conf
 
+  ```
+  ```
+  
 ### numpy
 
 - https://www.numpy.org.cn/
