@@ -6,7 +6,12 @@ Python-for-Epidemiologists
     - python
     - python3
     - java11
-    
+
+### docker
+
+- python3, java11
+- run /work/run_jupyter.sh, 指定 `--NotebookApp.base_url=/jub`
+
 ### numpy
 
 - https://www.numpy.org.cn/
