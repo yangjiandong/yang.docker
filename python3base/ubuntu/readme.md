@@ -14,6 +14,20 @@ Python-for-Epidemiologists
 - nginx conf
 
   ```
+  location /jub {
+    index  index.html index.jsp;
+    proxy_pass  http://192.168.1.209:8889/jub;
+    #proxy_redirect  default;
+    proxy_set_header X-Real-Scheme $scheme;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Referer http://192.168.1.209;
+    proxy_set_header Origin "";
+    }
   ```
   
 ### numpy
