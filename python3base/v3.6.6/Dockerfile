@@ -50,4 +50,10 @@ EXPOSE 8888
 
 RUN mkdir /work
 WORKDIR /work
+
+# other matplotlib 扩展
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+  seaborn \
+  missingno
+
 #EOP

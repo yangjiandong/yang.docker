@@ -29,7 +29,7 @@ Python-for-Epidemiologists
     proxy_set_header Origin "";
     }
   ```
-  
+
 ### numpy
 
 - https://www.numpy.org.cn/
@@ -77,6 +77,14 @@ python 数据表现
 
 - rm `/root/.cache/matplotlib/`
 - simsun 显示效果不行， Songti 没成功，暂时按第一种方案
+
+### missingno
+
+Missing data visualization module for Python.
+
+### seaborn
+
+Seaborn是一种基于matplotlib的图形可视化python libraty。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。
 
 ## octave
 
