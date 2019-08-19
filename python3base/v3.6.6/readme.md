@@ -1,3 +1,37 @@
+[用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)
+---
+
+- 直接处理字段为日期型
+
+  ```
+  train = pd.read_csv("kc_house_data.csv", parse_dates=["date"])
+  ```
+
+- 查看价格分布
+
+  ```
+  train.price.describe()
+  ...
+  print("skew, 偏离:", train.price.skew())
+  ```
+
+  - 偏态分布 (skew): 偏态分布是与“正态分布” 相对，分布曲线左右不对称的数据次数分布，是连续随机变量概率分布的一种。可以通过峰度和偏度的计算，衡量偏态的程度。可分为正偏态和负偏态，前者曲线右侧偏长，左侧偏短；后者曲线左侧偏长，右侧偏短
+  - 改善线性度，分布接近正态分布
+    ```
+    target = np.log(train.price)
+    sns.distplot(target)
+    ```
+
+- Pearson Correlation, 皮尔逊相关系数: 是用于度量两个变量X和Y之间的相关（线性相关），其值介于-1与1之间. 当接近1时，表示两者具有强烈的正相关性
+
+  检测数值特征和目标变量之间的相关性
+
+  ```
+  corrMat = train[['price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'condition', 'grade', 'sqft_above', 'sqft_basement', 'yr_built']].corr()
+  ```
+
+
+
 Python-for-Epidemiologists
 ---
 
@@ -37,7 +71,7 @@ Python-for-Epidemiologists
 
 ### pandas
 
-Pandas是一个强大的分析结构化数据的工具集；它的使用基础是Numpy（提供高性能的矩阵运算）；用于数据挖掘和数据分析，同时也提供数据清洗功能。
+Pandas 是一个强大的分析结构化数据的工具集；它的使用基础是 Numpy（提供高性能的矩阵运算）；用于数据挖掘和数据分析，同时也提供数据清洗功能。
 
 - https://www.pypandas.cn/
 
@@ -84,7 +118,7 @@ Missing data visualization module for Python.
 
 ### seaborn
 
-Seaborn是一种基于matplotlib的图形可视化python libraty。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。
+Seaborn 是一种基于 matplotlib 的图形可视化 python libraty。它提供了一种高度交互式界面，便于用户能够做出各种有吸引力的统计图表。
 
 ## octave
 
