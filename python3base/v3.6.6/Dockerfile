@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
     apt install -y python3-pip tzdata \
+    curl wget \
     octave \
     octave-symbolic octave-miscellaneous \
     python-sympy \
@@ -55,5 +56,9 @@ WORKDIR /work
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
   seaborn \
   missingno
+
+# font
+COPY font/matplotlibrc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
+COPY font/Songti.ttc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf
 
 #EOP
