@@ -89,28 +89,29 @@ python 数据表现
 
   ```
   from matplotlib.font_manager import FontProperties
-  font= FontProperties(fname=r"/work/fonts/simsun.ttc", size=12)
+  font= FontProperties(fname=r"/work/fonts/Songti.ttc", size=12)
   plt.ylabel('密度', fontproperties=font)
   ```
 
 ### 系统解决中文问题
 
+docker 下已按以下步骤更改
+
 - [参考](https://www.jianshu.com/p/b02ec7dc39dd)
-- use fonts/simsun.ttc
+- use fonts/Songti.ttc
 
   ```
-  cp simsun.ttc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf
+  cp Songti.ttc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf
   ```
 
 - edit `/usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc`
 
   ```
   axes.unicode_minus  : False    ## use unicode for the minus symbol
-  font.sans-serif     : simsun, DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+  font.sans-serif     : Songti SC, DejaVu Sans, Bitstream Vera Sans, Computer Modern Sans Serif, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
   ```
 
 - rm `/root/.cache/matplotlib/`
-- simsun 显示效果不行， Songti 没成功，暂时按第一种方案
 
 ### missingno
 
