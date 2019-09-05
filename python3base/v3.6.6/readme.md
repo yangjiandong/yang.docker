@@ -1,5 +1,6 @@
-[用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)
----
+## [北京二手房房价分析和预测](https://github.com/xiaoyusmd/Bj_HousePricePredict)
+
+## [用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)
 
 - 直接处理字段为日期型
 
@@ -31,11 +32,37 @@
   ```
 
 
-
-Python-for-Epidemiologists
+Python data analysis
 ---
 
-- [python 流行病学](https://github.com/pzivich/Python-for-Epidemiologists)
+### [10 Simple hacks to speed up your Data Analysis in Python](https://towardsdatascience.com/10-simple-hacks-to-speed-up-your-data-analysis-in-python-ec18c6396e6b)
+
+介绍几个扩展类
+- `pip install pandas_profiling`
+
+  ```
+  import pandas as pd
+  import pandas_profiling
+  df = pd.read_csv('lianjia.csv')
+  pandas_profiling.ProfileReport(df)
+  # df.profile_report()
+  profile = df.profile_report(title='Pandas Profiling Report')
+  profile.to_file('lianjia-profiling.html')
+  ```
+- Cufflinks
+
+  ```
+  pip install -i https://pypi.tuna.tsinghua.edu.cn/simple cufflinks
+  ```
+
+  Cufflinks就是专门用来方便pandas DataFrame对象调用Plotly绘图的工具
+
+  example:
+  - [Python金融分析（一）：Cufflinks与数据可视化](https://beiyuan.me/python4finance-1/)
+  - [code](https://codeload.github.com/yhilpisch/py4fi2nd/zip/master)
+  - 下载部分代码 `svn co https://github.com/yhilpisch/py4fi2nd/trunk/source`
+  
+### [python 流行病学](https://github.com/pzivich/Python-for-Epidemiologists)
 - python:3.6.6
     - python
     - python3
@@ -68,6 +95,12 @@ Python-for-Epidemiologists
 
 - https://www.numpy.org.cn/
 - https://github.com/teadocs/numpy-cn
+
+NumPy提供了大量的数值编程工具，可以方便地处理向量、矩阵等运算，极大地便利了人们在科学计算方面的工作
+
+### SciPy
+
+SciPy基于NumPy提供了更为丰富和高级的功能扩展，在统计、优化、插值、数值积分、时频转换等方面提供了大量的可用函数，基本覆盖了基础科学计算相关的问题。
 
 ### pandas
 
@@ -132,3 +165,4 @@ y=(13*cos(t))-(5*cos(2*t))-(2*cos(3*t))-(cos(4*t));
 plot(x,y)
 title("Heart with Octave", 'Color','k','fontsize',18)
 ```
+

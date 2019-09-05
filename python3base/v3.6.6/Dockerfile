@@ -55,7 +55,9 @@ WORKDIR /work
 # other matplotlib 扩展
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
   seaborn \
-  missingno
+  missingno \
+  pandas_profiling \
+  cufflinks
 
 # font
 COPY font/matplotlibrc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
