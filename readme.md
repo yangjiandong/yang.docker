@@ -13,6 +13,30 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+
+10.06
+---
+
+### Cookiecutter
+
+- `cookiecutter/u_data`
+
+#### [use docker compose](https://github.com/lorarjohns/cookiecutter_compose)
+
+```
+pip install cookiecutter
+cookiecutter https://github.com/lorarjohns/cookiecutter_compose.git
+```
+
+or use u_data
+
+```
+# build docker
+make build
+```
+
+#### [use docker](https://github.com/docker-science/cookiecutter-docker-science)
+
 08.12
 ---
 
