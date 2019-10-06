@@ -1,3 +1,8 @@
+- python:3.6.6
+    - python
+    - python3
+    - java11
+    
 ## [北京二手房房价分析和预测](https://github.com/xiaoyusmd/Bj_HousePricePredict)
 
 ## [用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)
@@ -61,12 +66,8 @@ Python data analysis
   - [Python金融分析（一）：Cufflinks与数据可视化](https://beiyuan.me/python4finance-1/)
   - [code](https://codeload.github.com/yhilpisch/py4fi2nd/zip/master)
   - 下载部分代码 `svn co https://github.com/yhilpisch/py4fi2nd/trunk/source`
-  
+
 ### [python 流行病学](https://github.com/pzivich/Python-for-Epidemiologists)
-- python:3.6.6
-    - python
-    - python3
-    - java11
 
 ### docker
 

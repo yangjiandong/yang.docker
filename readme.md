@@ -20,6 +20,7 @@ tips
 ### Cookiecutter
 
 - `cookiecutter/u_data`
+- 暂时没看出有什么使用场景，还是使用 python-v3.6.6
 
 #### [use docker compose](https://github.com/lorarjohns/cookiecutter_compose)
 
@@ -42,7 +43,6 @@ jupyter notebook --ip 0.0.0.0 --allow-root
 ```
 
 - todo
-  - textacy
   - [](https://github.com/explosion/spacy-models)
 
 #### [use docker](https://github.com/docker-science/cookiecutter-docker-science)

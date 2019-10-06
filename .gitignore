@@ -37,3 +37,4 @@ sentry/redis/data
 openresty/1.13.6/openresty-www.zip
 .history
 centos/tomcat8.tar.gz
+python3base/v3.6.6/font/Songti.ttc
