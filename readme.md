@@ -33,7 +33,17 @@ or use u_data
 ```
 # build docker
 make build
+# run docker
+make up
+# access bash shell within the container
+make bash
+# start jupyter
+jupyter notebook --ip 0.0.0.0 --allow-root
 ```
+
+- todo
+  - textacy
+  - [](https://github.com/explosion/spacy-models)
 
 #### [use docker](https://github.com/docker-science/cookiecutter-docker-science)
 

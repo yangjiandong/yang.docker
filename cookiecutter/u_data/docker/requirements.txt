@@ -27,5 +27,4 @@ sortedcontainers
 spacy
 spyder
 sumy
-textacy
 tqdm
