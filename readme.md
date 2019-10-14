@@ -19,6 +19,8 @@ tips
 
 ### Cookiecutter
 
+生成 python 项目规范目录结构
+
 - `cookiecutter/u_data`
 - 暂时没看出有什么使用场景，还是使用 python-v3.6.6
 
@@ -46,6 +48,21 @@ jupyter notebook --ip 0.0.0.0 --allow-root
   - [](https://github.com/explosion/spacy-models)
 
 #### [use docker](https://github.com/docker-science/cookiecutter-docker-science)
+
+09.20
+---
+
+### jmeter
+
+- [A Docker solution to JMeter + InfluxDB + Grafana performance testing](https://medium.com/@ellenhuang523/a-docker-solution-to-jmeter-influxdb-grafana-performance-testing-568848de7a0f)
+  - [](https://github.com/jlight99/docker-jig)
+- jmeter
+- run
+
+  ```shell
+  docker-compose up
+  docker-compose down
+  ```
 
 08.12
 ---
