@@ -13,6 +13,12 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+10.18
+---
+
+### pytorch
+
+- `python3base/pytorch`
 
 10.06
 ---
@@ -21,7 +27,7 @@ tips
 
 生成 python 项目规范目录结构
 
-- `cookiecutter/u_data`
+- `python3base/cookiecutter/u_data`
 - 暂时没看出有什么使用场景，还是使用 python-v3.6.6
 
 #### [use docker compose](https://github.com/lorarjohns/cookiecutter_compose)
