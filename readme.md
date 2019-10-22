@@ -23,6 +23,24 @@ tips
 10.06
 ---
 
+### [imgdupes](https://github.com/knjcode/imgdupes)
+
+查找重复图片
+
+After feature extracted, use image hash or image perceptual hash to generate image hash, and use Hamming distance to measure image similarity.
+
+提取特征后，可以结合图像哈希以及图像感知哈希技术生成图像哈希，使用汉明距离进行图像的相似性度量。
+
+- docker, in mac
+
+  ```
+  $ docker pull knjcode/imgdupes
+  $ alias imgdupe="docker run -it -v $PWD:/app knjcode/imgdupes"
+  $ imgdupe -rc /app/Downloads/FireShot/my phash 4
+  ```
+
+  查找相似，`imgdupe -rc /app/Downloads/FireShot/my phash 4 --query /app/Downloads/FireShot/my/33333.jpg`
+
 ### Cookiecutter
 
 生成 python 项目规范目录结构
