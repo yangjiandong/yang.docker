@@ -10,36 +10,46 @@ pandoc
   - ttf-wqy-microhei(文泉驿微黑字体库), 字体定义 `/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset`, 主要中文字体
   - out pdf, `pandoc --toc --toc-depth=3 -f markdown  readme.md --pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei" -o readme.pdf`
   - list fonts, `fc-list`
-- pandoc + latex 中文方案，use `one/pandoc:2.0`，步骤
-  - run docker
 
-    ```
-    docker run \
-    --rm -it \
-    -v $(pwd)/works:/source \
-    one/pandoc:2.0 \
-    /bin/bash
-    ```
+## pandoc + latex 中文方案，use `one/pandoc:2.0`，步骤
 
-  - in container
+### run docker
 
-    ```
-    # 如果想重新设置中文字体
-    # -V CJKmainfont="WenQuanYi Micro Hei" \
-    # 设置英文字体，中文字体在my.tex 设置
-    # -V mainfont="Georgia" \
-    pandoc --toc --toc-depth=3 readme.md --pdf-engine=xelatex \
-    --template=my.tex \
-    -V CJKmainfont="AR PL UMing CN" \
-    -V mainfont="Georgia" \
-    -o readme3.pdf
-    ```
+```
+docker run \
+--rm -it \
+-v $(pwd)/works:/source \
+one/pandoc:2.0 \
+/bin/bash
+```
 
-  - 中文字体
-    - `WenQuanYi Zen Hei` - zhhei
-    - `AR PL UMing CN` - zhsong
-    - `AR PL UKai CN` - zhkai
-  - 模版 `templates/my.tex`
+### in container
+
+```
+# 如果想重新设置中文字体
+# -V CJKmainfont="WenQuanYi Micro Hei" \
+# 设置英文字体，中文字体在my.tex 设置
+# -V mainfont="Georgia" \
+pandoc --toc --toc-depth=3 readme.md --pdf-engine=xelatex \
+--template=my.tex \
+-V documentclass=book \
+-V CJKmainfont="AR PL UMing CN" \
+-V mainfont="Georgia" \
+-o readme3.pdf
+```
+
+### 中文字体
+- `WenQuanYi Zen Hei` - zhhei
+- `AR PL UMing CN` - zhsong
+- `AR PL UKai CN` - zhkai
+
+### 模版 `templates/my.tex`
+
+### pdf 显示图片
+
+```
+![xxxx](1538307638609112927831c.jpeg "Voyage to the moon")
+```
 
 ## beamer
 
