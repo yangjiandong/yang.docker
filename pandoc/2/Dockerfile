@@ -64,3 +64,17 @@ ENV PANDOC_DIR=/root/.cabal/bin/
 
 # add pandoc to the path
 ENV PATH=${PATH}:${PANDOC_DIR}
+
+#multimarkdown
+ENV cc=gcc
+
+RUN apt-get update  && apt-get install -y \
+    libglib2.0-dev git make cmake g++ \
+    && git clone https://github.com/fletcher/MultiMarkdown-6.git \
+    && cd MultiMarkdown-6 \
+#    && ./update_git_modules \
+#    && ./link_git_modules \
+    && make && cd build && make \
+    && cp multimarkdown /bin \
+    && cd / && rm -rf MultiMarkdown-6 \
+    && rm -rf /var/lib/apt/lists/*
