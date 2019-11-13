@@ -13,6 +13,14 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+11.13
+---
+
+### pandoc 2.0
+
+- add `multimarkdown`
+- pandoc remove `latex-formulae-pandoc`
+
 10.18
 ---
 

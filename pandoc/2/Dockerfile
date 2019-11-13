@@ -30,26 +30,11 @@ RUN apt-get clean &&\
                           librsvg2-bin \
                           librsvg2-common \
                           zlib1g \
-                          zlib1g-dev &&\
+                          zlib1g-dev \
+                          libglib2.0-dev git make cmake g++ &&\
 # fix the access rights for imagemagick
   sed -i -e 's/rights="none"/rights="read|write"/g' /etc/ImageMagick-6/policy.xml &&\
   sed -i -e 's/<\/policymap>/<policy domain="module" rights="read|write" pattern="{PS,PDF,XPS}" \/>\n<\/policymap>/g' /etc/ImageMagick-6/policy.xml &&\
-# get the newest list of packages
-    cabal update &&\
-# install the dependencies of the packages we want
-    cabal install --dependencies-only \
-                  pandoc \
-                  pandoc-citeproc \
-                  pandoc-crossref \
-                  latex-formulae-pandoc &&\
-# install the packages we want
-    cabal install pandoc \
-                  pandoc-citeproc \
-                  pandoc-crossref \
-                  latex-formulae-pandoc &&\
-# clear unnecessary cabal files
-    rm -rf /root/.cabal/logs &&\
-    rm -rf /root/.cabal/packages &&\
 # clean up all temporary files
     apt-get clean &&\
     apt-get autoclean -y &&\
@@ -58,6 +43,25 @@ RUN apt-get clean &&\
     rm -rf /tmp/* /var/tmp/* &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm -f /etc/ssh/ssh_host_*
+
+COPY config /root/.cabal/
+RUN \
+# get the newest list of packages
+    cabal update &&\
+# install the dependencies of the packages we want
+    cabal install --dependencies-only \
+                  pandoc \
+                  pandoc-citeproc \
+                  pandoc-crossref &&\
+# install the packages we want
+    cabal install pandoc \
+                  pandoc-citeproc \
+                  pandoc-crossref &&\
+# clear unnecessary cabal files
+    rm -rf /root/.cabal/logs &&\
+    rm -rf /root/.cabal/packages &&\
+# clean up all temporary files
+    rm -rf /tmp/* /var/tmp/*
 
 # we remember the path to pandoc in a special variable
 ENV PANDOC_DIR=/root/.cabal/bin/
@@ -68,13 +72,10 @@ ENV PATH=${PATH}:${PANDOC_DIR}
 #multimarkdown
 ENV cc=gcc
 
-RUN apt-get update  && apt-get install -y \
-    libglib2.0-dev git make cmake g++ \
-    && git clone https://github.com/fletcher/MultiMarkdown-6.git \
+RUN git clone https://github.com/fletcher/MultiMarkdown-6.git \
     && cd MultiMarkdown-6 \
 #    && ./update_git_modules \
 #    && ./link_git_modules \
     && make && cd build && make \
     && cp multimarkdown /bin \
-    && cd / && rm -rf MultiMarkdown-6 \
-    && rm -rf /var/lib/apt/lists/*
+    && cd / && rm -rf MultiMarkdown-6
