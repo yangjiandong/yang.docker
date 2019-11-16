@@ -7,5 +7,5 @@
 docker run \
   --rm -it \
   -v $(pwd)/works:/source \
-  one/pandoc:2.0 \
+  one/pandoc:2.x \
   /bin/bash

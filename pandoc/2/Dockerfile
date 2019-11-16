@@ -13,13 +13,24 @@
 FROM thomasweise/docker-texlive-full
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
+# 使用 aliyuncs 的源
+COPY sources.list /etc/apt/sources.list
+
 RUN apt-get clean &&\
     apt-get update &&\
     apt-get autoclean -y &&\
     apt-get autoremove -y &&\
     apt-get update &&\
 # install tzdata, which we will need down the line
-    apt-get install -f -y tzdata &&\
+    apt-get install -f -y tzdata sudo
+
+ENV TZ 'Asia/Shanghai'
+RUN echo $TZ > /etc/timezone && \
+  rm /etc/localtime && \
+  ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata
+
+RUN \
 # We install cabal, a Haskell package manager, because we want the newest
 # pandoc and filters which we can only get from there.
 # We also install zlib1g, as we will need it later on.
@@ -79,3 +90,46 @@ RUN git clone https://github.com/fletcher/MultiMarkdown-6.git \
     && make && cd build && make \
     && cp multimarkdown /bin \
     && cd / && rm -rf MultiMarkdown-6
+
+# node, gitbook
+# 配置环境变量
+ENV NVM_DIR=/usr/local/nvm
+ENV NODE_VERSION 8.15.0
+# Use private npm
+ADD npmrc /root/.npmrc
+
+RUN mkdir $NVM_DIR
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+RUN . $NVM_DIR/nvm.sh \
+    && nvm install v$NODE_VERSION \
+    && nvm use v$NODE_VERSION \
+    && nvm alias default v$NODE_VERSION \
+    && npm install gitbook-cli -g \
+    && gitbook -V
+
+# ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+EXPOSE 4000
+
+# COPY sources.list /etc/apt/sources.list
+# RUN apt-get install calibre
+COPY calibre-4.3.0-x86_64.txz .
+RUN mkdir -p /opt/calibre \
+  && rm -rf /opt/calibre/* \
+  && tar xvf /calibre-4.3.0-x86_64.txz -C /opt/calibre \
+  && /opt/calibre/calibre_postinstall \
+  && rm -rf /calibre-4.3.0-x86_64.txz
+
+ENV CALIBRE_PATH /opt/calibre
+ENV PATH $CALIBRE_PATH:$PATH
+
+# Add none root user
+RUN adduser --disabled-password --gecos '' admin
+RUN adduser admin sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# USER admin
+# RUN  useradd admin && echo "admin:admin" | chpasswd && adduser admin sudo
+# USER admin

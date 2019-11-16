@@ -20,6 +20,10 @@ tips
 
 - add `multimarkdown`
 - pandoc remove `latex-formulae-pandoc`
+- add gitbook
+- gitbook pdf , 暂时不行
+  - as root run ebook-convert, `Running as root without --no-sandbox is not supported`
+  - 参考 `https://hub.docker.com/r/beeronbeard/docker-gitbook-pdf/dockerfile`
 
 10.18
 ---

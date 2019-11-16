@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t one/pandoc:2.0 .
+docker build -t one/pandoc:2.x .
