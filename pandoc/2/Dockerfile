@@ -124,12 +124,11 @@ RUN mkdir -p /opt/calibre \
 
 ENV CALIBRE_PATH /opt/calibre
 ENV PATH $CALIBRE_PATH:$PATH
+ENV QTWEBENGINE_DISABLE_SANDBOX 1
 
 # Add none root user
-RUN adduser --disabled-password --gecos '' admin
-RUN adduser admin sudo
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# RUN adduser --disabled-password --gecos '' admin
+# RUN adduser admin sudo
+# RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-# USER admin
-# RUN  useradd admin && echo "admin:admin" | chpasswd && adduser admin sudo
 # USER admin

@@ -21,10 +21,11 @@ tips
 - add `multimarkdown`
 - pandoc remove `latex-formulae-pandoc`
 - add gitbook
-- gitbook pdf , 暂时不行
+- gitbook pdf , ok
   - as root run ebook-convert, `Running as root without --no-sandbox is not supported`
   - 参考 `https://hub.docker.com/r/beeronbeard/docker-gitbook-pdf/dockerfile`
-
+  - add `ENV QTWEBENGINE_DISABLE_SANDBOX 1`
+  
 10.18
 ---
 
