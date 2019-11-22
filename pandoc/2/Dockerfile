@@ -126,9 +126,7 @@ ENV CALIBRE_PATH /opt/calibre
 ENV PATH $CALIBRE_PATH:$PATH
 ENV QTWEBENGINE_DISABLE_SANDBOX 1
 
-# Add none root user
-# RUN adduser --disabled-password --gecos '' admin
-# RUN adduser admin sudo
-# RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-# USER admin
+# plantuml
+RUN \
+    apt-get update &&\
+    apt-get install -f -y graphviz default-jre

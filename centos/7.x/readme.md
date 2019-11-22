@@ -7,6 +7,8 @@ centos 7.6
 ### base on million12/centos-supervisor:4.0.2
 
 - one/centos:7
+  - run.sh
+  - in other shell, ssh root@localhost -p 4426, password 123456
 - centos-supervisor:4.0.2 相关配置
 
   ```
