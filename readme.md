@@ -20,6 +20,7 @@ tips
 
 - markdonw 文档管理
 - mindoc2
+  - [参考 docker-compose](https://gitee.com/dreamidea/mindoc-docker-compose)
 
 11.13
 ---
