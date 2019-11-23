@@ -9,8 +9,13 @@ services:
       - 8181:8181
     volumes:
       - ./mindoc/conf/app.conf:/mindoc/conf/app.conf
-      - ./mindoc/uploads:/mindoc/uploads
     environment:
+      - MINDOC_RUN_MODE=prod
+      - MINDOC_DB_ADAPTER=mysql
+      - MINDOC_DB_HOST=mysql
+      - MINDOC_DB_DATABASE=mindoc
+      - MINDOC_DB_USERNAME=root
+      - MINDOC_DB_PASSWORD=123
       - MINDOC_CACHE=true
       - MINDOC_CACHE_PROVIDER=file
       - MINDOC_ENABLE_EXPORT=false
