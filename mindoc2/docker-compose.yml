@@ -1,12 +1,36 @@
 version: '2.1'
 
 services:
+  mindoc:
+    image: registry.cn-hangzhou.aliyuncs.com/mindoc/mindoc:v2.0-beta.2
+    privileged: true
+    ports:
+      - 8181:8181
+    volumes:
+      - ./mindoc/uploads:/mindoc/uploads
+    environment:
+      - MINDOC_RUN_MODE=prod
+      - MINDOC_DB_ADAPTER=mysql
+      - MINDOC_DB_HOST=db
+      - MINDOC_DB_DATABASE=mindoc
+      - MINDOC_DB_USERNAME=root
+      - MINDOC_DB_PASSWORD=123
+      - MINDOC_CACHE=true
+      - MINDOC_CACHE_PROVIDER=file
+      - MINDOC_ENABLE_EXPORT=false
+      - MINDOC_BASE_URL=
+      - MINDOC_CDN_IMG_URL=
+      - MINDOC_CDN_CSS_URL=
+      - MINDOC_CDN_JS_URL=
+    depends_on:
+      - db
 
   db:
     image: one/mysql:5.7
     volumes:
       - ./mysql/mysql:/var/lib/mysql:rw
       - ./mysql/conf:/etc/mysql:ro
+      - ./mysql/run:/var/run/mysqld
     privileged: true
     ports:
       - 3306:3306

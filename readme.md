@@ -13,6 +13,14 @@ tips
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
+11.22
+---
+
+### mindoc
+
+- markdonw 文档管理
+- mindoc2
+
 11.13
 ---
 
@@ -25,7 +33,7 @@ tips
   - as root run ebook-convert, `Running as root without --no-sandbox is not supported`
   - 参考 `https://hub.docker.com/r/beeronbeard/docker-gitbook-pdf/dockerfile`
   - add `ENV QTWEBENGINE_DISABLE_SANDBOX 1`
-  
+
 10.18
 ---
 
