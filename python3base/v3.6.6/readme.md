@@ -1,8 +1,14 @@
+## todo
+
+- [nbdev](https://nbdev.fast.ai/)
+
+## tools
+
 - python:3.6.6
     - python
     - python3
     - java11
-    
+
 ## [北京二手房房价分析和预测](https://github.com/xiaoyusmd/Bj_HousePricePredict)
 
 ## [用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)

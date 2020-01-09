@@ -32,9 +32,13 @@ $endif$
   \usepackage{fontspec,xltxtra,xunicode}
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \punctstyle{quanjiao}
-  \setCJKmainfont{AR PL UMing CN}
-  \setCJKsansfont{AR PL UMing CN}
-  \setCJKmonofont{WenQuanYi Micro Hei}
+  \setCJKmainfont{Songti TC}%AR PL UMing HK, WenQuanYi Zen Hei Mono, WenQuanYi Zen Hei, AR PL UKai CN, AR PL SungtiL GB
+  \setCJKsansfont{WenQuanYi Zen Hei}
+  \setCJKmonofont{WenQuanYi Zen Hei Mono}%AR PL UMing HK, AR PL UMing CN, WenQuanYi Zen Hei Mono
+
+  %\setCJKmainfont{AR PL UMing CN}
+  %\setCJKsansfont{AR PL UMing CN}
+  %\setCJKmonofont{WenQuanYi Micro Hei}
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 $for(fontfamilies)$
   \newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}

@@ -130,3 +130,6 @@ ENV QTWEBENGINE_DISABLE_SANDBOX 1
 RUN \
     apt-get update &&\
     apt-get install -f -y graphviz default-jre
+
+# Songti.ttc
+COPY Songti.ttc /usr/share/fonts/Songti.ttc

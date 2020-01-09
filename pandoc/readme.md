@@ -50,6 +50,8 @@ pandoc --toc --toc-depth=3 readme.md --pdf-engine=xelatex \
 ```
 
 ### 中文字体
+
+- `Songti TC` - 苹果宋
 - `WenQuanYi Zen Hei` - zhhei
 - `AR PL UMing CN` - zhsong
 - `AR PL UKai CN` - zhkai
