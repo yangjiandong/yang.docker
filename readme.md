@@ -1,5 +1,4 @@
-Docker
-===
+# Docker
 
 tips
 ---
@@ -16,6 +15,17 @@ tips
 ### one/py3base:3.6.6
 
 - pytorch
+
+2020.02.08
+---
+
+### openJDK
+
+oralce java 的其他选择，性能也不错，可以试试
+
+- aws openjdk，`centos/corretto-8`
+- adoptopenjdk, `docker pull adoptopenjdk:8-openj9`
+  - 查看操作系统版本, `cat /proc/version`
 
 11.22
 ---
