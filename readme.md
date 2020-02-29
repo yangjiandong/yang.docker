@@ -16,6 +16,27 @@ tips
 
 - pytorch
 
+02.29
+---
+
+### Wechaty, 微信
+
+- pull docker image
+
+  ```bash
+  docker pull zixia/wechaty
+  # or
+  docker pull hub-mirror.c.163.com/zixia/wechaty
+  ```
+
+- examples
+
+  ```
+  run.sh mybot.js
+  ```
+
+- wechaty-getting-started, docker 示例比较老
+
 02.19
 ---
 
