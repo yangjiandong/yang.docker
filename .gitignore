@@ -40,3 +40,5 @@ centos/tomcat8.tar.gz
 python3base/v3.6.6/font/Songti.ttc
 pandoc/2/calibre-4.3.0-x86_64.txz
 pandoc/2/Songti.ttc
+wechaty/examples/.bash_history
+wechaty/examples/.python_history

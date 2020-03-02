@@ -4,7 +4,7 @@
     # puppet: wechaty-puppet-mock
 docker run \
     -t -i --rm \
-    -e WECHATY_PUPPET=wwechaty-puppet-wechat4u \
+    -e WECHATY_PUPPET=wechaty-puppet-padchat \
     --mount type=bind,source="$(pwd)",target=/bot \
     zixia/wechaty:latest \
     "$@"

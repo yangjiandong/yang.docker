@@ -14,8 +14,12 @@ Wechaty, 微信
 
   ```
   run.sh mybot.js
+  # or shell
+  run.sh shell
   ```
 
+  具体启动项参考 `entrypoint.sh`
+  
 - wechaty-getting-started, docker 示例比较老
 
 ### q
