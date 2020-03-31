@@ -16,10 +16,22 @@ tips
 
 - pytorch
 
+03.30
+---
+
+- apisix
+- [hellotalk/apisix](https://hub.docker.com/r/hellotalk/apisix)
+
+  ```
+  docker pull hellotalk/apisix
+  ```
+
 02.29
 ---
 
-### Wechaty, 微信
+### [todo] Wechaty, 微信
+
+暂时 token 问题不能解决
 
 - pull docker image
 

@@ -1,6 +1,13 @@
 ngixn 1.12
 ---
 
+### nginx 增加图片输出多尺寸功能
+
+- run.sh, `-v $(pwd)/static://usr/share/nginx/html/front/static`
+- use
+  - `http://localhost:8888/front/static/demo/ad1.jpg`
+  - `http://localhost:8888/front/static/demo/ad1.jpg!300x200`
+
 ### use
 
 - run.sh
@@ -24,7 +31,7 @@ ngixn 1.12
 - www
 
   默认首页
-  
+
 - config
   - default: conf/conf.d/default.conf
   - 自定义项目: conf/cond.d/app.conf

@@ -10,6 +10,11 @@ Wechaty, 微信
   docker pull hub-mirror.c.163.com/zixia/wechaty
   ```
 
+  - python3
+  - git, vim
+  - ffmpeg
+  - node12
+
 - examples
 
   ```
@@ -19,7 +24,9 @@ Wechaty, 微信
   ```
 
   具体启动项参考 `entrypoint.sh`
-  
+
+  - 只安装了 wechaty-puppet-padplus，需配合 `WECHATY_PUPPET_PADPLUS_TOKEN`
+
 - wechaty-getting-started, docker 示例比较老
 
 ### q
