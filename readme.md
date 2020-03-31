@@ -16,6 +16,13 @@ tips
 
 - pytorch
 
+03.31
+---
+
+### nginx1.12, openresty1.15.8
+
+- base one/centos:7
+
 03.30
 ---
 
