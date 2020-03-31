@@ -1,4 +1,5 @@
 {
     "python.linting.enabled": false,
-    "svn.ignoreMissingSvnWarning": true
+    "svn.ignoreMissingSvnWarning": true,
+    "python.dataScience.jupyterServerURI": "http://localhost:8888/jub/?token=dad09f48edee87236db372ef858a42841d1bf1bc18db824d"
 }

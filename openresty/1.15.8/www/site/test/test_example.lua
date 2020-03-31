@@ -4,6 +4,8 @@ function say_hello()
   -- ngx.say(os.date("%x", os.time()))
   ngx.say(os.date("%Y-%m-%d %H:%M:%S", os.time()))
   common.hello()
+  local magick = require "magick"
+  -- magick.thumb("ad1.jpg", "100x100", "ad1_dest.jpg")
 end
 
 say_hello()

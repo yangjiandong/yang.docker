@@ -21,3 +21,37 @@ in container
   - `http://localhost:8888/front/static/demo/ad1.jpg!300x200`
 
 - 找不到 `image_filter` module
+
+以上方式不适用 openresty
+
+### use magick
+
+[参考](https://blog.didiyun.com/index.php/2018/11/19/imagemagickopenresty/)
+
+```
+yum -y install ImageMagick ImageMagick-devel
+```
+
+- 下载 Lua 的 Magick 库
+
+  选用开源的 leafo/magick, github 地址：https://github.com/leafo/magick.git 。
+
+  cd /root/zhangjie/tools
+  git clone https://github.com/leafo/magick.git
+
+- 确认库功能正常
+
+  cd /root/zhangjie/tools/magick
+  cp /opt/app/openresty/nginx/test/didiyun.png .
+
+- 编写测试用的 Lua 程序 image_convert_test.lua：
+
+  [root@10-255-0-25 magick]# cat image_convert_test.lua
+
+  local magick = require("magick")
+  magick.thumb("didiyun.png", "100x100", "didiyun_dest.png")
+
+- 执行命令：
+
+  /opt/app/openresty/luajit/bin/luajit image_convert_test.lua
+
