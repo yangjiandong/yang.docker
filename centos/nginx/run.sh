@@ -26,5 +26,5 @@ docker run \
     -v $(pwd)/conf:/etc/nginx:ro \
     -v $(pwd)/logs:/var/log/nginx \
     -v $(pwd)/www:/usr/share/nginx/html \
-    -v $(pwd)/static://usr/share/nginx/html/front/static \
+    -v $(pwd)/static:/usr/share/nginx/html/front/static \
     one/nginx:1.12
