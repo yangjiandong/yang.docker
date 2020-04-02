@@ -16,7 +16,7 @@ end
 
 local function hello()
     count = count + 1
-    ngx.say("count :", count)
+    ngx.say("计数 :", count)
 end
 
 local function strConcat(...)

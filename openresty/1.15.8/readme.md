@@ -1,5 +1,9 @@
 # openresty 1.15.8
 
+## use imageMagick
+
+- [OpenResty(Nginx)+Lua+GraphicsMagick实现缩略图功能](https://www.cnblogs.com/archoncap/p/4560613.html)
+
 ## docker base centos:7
 
 1.13.6 base centos:7.6
