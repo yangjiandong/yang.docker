@@ -1,8 +1,16 @@
 # openresty 1.15.8
 
-## use imageMagick
+## use GraphicsMagick
 
+- [nginx-lua-GraphicsMagick](https://github.com/yanue/nginx-lua-GraphicsMagick)
 - [OpenResty(Nginx)+Lua+GraphicsMagick实现缩略图功能](https://www.cnblogs.com/archoncap/p/4560613.html)
+- [nlgm](https://github.com/wudi/nlgm)
+- run GraphicsMagick
+
+  ```
+  gm convert xx
+  ```
+- example
 
 ## docker base centos:7
 

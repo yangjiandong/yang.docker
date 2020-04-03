@@ -33,7 +33,10 @@ RUN yum install -y yum-utils \
     && yum install -y \
         gettext \
         gzip \
-        ImageMagick ImageMagick-devel \
+        libjpeg libjpeg-devel libpng libpng-devel \
+        giflib giflib-devel freetype freetype-devel openjpeg \
+        openjpeg-devel ghostscript \
+        GraphicsMagick GraphicsMagick-devel \
         make \
         openresty${RESTY_RPM_FLAVOR}-${RESTY_RPM_VERSION}.${RESTY_RPM_DIST}.${RESTY_RPM_ARCH} \
         openresty-opm-${RESTY_RPM_VERSION}.${RESTY_RPM_DIST} \

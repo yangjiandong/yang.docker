@@ -9,6 +9,6 @@ docker run \
     -v $(pwd)/logs:/var/log/nginx \
     -v $(pwd)/www:/usr/local/openresty/nginx/html \
     -v $(pwd)/workspace:/app \
-    -v $(pwd)/static:/usr/share/nginx/html/front/static \
+    -v $(pwd)/static:/usr/local/openresty/nginx/html/front/static \
     -p 8088:80 -p 4436:22 \
     one/openresty:1.15.8
