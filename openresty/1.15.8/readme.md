@@ -2,15 +2,21 @@
 
 ## use GraphicsMagick
 
+- 安装完 graphicMagick 查看支持格式
+  ```
+  gm convert -list formats
+  ```
+- run GraphicsMagick
+  - 只缩小不放大, `gm convert input.jpg -resize "500x500>" output_1.jpg`
+  - 等比缩图 （缺点：产生白边）, `gm convert input.jpg -thumbnail "100x100" output_1.jpg`
+  - 非等比缩图，按给定的参数缩图（缺点：长宽比会变化）, `gm convert input.jpg -thumbnail "100x100!" output_2.jpg`
+  - 裁剪后保证等比缩图 （缺点：裁剪了图片的一部分）, `gm convert input.jpg -thumbnail "100x100^" -gravity center -extent 100x100 output_3.jpg`
+- example
+- [openresty图片压缩之 lua调用GraphicsMagick](https://my.oschina.net/u/2553994/blog/669116)
 - [nginx-lua-GraphicsMagick](https://github.com/yanue/nginx-lua-GraphicsMagick)
 - [OpenResty(Nginx)+Lua+GraphicsMagick实现缩略图功能](https://www.cnblogs.com/archoncap/p/4560613.html)
 - [nlgm](https://github.com/wudi/nlgm)
-- run GraphicsMagick
 
-  ```
-  gm convert xx
-  ```
-- example
 
 ## docker base centos:7
 
