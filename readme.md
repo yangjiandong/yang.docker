@@ -4,6 +4,7 @@ tips
 ---
 
 ### docker registry mirrors
+
 - https://exomynm5.mirror.aliyuncs.com
 - https://registry.docker-cn.com
 
@@ -15,6 +16,31 @@ tips
 ### one/py3base:3.6.6
 
 - pytorch
+
+04.22
+---
+
+### paddlepaddle
+
+- [github](https://github.com/paddlepaddle/paddle)
+- pull docker
+
+  ```
+  docker pull hub.baidubce.com/paddlepaddle/paddle:1.7.2
+  docker run --name paddle -it -v $PWD:/paddle hub.baidubce.com/paddlepaddle/paddle:1.7.2 /bin/bash
+  ```
+
+  test:
+
+  ```
+  import paddle.fluid
+  paddle.fluid.install_check.run_check()
+  # 如果出现 Your Paddle Fluid is installed successfully!，说明您已成功安装。
+  ```
+
+- one/panddle, use python3.6
+
+  python3base/paddle
 
 03.31
 ---
