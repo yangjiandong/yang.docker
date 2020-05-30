@@ -17,5 +17,6 @@ docker run --rm -it \
   --sysctl net.ipv4.ip_local_port_range="1024 65535" \
   --ulimit nofile=65536:65536 \
   --privileged=true \
+  -v $(pwd)/work:/workspace \
   --name centos7 \
   one/centos:7

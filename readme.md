@@ -17,6 +17,14 @@ tips
 
 - pytorch
 
+05.30
+---
+
+### code server
+
+- [linuxserver/docker-code-server](https://github.com/linuxserver/docker-code-server)
+- code-serve
+
 04.22
 ---
 

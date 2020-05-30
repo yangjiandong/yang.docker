@@ -1,6 +1,7 @@
 ## todo
 
 - [nbdev](https://nbdev.fast.ai/)
+- [PolyNote](https://zhuanlan.zhihu.com/p/92495340)
 
 ## tools
 
