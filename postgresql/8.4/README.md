@@ -7,7 +7,7 @@ psql
 恢复老三环境
 
 - create user, db
-    - `docker exec -it postgresql8 createuser -U postgres -P root`
+    - `docker exec -it postgresql8 createuser -U postgres -P root`, 提示输入密码
     - `docker exec -it postgresql8 createdb -E UNICODE -U root jsalary`
 - load data
 

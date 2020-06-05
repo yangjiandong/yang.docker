@@ -46,10 +46,13 @@ tips
   # 如果出现 Your Paddle Fluid is installed successfully!，说明您已成功安装。
   ```
 
-- one/panddle, use python3.6
+- one/panddle, use python3.6, python3base/paddle
+  - 配合 vscode remote jupyter , 取消 password, get token
 
-  python3base/paddle
-
+    ```
+    docker exec -it jub jupyter notebook list
+    ```
+    
 03.31
 ---
 
