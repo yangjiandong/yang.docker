@@ -1,0 +1,28 @@
+version: "3"
+services:
+  pg_db:
+    container_name: pg_db
+    image: "postgres:9.6.17"
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123
+      POSTGRES_MULTIPLE_DATABASES: jira_db,jira_test_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/postgresql/data/
+
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - "8081:8081"
+    links:
+      - pg_db:pg_db
+    environment:
+      - DATABASE_URL=postgres://root:123@pg_db:5432/jira_db?sslmode=disable
+    depends_on:
+      - pg_db
