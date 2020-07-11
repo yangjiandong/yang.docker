@@ -47,12 +47,20 @@ tips
   ```
 
 - one/panddle, use python3.6, python3base/paddle
-  - 配合 vscode remote jupyter , 取消 password, get token
+  - work/run_jupyter.sh
+
+    ```
+    #!/usr/bin/env bash
+    jupyter lab --allow-root -y --no-browser --ip=0.0.0.0 --NotebookApp.base_url=/jub
+    ```
+
+  - run.sh, access `http://localhost:8888/jub/lab?`, pwd:123
+  - 如果采用 vscode remote jupyter , 需取消 password, 获取 token 方式
 
     ```
     docker exec -it jub jupyter notebook list
     ```
-    
+
 03.31
 ---
 
