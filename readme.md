@@ -17,6 +17,89 @@ tips
 
 - pytorch
 
+07.11
+---
+
+### mysql 5.7
+
+#### update mysql5.7 my.cnf
+
+  lower_case_table_names = 1 to 0
+  但报错，`the data directory is on a case-insensitive file system which is an unsupported combination`
+  公司产品上没问题
+
+#### mysql 开启binlog日志
+
+以作日志记录 和数据恢复
+
+没做
+
+#### mysql 增加审计插件
+
+[参考 MySQL审计正确使用姿势](https://zhuanlan.zhihu.com/p/93539937)
+
+  ```
+  mycli -h localhost -u root -p 123
+  // 查看插件路径
+  show variables like 'plugin_dir';
+  // 查看插件
+  show plugins;
+  // 进入容器看下有什么插件
+  docker exec -it mysql5.7 bash
+  cd /usr/lib/mysql/plugin/
+  // 通过 docker 启动指定映射安装
+  show global status like '%audit%';
+  ```
+
+  [download audit plugin](https://bintray.com/package/files/mcafee/mysql-audit-plugin/release)
+
+##### audit config
+
+- show mysql version
+  ```
+  mysql root@localhost:(none)> select version();
+  +------------+
+  | version()  |
+  +------------+
+  | 5.7.18-log |
+  +------------+
+  1 row in set
+  Time: 0.028s
+  // or use status or use \s
+  > status;
+  ```
+- `show global status like 'AUDIT_version';`
+- show config: `show global variables like '%audi%';`
+- 可以审计的cmd, `SELECT name FROM performance_schema.setup_instruments WHERE name LIKE "statement/sql/%" ORDER BY name;`
+- 生产环境下的配置
+  - my.cnf, `plugin-load=AUDIT=libaudit_plugin.so`
+  - sql 查看下状态，`select plugin_name, plugin_status from information_schema.plugins where plugin_name like '%audit%';`
+    ```
+    +-------------+---------------+
+    | plugin_name | plugin_status |
+    +-------------+---------------+
+    | AUDIT       | ACTIVE        |
+    +-------------+---------------+
+    ```
+  - `set global audit_json_file=on;`，输出日志文件 `mysql-audit.json`
+  - Add log rotation, `set global audit_json_file_flush=on;`
+    When it is executed you will see the following output in the mysql error log:
+      [Note] Audit Plugin: success opening file: mysql-audit.json.
+      [Note] Audit Plugin: Log flush complete.
+
+#### mysql 增加无密码 ssh 登录
+
+为了适应 BenchmarkSQL 性能测试
+
+生成authorized_keys文件
+```
+ssh-keygen -t rsa
+#按回车选择默认的没有密码。此时，会在生成一个文件~/.ssh/id_rsa.pub
+cat ~/.ssh/id_rsa.pub >authorized_keys
+```
+
+mysql/5.7/ssh
+
 05.30
 ---
 

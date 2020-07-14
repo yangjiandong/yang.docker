@@ -1,14 +1,16 @@
 
 # max-connections 在 docker-compose 方式下通过 my.conf 配置有效
-# --max-connections=500
+# --max-connections=500, use show variables like 'max_connections';show global status like 'Max_used_connections';
+# ? mac 下 docker 有效
 docker run --name mysql5.7 \
     -v $(pwd)/mysql5.7:/var/lib/mysql \
     -v $(pwd)/run:/var/run/mysqld \
     -v $(pwd)/conf:/etc/mysql \
+    -v $(pwd)/plugin/audit/libaudit_plugin.so:/usr/lib/mysql/plugin/libaudit_plugin.so \
     -p 3306:3306 \
     -e 'MYSQL_ROOT_PASSWORD=123' \
     -d \
-    one/mysql:5.7
+    one/mysql:5.7 --max-connections=500
 
 # on centos7
 # docker run --name mysql \

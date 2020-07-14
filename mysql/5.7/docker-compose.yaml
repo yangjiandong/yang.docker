@@ -1,0 +1,152 @@
+version: "2.0"
+
+networks:
+    sshapp-scloud:
+        external:
+            name: sshapp-scloud
+
+services:
+    nginx:
+        image: one/nginx:1.12
+        container_name: scloud_nginx
+        networks:
+            - sshapp-scloud
+        volumes:
+            - ./nginx/conf:/etc/nginx:ro
+            - ./nginx/logs:/var/log/nginx
+            - ./nginx/www:/usr/share/nginx/html
+            - ./nginx/workspace:/app
+            - ./nginx/ssl:/usr/share/nginx/ssl
+        env_file:
+            - ./environment.env
+        privileged: true
+        ports:
+            - "${SLOUD_NGINX_PORT}:80"
+    nacos:
+        container_name: nacos
+        hostname: nacos
+        image: one/java:8
+        networks:
+            - sshapp-scloud
+        env_file:
+            - ./environment.env
+        environment:
+            NACOS_MYSQL_HOST: ${NACOS_MYSQL_HOST}
+            NACOS_MYSQL_PORT: ${NACOS_MYSQL_PORT}
+            NACOS_MYSQL_DB_NAME: ${NACOS_MYSQL_DB_NAME}
+            NACOS_MYSQL_USERNAME: ${NACOS_MYSQL_USERNAME}
+            NACOS_MYSQL_PASSWORD: ${NACOS_MYSQL_PASSWORD}
+        volumes:
+            - ./nacos_app:/workspace:rw
+        privileged: true
+        ports:
+            - "${NACOS_PORT}:8848"
+        working_dir: /workspace
+        command: java -server -Xms512m -Xmx512m -jar -Dnacos.standalone=true nacos-server.jar
+        depends_on:
+            - mysql
+    mysql:
+        container_name: mysql
+        image: one/mysql:5.7
+        hostname: mysql
+        networks:
+            - sshapp-scloud
+        env_file:
+            - ./environment.env
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        volumes:
+            - ./mysql/mysql:/var/lib/mysql
+            - ./mysql/mysql-conf:/etc/mysql
+        #            - ./mysql/binlog:/var/log/mysql # 如果是主库，放开注释。并且需要 chmod -R 777 mysql/binlog
+        privileged: true
+        ports:
+            - "${MYSQL_PORT}:3306"
+    redis:
+        container_name: redis
+        image: one/redis:3.2.9
+        hostname: redis
+        networks:
+            - sshapp-scloud
+        env_file:
+            - ./environment.env
+        volumes:
+            - ./redis/data:/data
+            - ./redis/conf/redis.conf:/etc/redis.conf
+        privileged: true
+        ports:
+            - "${REDIS_PORT}:6379"
+        command: redis-server /etc/redis.conf
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:3.6.0-management
+        hostname: rabbitmq
+        networks:
+            - sshapp-scloud
+        env_file:
+            - ./environment.env
+        environment:
+            - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+            - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+            - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
+        volumes:
+            - ./rabbitmq:/var/lib/rabbitmq
+        ports:
+            - "${RABBITMQ_PORT1}:5672"
+            - "${RABBITMQ_PORT2}:15672"
+        privileged: true
+    weed-master:
+        container_name: weed-master
+        image: carmark/seaweedfs
+        networks:
+            - sshapp-scloud
+        env_file:
+            - ./environment.env
+        volumes:
+            - ./seaweedfs/config:/tmp/config:rw
+        ports:
+            - "${WEED_MASTER1_PORT}:9333"
+        privileged: true
+        command: -v=3 master -ip=${DOCKER_HOST_ADDR} -port=9333 -mdir=/tmp/config/m
+    weed-volumn:
+        container_name: weed-volumn
+        image: carmark/seaweedfs
+        networks:
+            - sshapp-scloud
+        env_file:
+            - ./environment.env
+        volumes:
+            - ./seaweedfs/data:/tmp/data:rw
+        ports:
+            - "${WEED_VOLUMN1_1_PORT}:9381"
+        privileged: true
+        depends_on:
+            - weed-master
+        command: -v=3 volume -ip=${DOCKER_HOST_ADDR} -port=9381 -dir=/tmp/data/v -mserver=${DOCKER_HOST_ADDR}:9333 -max=100
+    xxl-job:
+        image: xxl-job:2.1.1
+        container_name: xxl-job
+        ports:
+            - "${XXL_JOB_PORT}:8080"
+        volumes:
+            - ./xxl-job/conf/application.properties:/application.properties
+            - ./xxl-job/logs:/data/applogs/xxl-job/
+        environment:
+            - MYSQL_HOST=${XXL_JOB_MYSQL_HOST}
+            - MYSQL_PORT=${XXL_JOB_MYSQL_PORT}
+            - MYSQL_DB_NAME=${XXL_JOB_MYSQL_DB_NAME}
+            - MYSQL_USERNAME=${XXL_JOB_MYSQL_USERNAME}
+            - MYSQL_PASSWORD=${XXL_JOB_MYSQL_PASSWORD}
+    sentinel:
+        container_name: sentinel
+        hostname: sentinel
+        image: one/java:8
+        networks:
+            - sshapp-scloud
+        privileged: true
+        volumes:
+            - ./sentinel:/workspace:rw
+        ports:
+            - "${SENTINEL_PORT}:8080"
+        working_dir: /workspace
+        command: java -Xms512m -Xmx512m -jar sentinel-dashboard-1.7.0.jar
