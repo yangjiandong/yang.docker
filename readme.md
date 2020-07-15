@@ -97,6 +97,7 @@ tips
   #按回车选择默认的没有密码。此时，会在生成一个文件~/.ssh/id_rsa.pub
   cat ~/.ssh/id_rsa.pub >authorized_keys
   ```
+  需要注意，如果有多个客户(多个id_rsa.pub)，需将客户端机器上的"id_rsa.pub"文件内容追加到"~/.ssh/authorized_keys"文件中。`ssh/id_rsa` 下是本次产生的证书
 - mysql/5.7/ssh/build.sh
 > 注意，该版本debian 官方和国内都不再提供源，所以以后镜像要注意升级
 - `docker exec -it mysql5.7 bash`, 进入容器启动 ssh 服务
@@ -107,7 +108,7 @@ tips
 - test, `ssh root@localhost -p 4422`, 成功进入容器
   - 如果 docker 重新构建，ssh 登录时报不信任时，删除下 `./ssh/know_host` 中相关服务器
   - `w` 查看当前在线用户，`ifconfig` 查看网络配置
-  
+
 05.30
 ---
 
