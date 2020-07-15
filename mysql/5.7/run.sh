@@ -8,9 +8,10 @@ docker run --name mysql5.7 \
     -v $(pwd)/conf:/etc/mysql \
     -v $(pwd)/plugin/audit/libaudit_plugin.so:/usr/lib/mysql/plugin/libaudit_plugin.so \
     -p 3306:3306 \
+    -p 22:22 \
     -e 'MYSQL_ROOT_PASSWORD=123' \
     -d \
-    one/mysql:5.7 --max-connections=500
+    one/mysql-ssh:5.7 --max-connections=500
 
 # on centos7
 # docker run --name mysql \

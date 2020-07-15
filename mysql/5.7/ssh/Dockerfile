@@ -1,13 +1,13 @@
 FROM one/mysql:5.7
 #更新apt-get源 使用sohu的源
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
-        echo "deb http://archive.debian.org/debian/ jessie main" >/etc/apt/sources.list && \
-        echo "deb-src http://archive.debian.org/debian/ jessie main" >>/etc/apt/sources.list && \
+        echo "deb http://mirrors.163.com/debian/ jessie main" >/etc/apt/sources.list && \
+        echo "deb-src http://mirrors.163.com/debian/ jessie main" >>/etc/apt/sources.list && \
         echo "deb http://security.debian.org jessie/updates main" >>/etc/apt/sources.list && \
         echo "deb-src http://security.debian.org jessie/updates main" >>/etc/apt/sources.list
 
 #安装SSH服务
-RUN apt-get update && apt-get install -y --force-yes openssh-server net-tools &&\
+RUN apt-get update && apt-get install -y --force-yes openssh-server net-tools python &&\
     mkdir -p /var/run/sshd &&\
     mkdir -p /root/.ssh
 
