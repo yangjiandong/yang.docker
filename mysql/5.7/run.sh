@@ -7,6 +7,7 @@ docker run --name mysql5.7 \
     -v $(pwd)/run:/var/run/mysqld \
     -v $(pwd)/conf:/etc/mysql \
     -v $(pwd)/plugin/audit/libaudit_plugin.so:/usr/lib/mysql/plugin/libaudit_plugin.so \
+    -v $(pwd)/rsa/authorized_keys:/root/.ssh/authorized_keys \
     -p 3306:3306 \
     -p 22:22 \
     -e 'MYSQL_ROOT_PASSWORD=123' \
