@@ -17,6 +17,17 @@ tips
 
 - pytorch
 
+07.16
+---
+
+### one/java:8
+
+增加ssh 私公钥，方便 ssh 免密码登录 mysql
+
+### one/mysql
+
+增加 one/java:8 公钥
+
 07.11
 ---
 
