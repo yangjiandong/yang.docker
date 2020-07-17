@@ -20,13 +20,11 @@ tips
 07.16
 ---
 
-### one/java:8
+### mysql tpcc 测试
 
-增加ssh 私公钥，方便 ssh 免密码登录 mysql
-
-### one/mysql
-
-增加 one/java:8 公钥
+- one/java:8
+- one/mysql-ssh:5.7
+- mysql-tpcc.md
 
 07.11
 ---
