@@ -17,6 +17,22 @@ tips
 
 - pytorch
 
+07.20
+---
+
+### one/py3base-stock:3.6
+
+参考 [基于 Python的 pandas、tushare、bokeh、tornado、stockstats、ta-lib 等框架开发的全栈股票系统](https://gitee.com/mirrors/stock-job-web)
+
+基于该镜像产生一个应用 Docker, `one/py3base-stock-app:3.6`, 通过 supervisor 启动应用
+- run_docker.sh，启动 jupyter
+- 获取 token
+  ```
+  docker exec -it stock-app bash
+  jupyter notebook list
+  ```
+- access http://localhost:8888
+
 07.16
 ---
 
