@@ -4,6 +4,15 @@ centos 7.x
 - show version: `cat /etc/redhat-release`
 - show kernal: `uname -a`
 
+### base on one/centos:7
+
+#### one/nginx:1.12
+
+#### one/nvm
+
+- nvm 0.35
+- node 12
+
 ### base on million12/centos-supervisor:4.0.2
 
 - one/centos:7

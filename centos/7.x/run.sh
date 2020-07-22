@@ -1,7 +1,6 @@
 #! /bin/bash
-# 不支持 sshd, 需手工启动
-# 1. in container run: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
-# 2. in other shell, ssh root@localhost -p 4426, password 123456
+# supervisord 启动 sshd
+# in other shell, ssh root@localhost -p 4426, password 123456
 
 # invalid argument "fs.file-max=65535" for "--sysctl" flag: sysctl 'fs.file-max=65535' is not whitelisted
 # See 'docker run --help'
