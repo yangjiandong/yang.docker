@@ -17,6 +17,24 @@ tips
 
 - pytorch
 
+### one/centos:7
+
+- one/nginx:1.12
+- one/nvm
+
+### java
+
+- one/java:8
+
+#### openJDK
+
+oralce java 的其他选择，性能也不错，可以试试
+
+- aws openjdk，`centos/corretto-8`
+- adoptopenjdk, `docker pull adoptopenjdk:8-openj9`
+  - 查看操作系统版本, `cat /proc/version`
+  - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
+
 07.20
 ---
 
