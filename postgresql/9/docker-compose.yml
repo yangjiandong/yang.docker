@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123
-      POSTGRES_MULTIPLE_DATABASES: jsalary
+      POSTGRES_MULTIPLE_DATABASES: pdata
     ports:
       - "5432:5432"
     volumes:
@@ -24,6 +24,6 @@ services:
     links:
       - pg_db:pg_db
     environment:
-      - DATABASE_URL=postgres://root:123@pg_db:5432/jsalary?sslmode=disable
+      - DATABASE_URL=postgres://root:123@pg_db:5432/pdata?sslmode=disable
     depends_on:
       - pg_db
