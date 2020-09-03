@@ -35,10 +35,35 @@ oralce java 的其他选择，性能也不错，可以试试
   - 查看操作系统版本, `cat /proc/version`
   - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
 
+09.03
+---
+
+### nacos 1.1.3
+
+- centos/nacos
+- use `one/java:8` docker
+```
+ nacos:
+        container_name: nacos
+        hostname: nacos
+        image: one/java:8
+        networks:
+          - sshapp-scloud
+        volumes:
+          - ./nacos_app:/workspace:rw
+        privileged: true
+        ports:
+          - "8848:8848"
+        working_dir: /workspace
+        command: java -server -Xms512m -Xmx512m -jar  -Dnacos.standalone=true nacos-server.jar
+        depends_on:
+            - mysql
+```
+
 09.02
 ---
 
-### 学习下 seata，docker 体积够小
+### 学习下 seata
 
 - centos/seata
 
