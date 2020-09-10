@@ -5,8 +5,21 @@ tips
 
 ### docker registry mirrors
 
-- https://exomynm5.mirror.aliyuncs.com
-- https://registry.docker-cn.com
+```
+{
+  "registry-mirrors" : [
+    "http://exomynm5.mirror.aliyuncs.com",
+    "http://registry.docker-cn.com\n"
+  ],
+  "log-opts" : {
+    "max-size" : "10m",
+    "max-file" : "2"
+  },
+  "debug" : true,
+  "experimental" : true,
+  "log-driver" : "json-file"
+}
+```
 
 ### py3base:3.6
 
@@ -24,7 +37,11 @@ tips
 
 ### java
 
+- - `one/java:8u261`，效果和fabric8 类似，启动容器时增加 `-m4g` 内存限制，就能控制好java 内存的使用
 - one/openjdk8, 参考 fabric8/java-centos-openjdk8-jdk
+  - Base-Image: CentOS 7
+  - Java: OpenJDK 8 1.8.0 (Java Development Kit (JDK))
+  - Agent-Bond: 1.2.0 (Jolokia 1.6.2, jmx_exporter 0.3.1)
 - one/java:8
 
 #### openJDK
@@ -38,6 +55,10 @@ oralce java 的其他选择，性能也不错，可以试试
 
 09.10
 ---
+
+### one/java:8u261
+
+效果和fabric8 类似，启动容器时增加 `-m4g` 内存限制，就能控制好java 内存的使用
 
 ### one/openjdk8
 
