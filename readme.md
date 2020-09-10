@@ -24,6 +24,7 @@ tips
 
 ### java
 
+- one/openjdk8, 参考 fabric8/java-centos-openjdk8-jdk
 - one/java:8
 
 #### openJDK
@@ -35,13 +36,20 @@ oralce java 的其他选择，性能也不错，可以试试
   - 查看操作系统版本, `cat /proc/version`
   - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
 
+09.10
+---
+
+### one/openjdk8
+
+- update `centos/fabric8io-jdk8` to `centos/openjdk8`
+
 09.09
 ---
 
 ### fabric8/java
 
 - `docker pull fabric8/java-centos-openjdk8-jdk`
-- centos/fabric8io-jdk8
+- `centos/fabric8io-jdk8`
 
 09.03
 ---
