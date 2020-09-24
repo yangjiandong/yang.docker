@@ -4,7 +4,7 @@
 docker run --rm \
     -it \
     --sysctl net.ipv4.ip_local_port_range="8001 65000" \
-    -e JAVA_OPTS='-Xms 1g -Xmx 2g' \
+    -e JAVA_OPTS='-Xms1g -Xmx2g' \
     -v $(pwd)/zuul:/workspace \
     -p 8080:8080 \
     --name center \
