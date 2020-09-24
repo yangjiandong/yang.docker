@@ -11,16 +11,18 @@ pandoc
   - 参考 `https://hub.docker.com/r/beeronbeard/docker-gitbook-pdf/dockerfile`
   - add `ENV QTWEBENGINE_DISABLE_SANDBOX 1`
   - book.json
+- add asciidoc ok
 
 ## base on latex
 
 - 1.9, base latex-2015
-- 2, base ubuntu:18.10, have: python2,python3.6
+- 2, base ubuntu: 20.10(18.10), have: python2,python3.8,openjdk11
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
   - [thomasWeise-github](https://github.com/thomasWeise/docker-pandoc)
   - ttf-wqy-microhei(文泉驿微黑字体库), 字体定义 `/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset`, 主要中文字体
   - out pdf, `pandoc --toc --toc-depth=3 -f markdown  readme.md --pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei" -o readme.pdf`
   - list fonts, `fc-list`
+  - build on 192.168.1.222, 22130, root/123
 
 ## pandoc + latex 中文方案，use `one/pandoc:2.0`，步骤
 

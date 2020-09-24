@@ -10,7 +10,7 @@
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
 #
-FROM thomasweise/docker-texlive-full
+FROM thomasweise/docker-texlive-full:1.0
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 # 使用 aliyuncs 的源
@@ -42,20 +42,18 @@ RUN \
                           librsvg2-common \
                           zlib1g \
                           zlib1g-dev \
+                          asciidoc \
+                          graphviz \
                           libglib2.0-dev git make cmake g++ &&\
 # fix the access rights for imagemagick
   sed -i -e 's/rights="none"/rights="read|write"/g' /etc/ImageMagick-6/policy.xml &&\
   sed -i -e 's/<\/policymap>/<policy domain="module" rights="read|write" pattern="{PS,PDF,XPS}" \/>\n<\/policymap>/g' /etc/ImageMagick-6/policy.xml &&\
 # clean up all temporary files
-    apt-get clean &&\
-    apt-get autoclean -y &&\
-    apt-get autoremove -y &&\
-    apt-get clean &&\
-    rm -rf /tmp/* /var/tmp/* &&\
+    apt-get clean -y  &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm -f /etc/ssh/ssh_host_*
 
-COPY config /root/.cabal/
+# COPY config /root/.cabal/
 RUN \
 # get the newest list of packages
     cabal update &&\
@@ -127,9 +125,9 @@ ENV PATH $CALIBRE_PATH:$PATH
 ENV QTWEBENGINE_DISABLE_SANDBOX 1
 
 # plantuml
-RUN \
-    apt-get update &&\
-    apt-get install -f -y graphviz default-jre
+# RUN \
+#     apt-get update &&\
+#     apt-get install -f -y graphviz default-jre
 
 # Songti.ttc
 COPY Songti.ttc /usr/share/fonts/Songti.ttc
