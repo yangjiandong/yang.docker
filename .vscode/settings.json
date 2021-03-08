@@ -1,5 +1,7 @@
 {
-    "python.linting.enabled": false,
-    "svn.ignoreMissingSvnWarning": true,
-    "python.dataScience.jupyterServerURI": "http://localhost:8888/jub/?token=dad09f48edee87236db372ef858a42841d1bf1bc18db824d"
+  "python.linting.enabled": false,
+  "svn.ignoreMissingSvnWarning": true,
+  "python.dataScience.jupyterServerURI": "http://localhost:8888/jub/?token=dad09f48edee87236db372ef858a42841d1bf1bc18db824d",
+  // "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false
 }
