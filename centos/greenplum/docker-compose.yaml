@@ -1,17 +1,49 @@
 version: '3'
 services:
   mdw:
+    container_name: mdw
     hostname: mdw
     image: one/greenplum6
     ports:
-     - "6222:22"
-     - "6432:5432"
+      - "6222:22"
+      - "6432:5432"
+    privileged: true
+    volumes:
+      - ./workspace/mdw/master:/home/gpadmin/master:rw
+      - ./workspace/mdw/data:/home/gpadmin/data:rw
+      - ./workspace/mdw/gpAdminLogs:/home/gpadmin/gpAdminLogs:rw
+      - ./workspace/mdw/mirror:/home/gpadmin/mirror:rw
+      - ./workspace/mdw/env.sh:/home/gpadmin/env.sh:rw
+      - ./workspace/mdw/gpinitsystem_config:/home/gpadmin/gpinitsystem_config:rw
+      - ./workspace/mdw/hostfile:/home/gpadmin/hostfile:rw
   sdw1:
+    container_name: sdw1
     hostname: sdw1
     image: one/greenplum6
+    privileged: true
+    volumes:
+      - ./workspace/sdw1/master:/home/gpadmin/master:rw
+      - ./workspace/sdw1/data:/home/gpadmin/data:rw
+      - ./workspace/sdw1/gpAdminLogs:/home/gpadmin/gpAdminLogs:rw
+      - ./workspace/sdw1/mirror:/home/gpadmin/mirror:rw
   sdw2:
+    container_name: sdw2
     hostname: sdw2
     image: one/greenplum6
+    privileged: true
+    volumes:
+      - ./workspace/sdw2/master:/home/gpadmin/master:rw
+      - ./workspace/sdw2/data:/home/gpadmin/data:rw
+      - ./workspace/sdw2/gpAdminLogs:/home/gpadmin/gpAdminLogs:rw
+      - ./workspace/sdw2/mirror:/home/gpadmin/mirror:rw
   etl:
+    container_name: etl
     hostname: etl
     image: one/greenplum6
+  pgweb:
+    container_name: pgweb
+    hostname: pgweb
+    image: sosedoff/pgweb
+    ports:
+      - "6081:8081"
+

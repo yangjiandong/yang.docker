@@ -1,7 +1,10 @@
 #!/bin/bash
 
 set -x
-if [ -z ${GPHOME+x} ]; then echo "GPHOME is unset";exit 1 ; fi
+if [ -z ${GPHOME+x} ]; then
+  echo "GPHOME is unset";
+  exit 1 ;
+fi
 
 
 MASTERHOST=`hostname`
@@ -33,11 +36,11 @@ do
         h) help
 	    exit 1
 	    ;;
-	
+
         m) MASTER="$OPTARG"
 	    checkInt $MASTER
             ;;
-	
+
         n) SEG_NUMPERHOST="$OPTARG"
 	    checkInt $SEG_NUMPERHOST
             ;;
@@ -48,7 +51,7 @@ do
 	    help
             exit 1
             ;;
-	
+
         \?) echo "Invalid option -$OPTARG ignored." >&2
 	    help
             ;;
@@ -68,7 +71,7 @@ MASTER_PORT=5432
 MIRROR_PORT_BASE=30000
 REPLICATION_PORT_BASE=31000
 MIRROR_REPLICATION_PORT_BASE=32000
-STARTDB=test
+STARTDB=pgdata
 
 
 rm -rf $PREFIX/master $PREFIX/data $PREFIX/mirror
@@ -76,23 +79,23 @@ mkdir $PREFIX/master $PREFIX/data $PREFIX/mirror
 
 SEGDATASTR=""
 
-for i in $(seq 1 $SEG_NUMPERHOST);  do 
+for i in $(seq 1 $SEG_NUMPERHOST);  do
     SEGDATASTR="$SEGDATASTR  $PREFIX/data"
 done
 
-sed "s/%%PORT_BASE%%/$PORT_BASE/g; s|%%PREFIX%%|$PREFIX|g; s|%%SEGDATASTR%%|$SEGDATASTR|g; s/%%MASTERHOST%%/$MASTERHOST/g; s/%%MASTER_PORT%%/$MASTER_PORT/g; s/%%MIRROR_PORT_BASE%%/$MIRROR_PORT_BASE/g; s/%%REPLICATION_PORT_BASE%%/$REPLICATION_PORT_BASE/g; s/%%MIRROR_REPLICATION_PORT_BASE%%/$MIRROR_REPLICATION_PORT_BASE/g; s/%%STARTDB%%/$STARTDB/g;" $CONFIGTEMPLATE >$CONFIGFILE 
+sed "s/%%PORT_BASE%%/$PORT_BASE/g; s|%%PREFIX%%|$PREFIX|g; s|%%SEGDATASTR%%|$SEGDATASTR|g; s/%%MASTERHOST%%/$MASTERHOST/g; s/%%MASTER_PORT%%/$MASTER_PORT/g; s/%%MIRROR_PORT_BASE%%/$MIRROR_PORT_BASE/g; s/%%REPLICATION_PORT_BASE%%/$REPLICATION_PORT_BASE/g; s/%%MIRROR_REPLICATION_PORT_BASE%%/$MIRROR_REPLICATION_PORT_BASE/g; s/%%STARTDB%%/$STARTDB/g;" $CONFIGTEMPLATE >$CONFIGFILE
 
 >$HOSTFILE
 if [ $SEG_HOSTNUM -eq 0 ];then
-    echo $MASTERHOST >  $HOSTFILE 
+    echo $MASTERHOST >  $HOSTFILE
 else
     for i in $(seq 1 $SEG_HOSTNUM); do
 	echo $SEG_PREFIX$i >> $HOSTFILE
     done
 fi
 
+# source $GPHOME/greenplum_path.sh
 cat <<EOF > $PREFIX/env.sh
-source $GPHOME/greenplum_path.sh
 SRCDIR="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
 export MASTER_DATA_DIRECTORY=\$SRCDIR/master/gpseg-1
 export PGPORT=$MASTER_PORT

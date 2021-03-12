@@ -14,6 +14,11 @@ RUN ssh-keygen  -f /home/gpadmin/.ssh/id_rsa -N ""
 RUN cp /home/gpadmin/.ssh/id_rsa.pub /home/gpadmin/.ssh/authorized_keys
 RUN chmod 0400 /home/gpadmin/.ssh/authorized_keys
 
+COPY open-source-greenplum-db-6.14.1-rhel7-x86_64.rpm /home/gpadmin/greenplum-db.rpm
+RUN yum install -y /home/gpadmin/greenplum-db.rpm
+RUN chown -R gpadmin /usr/local/greenplum-db*
+RUN rm -f /home/gpadmin/greenplum-db.rpm
+
 ADD ./sh/gpinitsystem_config_template /home/gpadmin/artifact/gpinitsystem_config_template
 COPY sh/*.py sh/*.sh /home/gpadmin/artifact/
 RUN chmod 755 /home/gpadmin/artifact/*.sh
@@ -26,9 +31,8 @@ RUN mkdir -p /home/gpadmin/master /home/gpadmin/data  /home/gpadmin/mirror
 RUN chown -R gpadmin /home/gpadmin
 RUN chown -R gpadmin /home/gpadmin/.ssh
 
-COPY open-source-greenplum-db-6.14.1-rhel7-x86_64.rpm /home/gpadmin/greenplum-db.rpm
-RUN yum install -y /home/gpadmin/greenplum-db.rpm
-RUN chown -R gpadmin /usr/local/greenplum-db*
-RUN rm -f /home/gpadmin/greenplum-db.rpm
-ENV GPHOME /usr/local/greenplum-db
-ENV PATH $GPHOME/bin:$PATH
+# ENV GPHOME /usr/local/greenplum-db
+# ENV PATH $GPHOME/bin:$PATH
+
+RUN echo -e "source /usr/local/greenplum-db/greenplum_path.sh" >> /home/gpadmin/.bash_profile
+
