@@ -30,3 +30,5 @@ COPY open-source-greenplum-db-6.14.1-rhel7-x86_64.rpm /home/gpadmin/greenplum-db
 RUN yum install -y /home/gpadmin/greenplum-db.rpm
 RUN chown -R gpadmin /usr/local/greenplum-db*
 RUN rm -f /home/gpadmin/greenplum-db.rpm
+ENV GPHOME /usr/local/greenplum-db
+ENV PATH $GPHOME/bin:$PATH
