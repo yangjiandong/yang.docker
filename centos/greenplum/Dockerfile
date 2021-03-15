@@ -36,3 +36,6 @@ RUN chown -R gpadmin /home/gpadmin/.ssh
 
 RUN echo -e "source /usr/local/greenplum-db/greenplum_path.sh" >> /home/gpadmin/.bash_profile
 
+# COPY docker-entrypoint.sh /usr/local/bin/
+# RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+# ENTRYPOINT ["/entrypoint.sh"]

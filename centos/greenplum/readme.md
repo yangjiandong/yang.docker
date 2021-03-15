@@ -3,7 +3,49 @@
 - [3分钟快速搭建Greenplum集群](https://cn.greenplum.org/build_greenplum_cluster/)
 - save，docker 生成文件，考虑作为映射
 
-### run
+### use Volume
+
+- docker-compose up
+- ssh -p 6222 gpadmin@127.0.0.1
+- run
+```
+source env.sh
+# No such file or directory: '/home/gpadmin/master/gpseg-1/postgresql.conf'')
+# 重新运行下
+# gpinitsystem -a -c gpinitsystem_config
+# 再次查看下
+ps -ef | grep postgres
+gpstop -a
+gpstart -a
+```
+
+### 第一次运行
+
+都是在容器里，没有采用映射
+```
+version: '3'
+services:
+  mdw:
+    hostname: mdw
+    image: one/greenplum6
+    ports:
+     - "6222:22"
+     - "6432:5432"
+  sdw1:
+    hostname: sdw1
+    image: one/greenplum6
+  sdw2:
+    hostname: sdw2
+    image: one/greenplum6
+  etl:
+    hostname: etl
+    image: one/greenplum6
+  pgweb:
+    hostname: pgweb
+    image: sosedoff/pgweb
+    ports:
+      - "6081:8081"
+```
 
 Start container, `docker-compose up -d`
 ```bash
@@ -46,11 +88,4 @@ gpadmin   2735    19  0 13:38 pts/0    00:00:00 grep --color=auto postgres
 
 Now you can access your Greenplu with psql or other clients.
 
-### Manage cluster
-
-```
-source env.sh
-gpstop -a
-gpstart -a
-```
 
