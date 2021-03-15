@@ -2,6 +2,7 @@
 
 - [3分钟快速搭建Greenplum集群](https://cn.greenplum.org/build_greenplum_cluster/)
 - save，docker 生成文件，考虑作为映射
+- save/Dockerfile, for centos7，只是个开发编译环境
 
 ### use Volume
 
@@ -13,11 +14,16 @@ source env.sh
 # No such file or directory: '/home/gpadmin/master/gpseg-1/postgresql.conf'')
 # 重新运行下
 # gpinitsystem -a -c gpinitsystem_config
-# 再次查看下
-ps -ef | grep postgres
-gpstop -a
 gpstart -a
+# 再次查看下
+# ps -ef | grep postgres
 ```
+
+注意，每次进入ssh，都需要运行下 `source env.sh`
+
+#### client
+
+telnet 192.168.1.222 6432
 
 ### 第一次运行
 
