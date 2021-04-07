@@ -17,11 +17,22 @@ Greenplum data
 - nvm 0.35
 - node 12
 
-### base on million12/centos-supervisor:4.0.2
+### base on [million12/centos-supervisor:4.0.2](https://github.com/million12/docker-centos-supervisor)
 
-- one/centos:7
-  - run.sh
-  - in other shell, ssh root@localhost -p 4426, password 123456
+- centos/7.x/base
+- additional tools
+  - jq
+  - rsync
+  - telnet
+  - htop
+  - atop
+  - iotop
+  - mtr
+  - vim
+
+one/centos:7
+- run.sh
+- in other shell, ssh root@localhost -p 4426, password 123456
 - centos-supervisor:4.0.2 相关配置
 
   ```
@@ -59,6 +70,16 @@ Greenplum data
   --name centos7 \
   one/centos:7
   ```
+
+`one/centos:7` 下打开文件数设置问题
+```
+ulimit -Sn
+1048576
+# ulimit -a 显示当前所有的 limit 信息
+```
+
+- `/etc/security/limits.conf`，`/etc/security/limits.d/20-nproc.conf` 配置都不起作用;
+- ? 有可能和宿主机有关, fs.file-max=1048576
 
 #### 设置免密登录
 

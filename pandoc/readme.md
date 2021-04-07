@@ -29,7 +29,7 @@ pandoc
   - texlive-2020,
   - add asciidoc,
   - build on 192.168.1.222, 22130, root/123
-- 另一个比较好的方案 panbook
+- 另一个比较好的方案 [panbook](https://github.com.cnpmjs.org/annProg/PanBook.git)
 
 ## pandoc + latex 中文方案，use `one/pandoc:2.0`，步骤
 
