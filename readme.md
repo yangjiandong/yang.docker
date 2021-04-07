@@ -53,6 +53,21 @@ oralce java 的其他选择，性能也不错，可以试试
   - 查看操作系统版本, `cat /proc/version`
   - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
 
+2021.04.07
+---
+
+### debian/jessie 安装源
+
+jessie-backports 已打包不再提供源，有可能失效，需调整为
+```
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
+        echo "deb http://mirrors.163.com/debian/ jessie main" >/etc/apt/sources.list && \
+        echo "deb-src http://mirrors.163.com/debian/ jessie main" >>/etc/apt/sources.list && \
+        echo "deb http://security.debian.org jessie/updates main" >>/etc/apt/sources.list && \
+        echo "deb-src http://security.debian.org jessie/updates main" >>/etc/apt/sources.list
+
+```
+
 09.10
 ---
 
