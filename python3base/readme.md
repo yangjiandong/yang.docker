@@ -3,16 +3,33 @@
 - [nbdev](https://nbdev.fast.ai/)
 - [PolyNote](https://zhuanlan.zhihu.com/p/92495340)
 
-## tools
+## Docker
 
-- python:3.6.6
+- v3.6.6
     - python
     - python3
     - java11
+- v3.6 from python:3.6.6
+- py2neo from v3.6.6
+- flask from python:3.9.4-alpine3.13
+  - py2neo
+  - graphql
 
-## [北京二手房房价分析和预测](https://github.com/xiaoyusmd/Bj_HousePricePredict)
+## flask
 
-## [用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)
+- 参考 [flask-graphql-neo4j)](https://github.com/elementsinteractive/flask-graphql-neo4j)
+- 解决 `cryptography 3.4.7 disabling pep 517 processing is invalid`
+  use `RUN apk add --no-cache gcc musl-dev python3-dev libffi-dev openssl-dev cargo`
+
+## py2neo
+
+访问 Neo4j
+
+## pandas
+
+### [北京二手房房价分析和预测](https://github.com/xiaoyusmd/Bj_HousePricePredict)
+
+### [用 python 建立房价预测模型](https://zhuanlan.zhihu.com/p/34462156)
 
 - 直接处理字段为日期型
 
