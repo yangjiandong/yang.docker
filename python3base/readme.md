@@ -30,7 +30,10 @@
   apispec = "*"
   ```
   - test, `pipenv run python -m unittest`
-  
+- run docker, and access
+  - `http://xx:8885/apidocs/`
+  - api
+
 ## py2neo
 
 访问 Neo4j

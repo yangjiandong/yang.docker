@@ -3,5 +3,13 @@
   "svn.ignoreMissingSvnWarning": true,
   "python.dataScience.jupyterServerURI": "http://localhost:8888/jub/?token=dad09f48edee87236db372ef858a42841d1bf1bc18db824d",
   // "gitlens.currentLine.enabled": false,
-  "gitlens.codeLens.enabled": false
+  "gitlens.codeLens.enabled": false,
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true
+  },
+  "python.formatting.provider": "yapf",
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.showStartPage": false,
 }
