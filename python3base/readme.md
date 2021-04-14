@@ -20,7 +20,17 @@
 - 参考 [flask-graphql-neo4j)](https://github.com/elementsinteractive/flask-graphql-neo4j)
 - 解决 `cryptography 3.4.7 disabling pep 517 processing is invalid`
   use `RUN apk add --no-cache gcc musl-dev python3-dev libffi-dev openssl-dev cargo`
-
+- 构建时不需要 Pipfile.lock
+- 参考 [flask-api-starter-kit](https://github.com/bajcmartinez/flask-api-starter-kit)，Sample API layout structure to be used as a baseline for other apps
+  ```
+  [packages]
+  flask = "*"
+  flasgger = "*"
+  flask-marshmallow = "*"
+  apispec = "*"
+  ```
+  - test, `pipenv run python -m unittest`
+  
 ## py2neo
 
 访问 Neo4j

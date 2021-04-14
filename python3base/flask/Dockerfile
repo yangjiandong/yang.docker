@@ -4,10 +4,19 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
 RUN apk add --no-cache gcc musl-dev python3-dev libffi-dev openssl-dev cargo
 # build-base gcc libffi-dev libressl-dev
 
-COPY Pipfile* /tmp/
-WORKDIR /tmp/
-RUN pip install -i https://mirrors.aliyun.com/pypi/simple pipenv
-RUN pipenv install
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple \
+    flask \
+    graphene \
+    py2neo \
+    flask-graphql \
+    maya \
+    environs
+# --no-use-pep517
+
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple \
+  flasgger \
+  flask-marshmallow \
+  apispec
 
 # COPY . /app/
 WORKDIR /app/
