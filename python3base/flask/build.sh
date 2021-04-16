@@ -1,1 +1,1 @@
-docker build -t one/flask .
+docker build -t one/py-flask .
