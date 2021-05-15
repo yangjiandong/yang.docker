@@ -53,6 +53,14 @@ oralce java 的其他选择，性能也不错，可以试试
   - 查看操作系统版本, `cat /proc/version`
   - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
 
+04.19
+---
+
+### intellij-idea-pro
+
+- 参考 [rycus86/docker-intellij-idea-pro](https://github.com/rycus86/docker-intellij-idea-pro)
+- licnese 问题要解决
+
 2021.04.07
 ---
 
@@ -1283,7 +1291,7 @@ CMD /bin/bash
 0817
 ---
 
-## apache
+## one/apache:1.0，作为公司 svn 服务器
 
 - from centos6.9
 - apache2.2
