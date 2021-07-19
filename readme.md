@@ -53,6 +53,15 @@ oralce java 的其他选择，性能也不错，可以试试
   - 查看操作系统版本, `cat /proc/version`
   - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
 
+07.14
+---
+
+### rl-stock
+
+-
+- [RL_Stock](https://github.com/wangshub/RL-Stock)
+	如何用深度强化学习自动炒股
+
 04.19
 ---
 
