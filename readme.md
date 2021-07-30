@@ -21,12 +21,16 @@ tips
 }
 ```
 
-### py3base:3.6
+### py3
+
+建议采用 `python:3.9-buster`
+
+#### py3base:3.6
 
 - jupyter_notebook
 - 混淆代码保护, `RUN pip3 install pyarmor`, use `py3base:3.6.1`
 
-### one/py3base:3.6.6
+#### one/py3base:3.6.6
 
 - pytorch
 
@@ -58,7 +62,7 @@ oralce java 的其他选择，性能也不错，可以试试
 
 ### rl-stock
 
--
+base on py3.6
 - [RL_Stock](https://github.com/wangshub/RL-Stock)
 	如何用深度强化学习自动炒股
 

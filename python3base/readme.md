@@ -5,10 +5,14 @@
 
 ## Docker
 
+- v3.9 from `python:3.9-buster`
+  - `run.sh`
+  - in container, run `run_jupyter.sh`
+  - 配合 vscode 访问 jupyter，启动命令增加 token，`--NotebookApp.token=x`
 - v3.6.6
-    - python
-    - python3
-    - java11
+  - python
+  - python3
+  - java11
 - v3.6 from python:3.6.6
 - py2neo from v3.6.6
 - flask from python:3.9.4-alpine3.13
