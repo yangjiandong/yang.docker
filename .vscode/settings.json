@@ -12,5 +12,5 @@
   "python.formatting.provider": "yapf",
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
   "python.showStartPage": false,
-  "workbench.colorTheme": "Night Owl Light" // "Dracula Soft", "GitHub Light Default", "Solarized Dark" "Dracula" "One Dark Pro", "Night Owl" "Night Owl Light" //
+  // "workbench.colorTheme": "Night Owl Light" // "Dracula Soft", "GitHub Light Default", "Solarized Dark" "Dracula" "One Dark Pro", "Night Owl" "Night Owl Light" //
 }
