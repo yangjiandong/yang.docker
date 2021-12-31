@@ -3,6 +3,8 @@
 docker run \
     -d \
     --name apache_svn \
+    -e TZ=Asia/Shanghai \
+    -p 4426:22 \
     -p 81:80  \
     -v $(pwd)/ssh-work/logs:/etc/httpd/logs \
     -v $(pwd)/ssh-work/conf.d:/etc/httpd/conf.d \

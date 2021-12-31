@@ -1,6 +1,8 @@
 ## Apache + Svn + SvnAdmin
 
 - base on one/centos:7
+  - ssh
+  - supervisord
 - Apache 2.4.6, use `httpd -v`
 - Svn 1.8.19, use `svn --version`
 - SvnAdmin 1.6.2

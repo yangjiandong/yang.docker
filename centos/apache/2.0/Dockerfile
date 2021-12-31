@@ -4,8 +4,9 @@ FROM one/centos:7
 ADD wandisco-svn.repo /etc/yum.repos.d/wandisco-svn.repo
 
 # apache
-RUN yum install -y httpd subversion mod_dav_svn && \
-    yum install -y php  && \
+RUN yum install -y httpd subversion mod_dav_svn \
+    php \
+    rsync \
     yum clean all
 
 RUN mkdir /var/svn && \
@@ -26,5 +27,6 @@ EXPOSE 80
 RUN chmod 551 /root
 
 # ENTRYPOINT apachectl -k start && /bin/bash
-ENTRYPOINT /usr/sbin/httpd -D FOREGROUND
+# ENTRYPOINT /usr/sbin/httpd -D FOREGROUND
+ADD container-files /
 
