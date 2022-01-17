@@ -19,6 +19,7 @@ services:
     volumes:
       - ./pg/data:/var/lib/postgresql/data/
       - ./pg/init.db:/docker-entrypoint-initdb.d
+      - ./pg/localtime:/etc/localtime
 
   pgweb:
     container_name: sonar_pgweb
@@ -47,7 +48,7 @@ services:
       SONARQUBE_JDBC_USERNAME: root
       SONARQUBE_JDBC_PASSWORD: 123
       SONARQUBE_JDBC_URL: jdbc:postgresql://pg_db:5432/pdata
-      ES_JAVA_OPTS: -Xms1g -Xmx1g
+      ES_JAVA_OPTS: -Xms2g -Xmx2g
     depends_on:
       - pg_db
     links:
