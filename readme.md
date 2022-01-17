@@ -1,7 +1,6 @@
 # Docker
 
-tips
----
+## tips
 
 ### docker registry mirrors
 
@@ -41,7 +40,7 @@ tips
 
 ### java
 
-- - `one/java:8u261`，效果和fabric8 类似，启动容器时增加 `-m4g` 内存限制，就能控制好java 内存的使用
+- - `one/java:8u261`，效果和 fabric8 类似，启动容器时增加 `-m4g` 内存限制，就能控制好 java 内存的使用
 - one/openjdk8, 参考 fabric8/java-centos-openjdk8-jdk
   - Base-Image: CentOS 7
   - Java: OpenJDK 8 1.8.0 (Java Development Kit (JDK))
@@ -54,19 +53,27 @@ oralce java 的其他选择，性能也不错，可以试试
 
 - aws openjdk，`centos/corretto-8`
 - adoptopenjdk, `docker pull adoptopenjdk:8-openj9`
+
   - 查看操作系统版本, `cat /proc/version`
   - 参考[openjdk-docker centos7](https://github.com/AdoptOpenJDK/openjdk-docker/blob/master/14/jdk/centos/Dockerfile.openj9.releases.full)
 
-07.14
+    2022.01.17
+
 ---
+
+### sonar
+
+## 07.14
 
 ### rl-stock
 
 base on py3.6
-- [RL_Stock](https://github.com/wangshub/RL-Stock)
-	如何用深度强化学习自动炒股
 
-04.19
+- [RL_Stock](https://github.com/wangshub/RL-Stock)
+  如何用深度强化学习自动炒股
+
+  04.19
+
 ---
 
 ### intellij-idea-pro
@@ -74,12 +81,14 @@ base on py3.6
 - 参考 [rycus86/docker-intellij-idea-pro](https://github.com/rycus86/docker-intellij-idea-pro)
 - licnese 问题要解决
 
-2021.04.07
+  2021.04.07
+
 ---
 
 ### debian/jessie 安装源
 
 jessie-backports 已打包不再提供源，有可能失效，需调整为
+
 ```
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
         echo "deb http://mirrors.163.com/debian/ jessie main" >/etc/apt/sources.list && \
@@ -89,18 +98,18 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 
 ```
 
-09.10
----
+## 09.10
 
 ### one/java:8u261
 
-效果和fabric8 类似，启动容器时增加 `-m4g` 内存限制，就能控制好java 内存的使用
+效果和 fabric8 类似，启动容器时增加 `-m4g` 内存限制，就能控制好 java 内存的使用
 
 ### one/openjdk8
 
 - update `centos/fabric8io-jdk8` to `centos/openjdk8`
 
-09.09
+  09.09
+
 ---
 
 ### fabric8/java
@@ -108,13 +117,15 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 - `docker pull fabric8/java-centos-openjdk8-jdk`
 - `centos/fabric8io-jdk8`
 
-09.03
+  09.03
+
 ---
 
 ### nacos 1.1.3
 
 - centos/nacos
 - use `one/java:8` docker
+
 ```
  nacos:
         container_name: nacos
@@ -133,21 +144,22 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
             - mysql
 ```
 
-09.02
----
+## 09.02
 
 ### 学习下 seata
 
 - centos/seata
 
-07.20
+  07.20
+
 ---
 
 ### one/py3base-stock:3.6
 
-参考 [基于 Python的 pandas、tushare、bokeh、tornado、stockstats、ta-lib 等框架开发的全栈股票系统](https://gitee.com/mirrors/stock-job-web)
+参考 [基于 Python 的 pandas、tushare、bokeh、tornado、stockstats、ta-lib 等框架开发的全栈股票系统](https://gitee.com/mirrors/stock-job-web)
 
 基于该镜像产生一个应用 Docker, `one/py3base-stock-app:3.6`, 通过 supervisor 启动应用
+
 - run_docker.sh，启动 jupyter
 - 获取 token
   ```
@@ -156,7 +168,8 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   ```
 - access http://localhost:8888
 
-07.16
+  07.16
+
 ---
 
 ### mysql tpcc 测试
@@ -165,18 +178,19 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 - one/mysql-ssh:5.7
 - mysql-tpcc.md
 
-07.11
+  07.11
+
 ---
 
 ### mysql 5.7
 
 #### update mysql5.7 my.cnf
 
-  lower_case_table_names = 1 to 0
-  但报错，`the data directory is on a case-insensitive file system which is an unsupported combination`
-  公司产品上没问题
+lower_case_table_names = 1 to 0
+但报错，`the data directory is on a case-insensitive file system which is an unsupported combination`
+公司产品上没问题
 
-#### mysql 开启binlog日志
+#### mysql 开启 binlog 日志
 
 以作日志记录 和数据恢复
 
@@ -184,22 +198,22 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 
 #### mysql 增加审计插件
 
-[参考 MySQL审计正确使用姿势](https://zhuanlan.zhihu.com/p/93539937)
+[参考 MySQL 审计正确使用姿势](https://zhuanlan.zhihu.com/p/93539937)
 
-  ```
-  mycli -h localhost -u root -p 123
-  // 查看插件路径
-  show variables like 'plugin_dir';
-  // 查看插件
-  show plugins;
-  // 进入容器看下有什么插件
-  docker exec -it mysql5.7 bash
-  cd /usr/lib/mysql/plugin/
-  // 通过 docker 启动指定映射安装
-  show global status like '%audit%';
-  ```
+```
+mycli -h localhost -u root -p 123
+// 查看插件路径
+show variables like 'plugin_dir';
+// 查看插件
+show plugins;
+// 进入容器看下有什么插件
+docker exec -it mysql5.7 bash
+cd /usr/lib/mysql/plugin/
+// 通过 docker 启动指定映射安装
+show global status like '%audit%';
+```
 
-  [download audit plugin](https://bintray.com/package/files/mcafee/mysql-audit-plugin/release)
+[download audit plugin](https://bintray.com/package/files/mcafee/mysql-audit-plugin/release)
 
 ##### audit config
 
@@ -218,7 +232,7 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   ```
 - `show global status like 'AUDIT_version';`
 - show config: `show global variables like '%audi%';`
-- 可以审计的cmd, `SELECT name FROM performance_schema.setup_instruments WHERE name LIKE "statement/sql/%" ORDER BY name;`
+- 可以审计的 cmd, `SELECT name FROM performance_schema.setup_instruments WHERE name LIKE "statement/sql/%" ORDER BY name;`
 - 生产环境下的配置
   - my.cnf, `plugin-load=AUDIT=libaudit_plugin.so`
   - sql 查看下状态，`select plugin_name, plugin_status from information_schema.plugins where plugin_name like '%audit%';`
@@ -232,32 +246,34 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   - `set global audit_json_file=on;`，输出日志文件 `mysql-audit.json`
   - Add log rotation, `set global audit_json_file_flush=on;`
     When it is executed you will see the following output in the mysql error log:
-      [Note] Audit Plugin: success opening file: mysql-audit.json.
-      [Note] Audit Plugin: Log flush complete.
+    [Note] Audit Plugin: success opening file: mysql-audit.json.
+    [Note] Audit Plugin: Log flush complete.
 
 #### mysql 增加无密码 ssh 登录
 
 为了适应 BenchmarkSQL 性能测试
 
-- 生成authorized_keys文件
+- 生成 authorized_keys 文件
   ```
   ssh-keygen -t rsa
   #按回车选择默认的没有密码。此时，会在生成一个文件~/.ssh/id_rsa.pub
   cat ~/.ssh/id_rsa.pub >authorized_keys
   ```
-  需要注意，如果有多个客户(多个id_rsa.pub)，需将客户端机器上的"id_rsa.pub"文件内容追加到"~/.ssh/authorized_keys"文件中。`ssh/id_rsa` 下是本次产生的证书
+  需要注意，如果有多个客户(多个 id_rsa.pub)，需将客户端机器上的"id_rsa.pub"文件内容追加到"~/.ssh/authorized_keys"文件中。`ssh/id_rsa` 下是本次产生的证书
 - mysql/5.7/ssh/build.sh
-> 注意，该版本debian 官方和国内都不再提供源，所以以后镜像要注意升级
+  > 注意，该版本 debian 官方和国内都不再提供源，所以以后镜像要注意升级
 - `docker exec -it mysql5.7 bash`, 进入容器启动 ssh 服务
   ```
   cd /root
   ./run.sh
   ```
 - test, `ssh root@localhost -p 4422`, 成功进入容器
+
   - 如果 docker 重新构建，ssh 登录时报不信任时，删除下 `./ssh/know_host` 中相关服务器
   - `w` 查看当前在线用户，`ifconfig` 查看网络配置
 
-05.30
+  05.30
+
 ---
 
 ### code server
@@ -265,7 +281,8 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 - [linuxserver/docker-code-server](https://github.com/linuxserver/docker-code-server)
 - code-serve
 
-04.22
+  04.22
+
 ---
 
 ### paddlepaddle
@@ -287,6 +304,7 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   ```
 
 - one/panddle, use python3.6, python3base/paddle
+
   - work/run_jupyter.sh
 
     ```
@@ -301,14 +319,16 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
     docker exec -it jub jupyter notebook list
     ```
 
-03.31
+  03.31
+
 ---
 
 ### nginx1.12, openresty1.15.8
 
 - base one/centos:7
 
-03.30
+  03.30
+
 ---
 
 - apisix
@@ -318,7 +338,8 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   docker pull hellotalk/apisix
   ```
 
-02.29
+  02.29
+
 ---
 
 ### [todo] Wechaty, 微信
@@ -341,15 +362,15 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 
 - wechaty-getting-started, docker 示例比较老
 
-02.19
+  02.19
+
 ---
 
 ### docker-registry
 
 ? 自动更新，不知什么神操作
 
-2020.02.08
----
+## 2020.02.08
 
 ### openJDK
 
@@ -357,18 +378,22 @@ oralce java 的其他选择，性能也不错，可以试试
 
 - aws openjdk，`centos/corretto-8`
 - adoptopenjdk, `docker pull adoptopenjdk:8-openj9`
+
   - 查看操作系统版本, `cat /proc/version`
 
-11.22
+  11.22
+
 ---
 
 ### mindoc
 
 - markdonw 文档管理
 - mindoc2
+
   - [参考 docker-compose](https://gitee.com/dreamidea/mindoc-docker-compose)
 
-11.13
+  11.13
+
 ---
 
 ### pandoc 2.0
@@ -377,18 +402,21 @@ oralce java 的其他选择，性能也不错，可以试试
 - pandoc remove `latex-formulae-pandoc`
 - add gitbook
 - gitbook pdf , ok
+
   - as root run ebook-convert, `Running as root without --no-sandbox is not supported`
   - 参考 `https://hub.docker.com/r/beeronbeard/docker-gitbook-pdf/dockerfile`
   - add `ENV QTWEBENGINE_DISABLE_SANDBOX 1`
 
-10.18
+  10.18
+
 ---
 
 ### pytorch
 
 - `python3base/pytorch`
 
-10.06
+  10.06
+
 ---
 
 ### [imgdupes](https://github.com/knjcode/imgdupes)
@@ -441,8 +469,7 @@ jupyter notebook --ip 0.0.0.0 --allow-root
 
 #### [use docker](https://github.com/docker-science/cookiecutter-docker-science)
 
-09.20
----
+## 09.20
 
 ### jmeter
 
@@ -456,7 +483,8 @@ jupyter notebook --ip 0.0.0.0 --allow-root
   docker-compose down
   ```
 
-08.12
+  08.12
+
 ---
 
 ### Octave
@@ -467,22 +495,22 @@ jupyter notebook --ip 0.0.0.0 --allow-root
 
 ### matplotlib 图表 中文字体
 
-  ```python
-  from matplotlib.font_manager import FontProperties
-  font= FontProperties(fname=r"Songti.ttc", size=12)
-  ...
-  plt.title('中国\n' + note, fontproperties=font)
-  ```
+```python
+from matplotlib.font_manager import FontProperties
+font= FontProperties(fname=r"Songti.ttc", size=12)
+...
+plt.title('中国\n' + note, fontproperties=font)
+```
 
-08.11
----
+## 08.11
 
 ### Python-for-Epidemiologists
 
 - use ubuntu:bionic
 - python3base/ubuntu
 
-06.14
+  06.14
+
 ---
 
 ### searx
@@ -491,22 +519,23 @@ jupyter notebook --ip 0.0.0.0 --allow-root
 - 互联网元搜索引擎 Searx
 - python3base/searx
 
-05.27
+  05.27
+
 ---
 
 ### one/nginx:1.12
 
 base on one/centos:7
 
-05.26
----
+## 05.26
 
 ### one/centos7
 
 - base million12/centos-supervisor:4.0.2
 - 放弃原有 one/centos7.6, 构建有问题
 
-05.21
+  05.21
+
 ---
 
 ### nvm
@@ -517,33 +546,39 @@ base on one/centos:7
 
 - [参考 relaxed-docker](https://github.com/WeihanLi/docker-env/blob/master/docker-puppeteer/node10/stable.Dockerfile)，由于访问不了 google，直接使用 [puppeteer docker](https://hub.docker.com/r/weihanli/puppeteer/tags)
 - use
+
   - create alias
 
   ```
   alias relaxed-docker="docker run -it --rm -u $(id -u):$(id -g) -v $(pwd):$(pwd) -w $(pwd) --name relaxed one/relaxedjs:node10-stable $@"
   ```
+
   - goto examples dir
 
   ```
   relaxed-docker book.pug
   ```
 
-05.18
+  05.18
+
 ---
 
 ### relaxedjs
 
 - node/relaxedjs
+
   - alphine 下运行，chromimu 问题，不能正常使用
 
-04.25
+  04.25
+
 ---
 
 ### jupyterLab add octave
 
 - [](https://github.com/calysto/octave_kernel)
 
-03.30
+  03.30
+
 ---
 
 ### nacos 0.9 base one/java:8
@@ -552,7 +587,8 @@ base on one/centos:7
 - 注意，centos6.9 采用了 `supervisord`，需好好利用
 - nohup 安装, `yum install coreutils`
 
-03.22
+  03.22
+
 ---
 
 ### jupyterLab
@@ -562,14 +598,18 @@ base on one/centos:7
 
   - in container, `sh /run_jupyter.sh`
   - open brower, `http://localhost:8888/lab`, pwd=123
+
 - install plugins
+
   - @jupyterlab/latex
 
 - 参考
+
   - https://github.com/facebookresearch/maskrcnn-benchmark
   - [mask-rcnn benchmark & docker & jupyterlab](https://zhuanlan.zhihu.com/p/55516749)
 
-03.21
+  03.21
+
 ---
 
 ### aws openjdk，corretto-8
@@ -590,7 +630,8 @@ base on one/centos:7
   ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64
   ```
 
-03.11
+  03.11
+
 ---
 
 ### npm
@@ -601,7 +642,8 @@ base on one/centos:7
   - ? 代码全部打包，docker 中有源码
 - [如何使用 docker 部署前端应用](https://juejin.im/post/5c83cbaa6fb9a04a0f65fdaa)
 
-03.06
+  03.06
+
 ---
 
 ### ffmpeg 4.1
@@ -610,7 +652,8 @@ base on one/centos:7
 - centos/ffmpeg/4.1
 - [use 参考](https://hub.docker.com/r/jrottenberg/ffmpeg)
 
-02.23
+  02.23
+
 ---
 
 ### pandoc
@@ -622,9 +665,10 @@ base on latex
   - [thomasweise/docker-pandoc](https://hub.docker.com/r/thomasweise/docker-pandoc/dockerfile)
   - [thomasWeise-github](https://github.com/thomasWeise/docker-pandoc)
   - ttf-wqy-microhei(文泉驿微黑字体库), 字体定义 `/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset`, 主要中文字体
-  - out pdf, `pandoc --toc --toc-depth=3 -f markdown  readme.md --pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei" -o readme.pdf`
+  - out pdf, `pandoc --toc --toc-depth=3 -f markdown readme.md --pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei" -o readme.pdf`
   - list fonts, `fc-list`
 - pandoc + latex 中文方案，use `one/pandoc:2.0`，步骤
+
   - run docker
 
     ```
@@ -655,12 +699,14 @@ base on latex
     - `AR PL UKai CN` - zhkai
   - 模版 `templates/my.tex`
 
-02.22
+  02.22
+
 ---
 
 ### keras
 
 base python 3.6, use
+
 - python3base/keras
 - keras
 - tensorflow
@@ -674,7 +720,8 @@ base python 3.6, use
   # brower, localhost:8888, 根据提示拷贝url 访问
   ```
 
-01.17
+  01.17
+
 ---
 
 ### nginx1.12, openresty1.13.6
@@ -689,25 +736,28 @@ base python 3.6, use
     # use curl -I http://localhost
     server_tokens   off;
   ```
+
 - centos/nginx, openresty/1.13.6
 - 具体参看 openresty/1.13.6/readme
 
-2019.01.08
+  2019.01.08
+
 ---
 
 ### centos7
 
 one/centos:7.2 - 7.6
+
 - sshd, port 22
 - [centos7 + supervisor](https://blog.csdn.net/lemontree1945/article/details/80508443)
 - use supervisor 启动多个应用
   - 镜像 CMD 只能执行一次，考虑以后会出现各种应用启动，所以采用 supervisor 方式启动应用
-  - docker 启动supervisor, `CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf`
+  - docker 启动 supervisor, `CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf`
   - use ssh see container, `ssh root@localhost -p 4426`, passwd:123456,
     - 查看 supervisor, `supervisorctl -c /etc/supervisor/supervisord.conf status`
     - start, `supervisorctl -c /etc/supervisor/supervisord.conf start nginx`
 - use cronie
-  - centos7.6 只增加cron package，没具体安排任务
+  - centos7.6 只增加 cron package，没具体安排任务
   - openresty 定义 cron
 
 ### tsung
@@ -717,16 +767,18 @@ one/centos:7.2 - 7.6
 - [Dataman-Cloud git](https://github.com/Dataman-Cloud/OpenDockerFile)
 - tsung/readme.md
 
-12.07
+  12.07
+
 ---
 
 ### mindoc
 
-Golang实现的基于beego框架的接口在线文档管理系统 https://www.iminho.me
+Golang 实现的基于 beego 框架的接口在线文档管理系统 https://www.iminho.me
 
 - docker pull daocloud.io/lifei6671/mindoc:latest
 
-11.20
+  11.20
+
 ---
 
 ### [sentry](https://github.com/getsentry)
@@ -737,18 +789,20 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - postgresql, start
 - mail, start
 - [sentry docker offical](https://github.com/getsentry/onpremise)
+
   - clone this repos
   - make build
   - 第一次运行
     - create_secret-key.sh, 得到 key，拷贝到启动脚本
     - 每次新版本第一次运行前运行: run_migratins.sh
     - run_command.sh, createuser, 新建用户: admin@gmail.com, admin
-   - run.sh, start web
+  - run.sh, start web
   - 启动, run.sh
 
 - 注意 `--detach`, 命令行后台运行
 
-08.17
+  08.17
+
 ---
 
 ### latex
@@ -756,17 +810,19 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - [blang/latex:ctanfull - Dockerfile.full](https://github.com/blang/latex-docker/blob/master/Dockerfile.full)full CTAN TexLive Scheme-full: Up-to-date, all packages (5.6GB)
 - `docker pull blang/latex:ctanfull`
 
-08.14
+  08.14
+
 ---
 
 ### portainer
 
-- Docker可视化管理工具的安装配置及使用
+- Docker 可视化管理工具的安装配置及使用
 - [官网](https://www.portainer.io/)
 - portainer/run.sh
 - user: admin,123456789
 
-08.08
+  08.08
+
 ---
 
 ### openresty 1.13.6
@@ -779,7 +835,8 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - [参考](http://wiki.jikexueyuan.com/project/openresty/web/docker.html)
 - `docker run -d --net=host openresty/openresty:1.13.6.2-centos`
 
-07.24
+  07.24
+
 ---
 
 ### 3.7.7-management
@@ -792,9 +849,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 ### nginx:1.14
 
-
-07.17
----
+## 07.17
 
 ### oracle 11g
 
@@ -852,9 +907,10 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
    GRANT "DBA" TO "HCOST";
    GRANT "CONNECT" TO "HCOST";
    GRANT "RESOURCE" TO "HCOST";
-   ```
+  ```
 
   remove old data
+
   ```sql
   drop tablespace cdr including contents and datafiles cascade constraint;
 
@@ -875,14 +931,17 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
   - 重新生成镜像 `docker commit ora11g one/ora11g.2`
   - run from one/org11g.2
   - docker exec -it orac11g /bin/bash
+
     - su oracle
     - emctl start dbconsole
 
   - 但过段时间还是会失效
+
     - emctl status dbconsole
 
       ...
       EM Daemon is not running.
+
     - 重新配置: emca -config dbcontrol db -repos recreate, 没解决
 
   - q
@@ -899,11 +958,13 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - [oracle Official](https://github.com/oracle/docker-images/tree/master/OracleDatabase)
 - TZ='Asia/Shanghai' date
 - 字符集
+
   ```sql
   select * from nls_database_parameters;
   ```
 
-07.03
+  07.03
+
 ---
 
 ### python 3.6
@@ -916,10 +977,11 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 ### turiCreate
 
-- turiCreate.iOS的机器学习
-- [如何用Python和深度神经网络寻找近似图片？](https://www.jianshu.com/p/6fe5c75a8aa5)
+- turiCreate.iOS 的机器学习
+- [如何用 Python 和深度神经网络寻找近似图片？](https://www.jianshu.com/p/6fe5c75a8aa5)
 
-05.24
+  05.24
+
 ---
 
 ### latex
@@ -931,14 +993,16 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
   or `docker pull blang/latex:ubuntu`, full `docker pull blang/latex:ctanfull`
 
 - [上海交大](http://www.latexstudio.net/archives/12480)
+
   - shjd/Dockerfile
 
-05.11
+  05.11
+
 ---
 
 ### 补充
 
-- 增加docker 可用连接端口数，方便docker 访问外部，可用来模拟多客户
+- 增加 docker 可用连接端口数，方便 docker 访问外部，可用来模拟多客户
 
   ```shell
   docker run --rm \
@@ -951,7 +1015,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
   查看 in container, `cat /proc/sys/net/ipv4/ip_local_port_range`,`sysctl -a | grep ipv4.ip_local_port_range`
 
-- 增加docker 打开文件数
+- 增加 docker 打开文件数
 
   - `--ulimit nofile=65536:65536`
   - update to `--ulimit nofile=1048576:1048576`
@@ -960,30 +1024,33 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
   查看 in container, `ulimit -n`
 
-04.24
+  04.24
+
 ---
 
 ### `one/java8:1.0· to `one/java:8`
 
 base on one/java:8, create one/java-media:8
+
 - imageMagick
-- `docker run --rm -i -t  -v (pwd)/work:/work one/java-media:8  /bin/bash`
+- `docker run --rm -i -t -v (pwd)/work:/work one/java-media:8 /bin/bash`
 
 调整，直接修改 centos6.9，增加 imageMagick 包
 
-04.17
----
+## 04.17
 
 monitor `docker stats`
 
 ### docker 监控
 
-- cAdvisor: Google开源的用于监控基础设施应用的工具，它是一个强大的监控工具，不需要任何配置就可以通过运行在Docker主机上的容器来监控Docker容器，而且可以监控Docker主机。更多详细操作和配置选项可以查看Github上的cAdvisor项目文档。
-- influxDB: 它是一个分布式时间序列数据库。cAdvisor仅仅显示实时信息，但是不存储监视数据。因此，我们需要提供时序数据库用于存储cAdvisor组件所提供的监控信息，以便显示除实时信息之外的时序数据。
-- Grafana: Grafana可视化展示平台允许我们可视化地展示监控信息。它允许我们对influxDB进行查询，并通过强大的图表功能进行可视化展示。
+- cAdvisor: Google 开源的用于监控基础设施应用的工具，它是一个强大的监控工具，不需要任何配置就可以通过运行在 Docker 主机上的容器来监控 Docker 容器，而且可以监控 Docker 主机。更多详细操作和配置选项可以查看 Github 上的 cAdvisor 项目文档。
+- influxDB: 它是一个分布式时间序列数据库。cAdvisor 仅仅显示实时信息，但是不存储监视数据。因此，我们需要提供时序数据库用于存储 cAdvisor 组件所提供的监控信息，以便显示除实时信息之外的时序数据。
+- Grafana: Grafana 可视化展示平台允许我们可视化地展示监控信息。它允许我们对 influxDB 进行查询，并通过强大的图表功能进行可视化展示。
 
 use:
+
 - `docker pull tutum/influxdb`, `run_influxdb.sh`, 注意 linux 下建立卷需增加 `--privileged=true`
+
   - access url: http://ip:8083
   - `CREATE DATABASE "cadvisor"`
   - `CREATE USER 'cadvisor' WITH PASSWORD 'cadvisor'`
@@ -1002,14 +1069,16 @@ use:
 
 - `monitor/dockprom`
 
-04.16
+  04.16
+
 ---
 
 ### postgresql 8.4
 
 - [8.4](https://github.com/pcorace/postgresql-8.4-docker)
 
-04.15
+  04.15
+
 ---
 
 ### nginx
@@ -1026,8 +1095,7 @@ cd docker-nginx-amplify
 docker build -t nginx-amplify .
 ```
 
-04.10
----
+## 04.10
 
 ### centos 6.9 时区时间问题
 
@@ -1042,14 +1110,13 @@ RUN rm -rf /etc/localtime && \
     echo $TIME_ZONE > /etc/timezone
 ```
 
-时间 总算相差3 分钟
+时间 总算相差 3 分钟
 
 ```
 -v $(pwd)/Shanghai:/etc/localtime \
 ```
 
-03.30
----
+## 03.30
 
 ### 区块链 Hyperledger Fabric
 
@@ -1060,7 +1127,8 @@ RUN rm -rf /etc/localtime && \
 - `mkdir -p $GOPATH/src/github.com/hyperledger`
 - `cd $GOPATH/src/github.com/hyperledger`
 
-03.27
+  03.27
+
 ---
 
 ### spring boot 监控 Prometheus & grafana
@@ -1077,7 +1145,8 @@ docker pull grafana/grafana
 - `prometheus/run.sh`, access to `http://localhost:9090`, user: admin,admin
 - `prometheus/grafana/run.sh`, access to `http://localhost:3000`
 
-03.07
+  03.07
+
 ---
 
 ### gitlab
@@ -1107,13 +1176,13 @@ docker pull grafana/grafana
   - 减少数据库并发数, `postgresql['max_worker_processes'] = 8`
   - 减少进程数, `unicorn['worker_processes'] = 2`
   - 减少数据库缓存, `postgresql['shared_buffers'] = "128MB"`
-  - 减少sidekiq并发数, `sidekiq['concurrency'] = 12`
+  - 减少 sidekiq 并发数, `sidekiq['concurrency'] = 12`
 
 #### test
 
 [docker](https://github.com/sameersbn/docker-gitlab)
 
-- 自己构建没成功，直接pull
+- 自己构建没成功，直接 pull
 
 ```
 docker pull sameersbn/gitlab:10.5.1
@@ -1136,31 +1205,26 @@ yangjiandong/base:v3 to one/base:v3
 
 ### base/ubuntu/1604
 
-
-2018.02.27
----
+## 2018.02.27
 
 ### fastdfs
 
 [docker for fastdfs tracker](https://github.com/phinexdaz/fdfs_tracker)
 
-10.10
----
+## 10.10
 
 ## onlyoffice/documentserver
 
 文档服务
 
 - `docker pull onlyoffice/documentserver`
-- `docker run -i -t -d -p 9000:80 onlyoffice/documentserver`, 看到502报错，稍等
+- `docker run -i -t -d -p 9000:80 onlyoffice/documentserver`, 看到 502 报错，稍等
 
-Document Server的数据在容器中的储存位置如下：
+Document Server 的数据在容器中的储存位置如下：
 
-- `/var/log/onlyoffice` 存放ONLYOFFICE Document Server日志
+- `/var/log/onlyoffice` 存放 ONLYOFFICE Document Server 日志
 - `/var/www/onlyoffice/Data` 存放证书文件
-- `sudo docker run -i -t -d -p 80:80 \
-    -v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice  \
-    -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data  onlyoffice/documentserver`
+- `sudo docker run -i -t -d -p 80:80 \ -v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \ -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data onlyoffice/documentserver`
 
 [参考](https://www.orgleaf.com/2588.html)
 
@@ -1192,8 +1256,7 @@ Document Server的数据在容器中的储存位置如下：
 - `https://github.com/nextcloud/docker`
 - nextcloud/compose
 
-0914
----
+## 0914
 
 ## nodejs
 
@@ -1201,8 +1264,7 @@ https://hub.docker.com/_/node/
 
 - nodejs 8.5
 
-0913
----
+## 0913
 
 ## tensorflow
 
@@ -1219,8 +1281,7 @@ ip hosts:
 #TensorFlow end
 ```
 
-0912
----
+## 0912
 
 ## opencv
 
@@ -1236,7 +1297,7 @@ boost
 
 参考 https://svn.boost.org/trac10/ticket/11120
 
-手工进入docker，生成 `project-config.jam`
+手工进入 docker，生成 `project-config.jam`
 
 ```
 ./bootstrap.sh --prefix=boost_output --with-icu= --with-python=python3
@@ -1273,8 +1334,7 @@ RUN apt-get update \
 CMD /bin/bash
 ```
 
-0829
----
+## 0829
 
 ## docker-elk
 
@@ -1285,10 +1345,9 @@ CMD /bin/bash
 - 9300: Elasticsearch TCP transport
 - 5601: Kibana
 
-现在采用docker-elk
+现在采用 docker-elk
 
-0825
----
+## 0825
 
 ## elk
 
@@ -1297,12 +1356,11 @@ CMD /bin/bash
 - docker pull sebp/elk
 - docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
 
-    - 5601 (Kibana web interface).
-    - 9200 (Elasticsearch JSON interface).
-    - 5044 (Logstash Beats interface, receives logs from Beats such as Filebeat – see the Forwarding logs with Filebeat section).
+  - 5601 (Kibana web interface).
+  - 9200 (Elasticsearch JSON interface).
+  - 5044 (Logstash Beats interface, receives logs from Beats such as Filebeat – see the Forwarding logs with Filebeat section).
 
-0817
----
+## 0817
 
 ## one/apache:1.0，作为公司 svn 服务器
 
@@ -1323,8 +1381,7 @@ Can't open file '/root/.subversion/servers': Permission denied)
 chmod 551 /root
 ```
 
-0810
----
+## 0810
 
 ## cloudera
 
@@ -1340,14 +1397,13 @@ run
 docker run --hostname=quickstart.cloudera --privileged=true -t -i -p 8888:8888 -p 80:80 -p 7180:7180 cloudera/quickstart:0810 /usr/bin/docker-quickstart
 ```
 
-07.15
----
+## 07.15
 
 ### one/debian:jessie
 
 ### redis3.2.9 from one/debian:jessie
 
-### 最新Dockerfile
+### 最新 Dockerfile
 
 ```
 cetons/6.x
@@ -1358,15 +1414,13 @@ mysql/5.7
 
 ```
 
-07.04
----
+## 07.04
 
 ### redis
 
 https://hub.docker.com/_/redis/
 
-06.29
----
+## 06.29
 
 ### alisql, mysql
 
@@ -1417,14 +1471,9 @@ brew install sysbench
 
 utf8mb4
 
-1.MySQL中的utf-8并不是真正意义上的utf-8,它只能存储1~3个字节长度的utf-8编码，而存储4个字节的必须用utf8mb4(mysql>=5.5.3支持)，否则会出现乱码。例如在微信管理系统中，消息文本使用了emoji表情:符号，必须使用utf8mb4进行储存。
-2.注意最大字符长度：以INNODB为基础，utf8最长VARCHAR(255)，utf8mb4最长为VARCHAR(191)。
-3.如果使用PHP来操作到 MySQL，字符串仍可能面临在数据库中以非 UTF-8 的格式进行存储的问题。
-4.为了字符串从 PHP 到 MySQL都使用 UTF-8，确认数据表都设定为 utf8mb4 字符集和整理，并且确保 PDO 连接请求也使用了 utf8mb4 字符集,这是非常重要的。要求在的mysql>=5.5.3版本，表、字段必须使用utf8mb4字符集和utf8mb4整理。
+1.MySQL 中的 utf-8 并不是真正意义上的 utf-8,它只能存储 1~3 个字节长度的 utf-8 编码，而存储 4 个字节的必须用 utf8mb4(mysql>=5.5.3 支持)，否则会出现乱码。例如在微信管理系统中，消息文本使用了 emoji 表情:符号，必须使用 utf8mb4 进行储存。 2.注意最大字符长度：以 INNODB 为基础，utf8 最长 VARCHAR(255)，utf8mb4 最长为 VARCHAR(191)。 3.如果使用 PHP 来操作到 MySQL，字符串仍可能面临在数据库中以非 UTF-8 的格式进行存储的问题。 4.为了字符串从 PHP 到 MySQL 都使用 UTF-8，确认数据表都设定为 utf8mb4 字符集和整理，并且确保 PDO 连接请求也使用了 utf8mb4 字符集,这是非常重要的。要求在的 mysql>=5.5.3 版本，表、字段必须使用 utf8mb4 字符集和 utf8mb4 整理。
 
-
-06.28
----
+## 06.28
 
 ### openresty
 
@@ -1440,8 +1489,7 @@ wrk 压测
 brew install wrk
 ```
 
-06.23
----
+## 06.23
 
 ### centos6,7
 
@@ -1455,13 +1503,13 @@ one/centos:7.2 --> hub.c.163.com/public/centos:7.2.1511
 
 - one/centos:6.9(centos/6.x)
 
-注意：作为后台运行任务，centos7不能正常运行，6.9 正常
+注意：作为后台运行任务，centos7 不能正常运行，6.9 正常
 
 ```
 docker logs [container name]
 ```
 
-进入后台运行的docker container
+进入后台运行的 docker container
 
 ```
 docker exec -it centos6.supervisor /bin/bash
@@ -1472,7 +1520,8 @@ docker exec -it centos6.supervisor /bin/bash
 - run_supervisord.sh
 - run_in_container.sh
 
-05.20
+  05.20
+
 ---
 
 ### update python3base
@@ -1515,14 +1564,11 @@ vim /etc/ImageMagick/policy.xml
 change from <policy domain="path" rights="none" pattern="@*" /> to <!--<policy domain="path" rights="none" pattern="@*" /> -->.
 ```
 
-2017.01.16
----
+## 2017.01.16
 
 ### ruby 2.3
 
-
-12.02
----
+## 12.02
 
 ### nodejs
 
@@ -1530,8 +1576,7 @@ change from <policy domain="path" rights="none" pattern="@*" /> to <!--<policy d
 
 采用 node/base, ubunt 16.04, node 6.9
 
-11.03
----
+## 11.03
 
 ### docker 考虑磁盘容量
 
@@ -1539,8 +1584,7 @@ change from <policy domain="path" rights="none" pattern="@*" /> to <!--<policy d
 docker-machine create --virtualbox-disk-size "50000" --virtualbox-memory "4096" -d virtualbox dev
 ```
 
-09.29
----
+## 09.29
 
 ### git 删除历史文件
 
@@ -1552,11 +1596,15 @@ git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-
 Rewrite 48dc599c80e20527ed902928085e7861e6b3cbe6 (266/266)
 # Ref 'refs/heads/master' was rewritten
 ```
+
 - 推送我们修改后的 repo
+
 ```
 git push origin master --force
 ```
+
 - 步骤三：清理和回收空间
+
 ```
 rm -rf .git/refs/original/
 
@@ -1576,8 +1624,7 @@ Counting objects: 2437, done.
 # Total 2437 (delta 1483), reused 0 (delta 0)
 ```
 
-09.14
----
+## 09.14
 
 ### [phusion base image](https://github.com/phusion/baseimage-docker)
 
@@ -1585,8 +1632,7 @@ A minimal Ubuntu base image modified for Docker-friendliness
 
 create base:v3
 
-09.02
----
+## 09.02
 
 ### elasticsearch 2.4
 
@@ -1619,13 +1665,13 @@ $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
 - elasticsearch/elk-docker-2
 - [infos](http://www.infoq.com/cn/news/2016/08/Elasticsearch-5-0-Elastic)
 
-08.29
+  08.29
+
 ---
 
 ### openresty add php5.6
 
-08.25
----
+## 08.25
 
 ### 容器间通讯
 
@@ -1637,21 +1683,19 @@ $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
 
 `--dns-search=DOMAIN` 设定容器的搜索域，当设定搜索域为 `.example.com` 时，在搜索一个名为 host 的主机时，DNS 不仅搜索 host，还会搜索 `host.example.com`。 注意：如果没有上述最后 2 个选项，Docker 会默认用主机上的 `/etc/resolv.conf` 来配置容器。
 
-08.23
----
+## 08.23
 
 ### ubuntu time
 
 You can make this change permanent for yourself by appending the line
-       	TZ='Asia/Shanghai'; export TZ
+TZ='Asia/Shanghai'; export TZ
 to the file '.profile' in your home directory; then log out and log in again.
 
 Here is that TZ value again, this time on standard output so that you
 can use the /usr/bin/tzselect command in shell scripts:
 Asia/Shanghai
 
-08.12
----
+## 08.12
 
 ### spark 1.6
 
@@ -1700,8 +1744,7 @@ javaca version "1.8.xx"
 docker run --name master -it -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8085:8080 -p 4040:4040 -p 7077:7077 -p 2022:22  -v ~/data:/data -v ~/data/log:/usr/local/hadoop/logs -h master java8/spark:1.6.0 bash
 ```
 
-08.06
----
+## 08.06
 
 ### docker 加速
 
@@ -1721,16 +1764,18 @@ docker-machine restart default
 http://siddontang.com/2015/01/09/docker-practise/
 
 Run the mysql image
+
 ```
 docker run --name mysql -d yangjiandong/mysql:5.5
 ```
 
 You can access the mysql server as the root user using the following command:
+
 ```
 docker run -it --rm --volumes-from=mysql yangjiandong/mysql:5.5 mysql -uroot
 ```
 
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON _._ TO 'root'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
 flush privileges;
 
 - 解决 mac 下 mysql 权限问题
@@ -1739,6 +1784,7 @@ flush privileges;
 [2](http://stackoverflow.com/questions/34442831/permission-denied-when-mounting-docker-volume-in-osx)
 
 Dockerfile
+
 ```
 RUN usermod -u 1000 mysql
 RUN mkdir -p /var/run/mysqld
@@ -1748,6 +1794,7 @@ RUN chmod -R 777 /var/lib/mysql
 ```
 
 mysql data store dir
+
 ```
 cd
 mkdir -p mysql_data/data
@@ -1755,31 +1802,33 @@ chmod 777 mysql_data
 ```
 
 run.sh
+
 ```
 docker run --name mysql -v ~/workspace/docker/yang.docker/mysql/data:/var/lib/mysql -d yangjiandong/mysql:latest
 ```
 
 in run mysql container
+
 ```
 docker exec -it mysql /bin/bash
 ```
 
-07.28
----
+## 07.28
 
 [局域网访问 docker](http://www.jscon.cc/docker-serial-2/)
 
 virtualbox 网络设置 - 网络地址转换 - 端口转发 add
+
 ```
 nginx tcp 192.168.1.109 8080  8080
 ```
 
 redis.dev - 可以用的 redis
 
-07.20
----
+## 07.20
 
 json-server 修改了 json 需重新启动
+
 ```
 docker stop my-json-server
 docker rm my-josn-server
@@ -1787,12 +1836,12 @@ docker rm my-josn-server
 
 add `--watch` 好像没效果
 
-old
----
+## old
 
 ### 07.18
 
 config nginx + rtmp
+
 ```
 copy install_rtmp_module.sh to /app
 run docker
@@ -1804,6 +1853,7 @@ run docker
 在 `yangjiandong/openresty` 基础上安装 `ffmpeg`， 准备安装 [nginx+rtmp 服务器](http://www.jianshu.com/p/02222073b3f1)
 
 参考
+
 - [centos7 install ffmpeg](http://www.icnws.com/articles/2016/02/29/1456739902248.html)
 - [2](http://www.yaosansi.com/post/ffmpeg-on-centos/)
 
@@ -1813,6 +1863,7 @@ yum install autoconf automake cmake freetype-devel gcc gcc-c++ git libtool make 
 ```
 
 commit to yangjiandong/openresty_ffmpeg image
+
 ```
 docker ps
 docker commit 336600fa7f5c yangjiandong/openresty_ffmpeg
@@ -1836,6 +1887,7 @@ ldconfig
 ```
 
 test
+
 ```
 ffmpeg -version
 ```
@@ -1854,6 +1906,7 @@ Error checking TLS connection: Error checking and/or regenerating the certs: The
 
 升级了 docker-toolbox 1.11 出现以上问题
 [1](http://miroadamy.com/2016/03/docker-machine-error-after-upgrade)
+
 ```
 docker-machine rm default
 docker-machine create --driver virtualbox default
@@ -1877,7 +1930,7 @@ sudo docker run -d -p 9200:9200 -p 9300:9300 elasticsearch
 
 - [Elasticsearch, Logstash, Kibana (ELK) Docker image documentation](https://elk-docker.readthedocs.io)
 
-    For instance, the image containing Elasticsearch 1.7.3, Logstash 1.5.5, and Kibana 4.1.2 (which is the last image using the Elasticsearch 1.x and Logstash 1.x branches) bears the tag E1L1K4
+  For instance, the image containing Elasticsearch 1.7.3, Logstash 1.5.5, and Kibana 4.1.2 (which is the last image using the Elasticsearch 1.x and Logstash 1.x branches) bears the tag E1L1K4
 
 ```
 docker pull sebp/elk:E1L1K4
@@ -1967,24 +2020,27 @@ $docker run -t -i code /bin/bash
 
 - error
 
-    ```
-docker dial tcp 192.168.99.100:2376: getsockopt: connection refused
-    ```
+      ```
 
-    解决：
+  docker dial tcp 192.168.99.100:2376: getsockopt: connection refused
+  ```
 
-    ```
-docker-machine stop default
-docker-machine start default
-    ```
+      解决：
+
+      ```
+
+  docker-machine stop default
+  docker-machine start default
+  ```
 
 ### 12.08
 
 - mac 采用 docker toolbox
 
-    ```
-docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso default
-    ```
+      ```
+
+  docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso default
+  ```
 
 - java7base 无效
 
@@ -1999,39 +2055,40 @@ docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso
 
 #### redis
 
-
 - get docker
 
-    ```
-docker pull redis:3.0.3
-    ```
+      ```
+
+  docker pull redis:3.0.3
+  ```
 
 - run
 
-    运行服务：
+      运行服务：
 
-    ```
-docker run --name redis -d -p 6379:6379 redis:3.0.3 -v ~/workspace/docker/redis-data:/data
-    ```
+      ```
 
-    参数说明：
+  docker run --name redis -d -p 6379:6379 redis:3.0.3 -v ~/workspace/docker/redis-data:/data
+  ```
 
-    - name 是给 container 取一个别名，以后再 stop 和 attach 的时候就可以使用这个别名，
-    - d 是作为一个后台服务运行，
-    - p 是端口映射，把 container 的 6379 映射到 host 的 6379 端口，
+      参数说明：
 
-    这样就可以在 host 机上使用 192.168.59.103:6379 来连接 container 中的 redis 服务了。
+      - name 是给 container 取一个别名，以后再 stop 和 attach 的时候就可以使用这个别名，
+      - d 是作为一个后台服务运行，
+      - p 是端口映射，把 container 的 6379 映射到 host 的 6379 端口，
 
-    另一个容器访问 redis:
+      这样就可以在 host 机上使用 192.168.59.103:6379 来连接 container 中的 redis 服务了。
 
-    ```
-docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
-    ```
+      另一个容器访问 redis:
 
-    参数说明：
+      ```
 
-    - rm Automatically remove the container when it exits
+  docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
+  ```
 
+      参数说明：
+
+      - rm Automatically remove the container when it exits
 
 ### 2015.08.20
 
@@ -2089,9 +2146,11 @@ docker inspect <id/container_name>
 ```
 docker attach f357e2faab77
 ```
+
 or
 
 in run container
+
 ```
 docker exec -it [container name] /bin/bash
 ```
