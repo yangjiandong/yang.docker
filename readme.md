@@ -72,18 +72,14 @@ base on py3.6
 - [RL_Stock](https://github.com/wangshub/RL-Stock)
   如何用深度强化学习自动炒股
 
-  04.19
-
----
+## 04.19
 
 ### intellij-idea-pro
 
 - 参考 [rycus86/docker-intellij-idea-pro](https://github.com/rycus86/docker-intellij-idea-pro)
 - licnese 问题要解决
 
-  2021.04.07
-
----
+## 2021.04.07
 
 ### debian/jessie 安装源
 
@@ -108,18 +104,14 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 
 - update `centos/fabric8io-jdk8` to `centos/openjdk8`
 
-  09.09
-
----
+## 09.09
 
 ### fabric8/java
 
 - `docker pull fabric8/java-centos-openjdk8-jdk`
 - `centos/fabric8io-jdk8`
 
-  09.03
-
----
+## 09.03
 
 ### nacos 1.1.3
 
@@ -168,9 +160,7 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   ```
 - access http://localhost:8888
 
-  07.16
-
----
+## 07.16
 
 ### mysql tpcc 测试
 
@@ -178,9 +168,7 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
 - one/mysql-ssh:5.7
 - mysql-tpcc.md
 
-  07.11
-
----
+## 07.11
 
 ### mysql 5.7
 
@@ -272,18 +260,14 @@ show global status like '%audit%';
   - 如果 docker 重新构建，ssh 登录时报不信任时，删除下 `./ssh/know_host` 中相关服务器
   - `w` 查看当前在线用户，`ifconfig` 查看网络配置
 
-  05.30
-
----
+## 05.30
 
 ### code server
 
 - [linuxserver/docker-code-server](https://github.com/linuxserver/docker-code-server)
 - code-serve
 
-  04.22
-
----
+## 04.22
 
 ### paddlepaddle
 
@@ -319,17 +303,13 @@ show global status like '%audit%';
     docker exec -it jub jupyter notebook list
     ```
 
-  03.31
-
----
+## 03.31
 
 ### nginx1.12, openresty1.15.8
 
 - base one/centos:7
 
-  03.30
-
----
+## 03.30
 
 - apisix
 - [hellotalk/apisix](https://hub.docker.com/r/hellotalk/apisix)
@@ -338,9 +318,7 @@ show global status like '%audit%';
   docker pull hellotalk/apisix
   ```
 
-  02.29
-
----
+## 02.29
 
 ### [todo] Wechaty, 微信
 
@@ -362,9 +340,7 @@ show global status like '%audit%';
 
 - wechaty-getting-started, docker 示例比较老
 
-  02.19
-
----
+## 02.19
 
 ### docker-registry
 
@@ -381,9 +357,7 @@ oralce java 的其他选择，性能也不错，可以试试
 
   - 查看操作系统版本, `cat /proc/version`
 
-  11.22
-
----
+## 11.22
 
 ### mindoc
 
@@ -392,9 +366,7 @@ oralce java 的其他选择，性能也不错，可以试试
 
   - [参考 docker-compose](https://gitee.com/dreamidea/mindoc-docker-compose)
 
-  11.13
-
----
+## 11.13
 
 ### pandoc 2.0
 
@@ -407,17 +379,13 @@ oralce java 的其他选择，性能也不错，可以试试
   - 参考 `https://hub.docker.com/r/beeronbeard/docker-gitbook-pdf/dockerfile`
   - add `ENV QTWEBENGINE_DISABLE_SANDBOX 1`
 
-  10.18
-
----
+## 10.18
 
 ### pytorch
 
 - `python3base/pytorch`
 
-  10.06
-
----
+## 10.06
 
 ### [imgdupes](https://github.com/knjcode/imgdupes)
 
@@ -483,9 +451,7 @@ jupyter notebook --ip 0.0.0.0 --allow-root
   docker-compose down
   ```
 
-  08.12
-
----
+## 08.12
 
 ### Octave
 
@@ -509,9 +475,7 @@ plt.title('中国\n' + note, fontproperties=font)
 - use ubuntu:bionic
 - python3base/ubuntu
 
-  06.14
-
----
+## 06.14
 
 ### searx
 
@@ -559,9 +523,7 @@ base on one/centos:7
   relaxed-docker book.pug
   ```
 
-  05.18
-
----
+## 05.18
 
 ### relaxedjs
 
@@ -569,17 +531,13 @@ base on one/centos:7
 
   - alphine 下运行，chromimu 问题，不能正常使用
 
-  04.25
-
----
+## 04.25
 
 ### jupyterLab add octave
 
 - [](https://github.com/calysto/octave_kernel)
 
-  03.30
-
----
+## 03.30
 
 ### nacos 0.9 base one/java:8
 
@@ -587,9 +545,7 @@ base on one/centos:7
 - 注意，centos6.9 采用了 `supervisord`，需好好利用
 - nohup 安装, `yum install coreutils`
 
-  03.22
-
----
+## 03.22
 
 ### jupyterLab
 
@@ -608,9 +564,7 @@ base on one/centos:7
   - https://github.com/facebookresearch/maskrcnn-benchmark
   - [mask-rcnn benchmark & docker & jupyterlab](https://zhuanlan.zhihu.com/p/55516749)
 
-  03.21
-
----
+## 03.21
 
 ### aws openjdk，corretto-8
 
@@ -630,9 +584,7 @@ base on one/centos:7
   ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64
   ```
 
-  03.11
-
----
+## 03.11
 
 ### npm
 
@@ -642,9 +594,7 @@ base on one/centos:7
   - ? 代码全部打包，docker 中有源码
 - [如何使用 docker 部署前端应用](https://juejin.im/post/5c83cbaa6fb9a04a0f65fdaa)
 
-  03.06
-
----
+## 03.06
 
 ### ffmpeg 4.1
 
@@ -652,9 +602,7 @@ base on one/centos:7
 - centos/ffmpeg/4.1
 - [use 参考](https://hub.docker.com/r/jrottenberg/ffmpeg)
 
-  02.23
-
----
+## 02.23
 
 ### pandoc
 
@@ -699,9 +647,7 @@ base on latex
     - `AR PL UKai CN` - zhkai
   - 模版 `templates/my.tex`
 
-  02.22
-
----
+## 02.22
 
 ### keras
 
@@ -720,9 +666,7 @@ base python 3.6, use
   # brower, localhost:8888, 根据提示拷贝url 访问
   ```
 
-  01.17
-
----
+## 01.17
 
 ### nginx1.12, openresty1.13.6
 
@@ -740,9 +684,7 @@ base python 3.6, use
 - centos/nginx, openresty/1.13.6
 - 具体参看 openresty/1.13.6/readme
 
-  2019.01.08
-
----
+## 2019.01.08
 
 ### centos7
 
@@ -767,9 +709,7 @@ one/centos:7.2 - 7.6
 - [Dataman-Cloud git](https://github.com/Dataman-Cloud/OpenDockerFile)
 - tsung/readme.md
 
-  12.07
-
----
+## 12.07
 
 ### mindoc
 
@@ -777,9 +717,7 @@ Golang 实现的基于 beego 框架的接口在线文档管理系统 https://www
 
 - docker pull daocloud.io/lifei6671/mindoc:latest
 
-  11.20
-
----
+## 11.20
 
 ### [sentry](https://github.com/getsentry)
 
@@ -801,18 +739,14 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
 - 注意 `--detach`, 命令行后台运行
 
-  08.17
-
----
+## 08.17
 
 ### latex
 
 - [blang/latex:ctanfull - Dockerfile.full](https://github.com/blang/latex-docker/blob/master/Dockerfile.full)full CTAN TexLive Scheme-full: Up-to-date, all packages (5.6GB)
 - `docker pull blang/latex:ctanfull`
 
-  08.14
-
----
+## 08.14
 
 ### portainer
 
@@ -821,9 +755,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - portainer/run.sh
 - user: admin,123456789
 
-  08.08
-
----
+## 08.08
 
 ### openresty 1.13.6
 
@@ -835,9 +767,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - [参考](http://wiki.jikexueyuan.com/project/openresty/web/docker.html)
 - `docker run -d --net=host openresty/openresty:1.13.6.2-centos`
 
-  07.24
-
----
+## 07.24
 
 ### 3.7.7-management
 
@@ -963,9 +893,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
   select * from nls_database_parameters;
   ```
 
-  07.03
-
----
+## 07.03
 
 ### python 3.6
 
@@ -980,9 +908,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 - turiCreate.iOS 的机器学习
 - [如何用 Python 和深度神经网络寻找近似图片？](https://www.jianshu.com/p/6fe5c75a8aa5)
 
-  05.24
-
----
+## 05.24
 
 ### latex
 
@@ -996,9 +922,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
   - shjd/Dockerfile
 
-  05.11
-
----
+## 05.11
 
 ### 补充
 
@@ -1024,9 +948,7 @@ Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。
 
   查看 in container, `ulimit -n`
 
-  04.24
-
----
+## 04.24
 
 ### `one/java8:1.0· to `one/java:8`
 
@@ -1069,17 +991,13 @@ use:
 
 - `monitor/dockprom`
 
-  04.16
-
----
+## 04.16
 
 ### postgresql 8.4
 
 - [8.4](https://github.com/pcorace/postgresql-8.4-docker)
 
-  04.15
-
----
+## 04.15
 
 ### nginx
 
@@ -1127,9 +1045,7 @@ RUN rm -rf /etc/localtime && \
 - `mkdir -p $GOPATH/src/github.com/hyperledger`
 - `cd $GOPATH/src/github.com/hyperledger`
 
-  03.27
-
----
+## 03.27
 
 ### spring boot 监控 Prometheus & grafana
 
@@ -1145,9 +1061,7 @@ docker pull grafana/grafana
 - `prometheus/run.sh`, access to `http://localhost:9090`, user: admin,admin
 - `prometheus/grafana/run.sh`, access to `http://localhost:3000`
 
-  03.07
-
----
+## 03.07
 
 ### gitlab
 
@@ -1665,9 +1579,7 @@ $ sudo docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000 \
 - elasticsearch/elk-docker-2
 - [infos](http://www.infoq.com/cn/news/2016/08/Elasticsearch-5-0-Elastic)
 
-  08.29
-
----
+## 08.29
 
 ### openresty add php5.6
 
@@ -2023,7 +1935,8 @@ $docker run -t -i code /bin/bash
       ```
 
   docker dial tcp 192.168.99.100:2376: getsockopt: connection refused
-  ```
+
+  ````
 
       解决：
 
@@ -2031,7 +1944,7 @@ $docker run -t -i code /bin/bash
 
   docker-machine stop default
   docker-machine start default
-  ```
+  ````
 
 ### 12.08
 
@@ -2040,6 +1953,9 @@ $docker run -t -i code /bin/bash
       ```
 
   docker-machine create -d virtualbox --virtualbox-boot2docker-url boot2docker.iso default
+
+  ```
+
   ```
 
 - java7base 无效
@@ -2060,6 +1976,9 @@ $docker run -t -i code /bin/bash
       ```
 
   docker pull redis:3.0.3
+
+  ```
+
   ```
 
 - run
@@ -2069,7 +1988,8 @@ $docker run -t -i code /bin/bash
       ```
 
   docker run --name redis -d -p 6379:6379 redis:3.0.3 -v ~/workspace/docker/redis-data:/data
-  ```
+
+  ````
 
       参数说明：
 
@@ -2084,7 +2004,7 @@ $docker run -t -i code /bin/bash
       ```
 
   docker run --link redis:db --rm -i -t ubuntu:14.04 /bin/bash
-  ```
+  ````
 
       参数说明：
 
