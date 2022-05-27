@@ -7,4 +7,4 @@ docker run \
     -v $(pwd)/nginx/conf.d:/etc/nginx/conf.d:ro \
     -v $(pwd)/nginx/www:/usr/share/nginx/html \
     -v $(pwd)/logs:/var/log/nginx \
-    -d one/nginx:1.21
+    -d one/nginx:1.21 
